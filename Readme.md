@@ -1,10 +1,9 @@
-Installation Guidelines
+﻿Installation Guidelines
 -----------------------
 
 Prerequisites
 *************
-
-Although care-admin can be run without any development experience, it would be much easier if you already have some. The following instructions allow you to run a local copy on your machine.
+ The following instructions allow you to run a local copy on your machine.
 
 Install tools
 *************
