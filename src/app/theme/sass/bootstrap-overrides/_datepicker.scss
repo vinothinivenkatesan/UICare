@@ -1,0 +1,52 @@
+.pl-1.month table tr td {
+    padding: 3px;
+}
+ .d-flex {
+    display: flex;
+}
+  .pt-1 {
+    padding-top: .25rem!important;
+}
+.mydp .currmonth.selectedday {
+    pointer-events: none;
+}
+.mydp .currmonth{    
+    font-size: 14px;
+    font-weight: $font-thin!important;
+    background-color: #fff!important;
+}
+.mydp .selectedday div{
+    border: 2px solid #f26522!important;
+    background-color: #fff!important;
+    border-radius: 3px!important;   
+}
+.mydp .daycell div span {    
+    text-align: center;
+    display: block;
+    background-color: #fff;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.mydp .weekdaytitle {
+    background-color: #fff!important;
+    font-size: 14px!important;
+    font-weight: 100!important;    
+}
+
+.mydp .caltable, .mydp .daycell, .mydp .weekdaytitle{
+    color: #4c4d4f!important;   
+}
+.mydp .btnclearenabled:hover, .mydp .btnpickerenabled:hover, .mydp .headertodaybtnenabled:hover, .mydp .tablesingleday:hover {
+    background-color:#fff!important;
+    color:#f26522!important;
+
+}
+.mydp .headerlabelbtn {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4c4d4f;
+}
+.mydp .headermonthtxt, .mydp .headeryeartxt{
+    width: auto!important;
+     max-width: 50%!important;
+}

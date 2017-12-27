@@ -1,0 +1,239 @@
+<div class="widgets">
+    <bs-card bsCardClass="with-scroll">
+        <div class='row'>
+            <div class="col-md-6">
+                <p class="table-heading">Diagnosis</p>
+            </div>           
+        </div>       
+        <div class='row'>
+            <div class="col-md-6">
+                <form class="form-group generic-row-count">
+                    <select class="form-control form-control-sm" #rowLength (change)="myTable.changeRowLength(rowLength.value)">
+                        <option value=10>10</option>
+                        <option value=20>20</option>
+                        <option value=30>30</option>
+                    </select>                    
+                </form>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" #search (keyup)="applySearch(search.value)" class="form-control generic-search" placeholder="Search">
+            </div>
+        </div>
+        <generic-table [gtClasses]="'table-hover'" #myTable [gtSettings]="configObject.settings" [gtFields]="configObject.fields" [(gtData)]="configObject.data" [gtOptions]="{csvDelimiter:',', highlightSearch:true}"></generic-table>
+        <div class="text-xs-center">
+            <gt-pagination [genericTable]="myTable"></gt-pagination>
+        </div>
+    </bs-card>
+    <h2 id="diag_heading">Diagnosis of {{heading}}</h2>
+    <scroll-tabs>
+        <scroll-tab tabTitle="Signs">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="signMust" [(ngModel)]="selectedsignMust" [settings]="mySettings" (ngModelChange)="onChange(selectedsignMust)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="signMay" [(ngModel)]="selectedsignMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="signShould" [(ngModel)]="selectedsignShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                            <!--<ss-multiselect-dropdown [options]="signMust" [(ngModel)]="selectedsignMust" (ngModelChange)="onChange(selectedsignMust)"></ss-multiselect-dropdown>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </scroll-tab>
+        <scroll-tab tabTitle="Symptoms">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="symptomMust" [(ngModel)]="selectedsymptomMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="symptomMay" [(ngModel)]="selectedsymptomMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="symptomShould" [(ngModel)]="selectedsymptomShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>
+        <scroll-tab tabTitle="Investigations">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMust" [(ngModel)]="selectedinvestigationMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMay" [(ngModel)]="selectedinvestigationMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationShould" [(ngModel)]="selectedinvestigationShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>  
+        <scroll-tab tabTitle="Co-morbidities">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMust" [(ngModel)]="selectedinvestigationMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMay" [(ngModel)]="selectedinvestigationMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationShould" [(ngModel)]="selectedinvestigationShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>
+        <scroll-tab tabTitle="Age">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMust" [(ngModel)]="selectedinvestigationMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMay" [(ngModel)]="selectedinvestigationMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationShould" [(ngModel)]="selectedinvestigationShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>
+        <scroll-tab tabTitle="Gender">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMust" [(ngModel)]="selectedinvestigationMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMay" [(ngModel)]="selectedinvestigationMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationShould" [(ngModel)]="selectedinvestigationShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>
+        <scroll-tab tabTitle="Diagnosis"></scroll-tab>
+        <scroll-tab tabTitle="Treatment"></scroll-tab>
+        <scroll-tab tabTitle="Procedure"></scroll-tab>
+        <scroll-tab tabTitle="Drugs">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Must Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMust" [(ngModel)]="selectedinvestigationMust" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">May/May not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationMay" [(ngModel)]="selectedinvestigationMay" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Should not Have</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="investigationShould" [(ngModel)]="selectedinvestigationShould" [settings]="mySettings" (ngModelChange)="onChange(selectedOptions)"></ss-multiselect-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </scroll-tab>
+
+        <scroll-tab tabTitle="LOS (MIN)"></scroll-tab>
+        <scroll-tab tabTitle="LOS (MAX)"></scroll-tab>
+        <scroll-tab tabTitle="Claim amount(MIN)"></scroll-tab>
+        <scroll-tab tabTitle="Claim amount(MAX)"></scroll-tab>
+    </scroll-tabs>
+
+</div>

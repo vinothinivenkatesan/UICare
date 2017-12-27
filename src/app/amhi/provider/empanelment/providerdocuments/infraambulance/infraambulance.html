@@ -1,0 +1,30 @@
+<div #formRef=''>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Registration certificate for vehicle <span class="mandatory">*</span></span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvAMBURegCertVhcl.documents' [(providerCode)]='providerCode'></uploader>
+    </div>    
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">No objection for pollution control</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="AMBUPollutCntrlFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="AMBUPollutCntrlEffective" [options]="myDatePickerOptions" [(ngModel)]="prvAMBUPollutCntrlFrom" #AMBUPollutCntrlFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvAMBUDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="AMBUPollutCntrlToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="AMBUPollutCntrlEnd" [options]="myDatePickerOptions" [(ngModel)]="prvAMBUPollutCntrlTo" #AMBUPollutCntrlToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="AMBUPollutCntrlIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="AMBUPollutCntrlIssue" [(ngModel)]="prvAMBUPollutCntrl.issuingAuthority" #AMBUPollutCntrlIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvAMBUPollutCntrl.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+</div>

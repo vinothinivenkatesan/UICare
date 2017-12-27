@@ -1,0 +1,153 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Ip Beds</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Number of major Ots</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Number of minor Ots</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Ip Beds</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Laboratory</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Ip Beds</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Ip Beds</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="">Ip Beds</label>
+            <div class="col-sm-8"> 4 points</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="score">Grading score</label>
+            <div class="col-sm-8">
+                <input class="form-control" name="score" id="score" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group row">
+            <label class="col-sm-4 form-control-label" for="grade">Grading</label>
+            <div class="col-sm-8"> 
+                <input class="form-control" name="grade" id="grade" type="text">
+            </div>
+        </div>
+    </div>
+</div>
+<fieldset>
+    <div class="horizontal-scroll">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">#</th>
+                    <th>Grade and Version</th>
+                    <th>Creation Date</th>
+                    <th>Remarks</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>No data available</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!--<tr>
+                    <td class="table-id">1</td>
+                    <td>Grade [V1.0]</td>
+                    <td>07/12/2016</td>
+                    <td>New Remark </td>
+                    <td>Current</td>                    
+                </tr>-->
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+<!--
+<div class="panel panel-default">
+  <div class="panel-heading">Panel heading</div>
+  <div class="panel-body">
+    <p></p>
+  </div>
+
+  <table class="table">
+  </table>
+</div>-->
+<div class="pull-right">
+    <button type="submit" class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+    <button type="submit" class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Remarks</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="remarks"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf='remark'>
+    <label class="form-control-lable col-sm-2">
+    </label>
+    <div class="col-sm-8 remarksBox">
+        <div class="row">
+            <div class="col-sm-7">
+                Created By : Maker 1 [123456]
+            </div>
+            <div class="col-sm-4 col-sm-5">
+                Created On : MM/DD/YY TT:MM AM/PM
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-1">
+                Product enplanement requested
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="pull-right" >
+    <button class="btn btn-warning" type="button">Cancel</button>
+    <button class="btn btn-primary" type="button">Save</button>
+</div>

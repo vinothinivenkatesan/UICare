@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 14, 2017, 11:23:46 AM
+    Author     : 564812
+*/
+.widget-panel{
+    padding: 20px 20px;
+    border-radius: 4px;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 20px 2px $input-border;
+    background: $input-background;
+    min-height:100px;
+}
+
+.widget-panel>i{
+    font-size: 42px;
+    float: right;
+    padding-top: 5px;
+    color:$input-border;
+}
+
+.widget-panel>h2{
+    margin-bottom: 0px;
+    margin-top: 5px;
+    font-weight:bold;
+    font-size:24px;
+    color:$default-text;
+}

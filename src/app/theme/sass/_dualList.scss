@@ -1,0 +1,127 @@
+div.record-picker {
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius:0px;
+    position: relative;
+    cursor: pointer;
+}
+
+dual-list button.btn.btn-primary{
+    border-color:$primary;
+    color: $primary;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include buttonColor(transparent, $primary);
+    &:active, &:target {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: $primary;
+    }
+}
+
+dual-list form > div > button{
+    display:none !important;
+}
+
+div.record-picker::-webkit-scrollbar {
+    width: 12px;
+}
+
+div.record-picker::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+div.record-picker {
+    scrollbar-base-color: $primary;
+    scrollbar-3dlight-color: $primary;
+    scrollbar-highlight-color: $primary;
+    scrollbar-track-color: #eee;
+    scrollbar-arrow-color: gray;
+    scrollbar-shadow-color: gray;
+    scrollbar-dark-shadow-color: gray;
+    opacity: 0.8;
+
+}
+
+div.record-picker::-webkit-scrollbar-track {
+    background:#eee;
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+}
+
+div.record-picker::-webkit-scrollbar-thumb {
+    background: $primary;
+    border: thin solid gray;
+    opacity: 0.8;
+}
+
+div.record-picker::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+}
+
+.record-picker ul {
+    margin: 0;
+    padding: 0 0 1px 0;
+}
+
+.record-picker li {
+    border-top: thin solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    padding: 2px 2px 2px 10px;
+    margin-bottom: -1px;
+    font-size: 0.85em;
+    cursor: pointer;
+    white-space: nowrap;
+    min-height:16px;
+}
+
+.record-picker li:hover {
+    background-color: #f5f5f5;
+}
+
+.record-picker li.selected {
+    /*	background-color: #ff9; */
+    background-color: #d9edf7;
+}
+
+.record-picker li.selected:hover {
+    background-color: #c4e3f3;
+    /*	background-color: #d9edf7; */
+}
+
+.record-picker li.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.record-picker li:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top: none;
+}
+
+.record-picker li:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: none;
+}
+
+.record-picker label {
+    cursor: pointer;
+    font-weight: inherit;
+    font-size: 14px;
+    padding: 13px;
+    margin-bottom: -1px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.record-picker ul.over
+{
+    background-color:lightgray;
+}
+

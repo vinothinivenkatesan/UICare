@@ -1,0 +1,219 @@
+<div>
+    Configuration
+</div>
+<div id="wizard" class="form_wizard wizard_horizontal">
+    <ul class="wizard_steps">
+        <li>
+            <a>
+                <span [ngClass]="{'step_no': true, 'onprogress':isOnprogressMaker,'inactive':isInactiveMaker,'completed':isCompletedMaker}">1</span>
+                <span class="step_descr">
+                    Maker
+                </span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressChecker,'inactive':isInactiveChecker,'completed':isCompletedChecker}">2</span>
+                <span class="step_descr">
+                    Checker
+                </span>
+            </a>
+        </li>        
+    </ul>
+</div>
+<custom-modal #modal [modalType]='"customBodyContentLarge"' [buttonText]='"Cancel"' [buttonText3]='"Select"' [modalHeader]='"Search  Providers"'>
+    <div modal-lg>
+        <div class="row" *ngIf='!advSearchPanel'>
+            <div class="col-md-12">
+                <bs-card bsCardClass="with-scroll">
+                    <p class="table-heading">Search</p>
+                    <form *ngIf='false' class="row form-inline">
+                        <div class="form-group col-md-10">
+                            <input type="text" class="form-control" [ngClass]="{'has-error': (!searchInput.value), 'has-success': (searchInput.value)}" id="exampleInputName2" placeholder="Search" name="search"  #searchInput [ngClass]="{'has-error':isData}">
+                            <i class="fa fa-search form-control-feedback" aria-hidden="true"></i>
+                        </div>                     
+                        <div class="form-group">
+                            <button type="button"  [disabled]="!searchInput.value"  (click)="getSearchResults(searchInput.value)" class="btn btn-primary">Search</button>
+                        </div>
+
+                        <div class="form-group advance-search">
+                            <a (click)="advSearchPanel=true">Advanced Search</a>
+                        </div>                    
+                    </form>
+                    <form *ngIf='true' #advSearchForm="ngForm">
+                        <div class="row">
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">Provider Name</label>
+                                <input type="text" class="form-control" name="name"  placeholder="Enter Here" [(ngModel)]='name'>
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label" >Also Known as</label>
+                                <input type="text" class="form-control"  name="aka" placeholder="Enter Here" [(ngModel)]='aka'>
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label" >Provider Code</label>
+                                <input type="text" name="providercode" class="form-control" name="code" placeholder="Enter Here" [(ngModel)]='code'>
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">State</label>
+                                <select class="form-control" name="state" [(ngModel)]='selectedState'>
+                                    <option [ngValue]='emptyString' selected>Select Here</option>
+                                    <option *ngFor=' let stateObj of stateList'  [ngValue]='stateObj.stateId'>{{stateObj.stateName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">                        
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">City</label>
+                                <select ctype-8 class="form-control" name="city" [(ngModel)]='selectedCity'>
+                                    <option [ngValue]='emptyString' selected>Select Here</option>
+                                    <option *ngFor=' let cityObj of cityList' [ngValue]='cityObj.cityId'>{{cityObj.cityName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">Pin Code</label>
+                                <input type="text" class="form-control" name="pincode" placeholder="Enter Here" [(ngModel)]='pincode'>
+                            </div>                                             
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">IRDA Code</label>
+                                <input type="text" class="form-control" name="irdacode"  placeholder="Enter Here" [(ngModel)]='irdacode'>
+                            </div>       
+                            <div class="form-group col-xs-3">
+                                <label class="form-control-label">PAN Number</label>
+                                <input type="text" class="form-control" name="pannumber"  placeholder="Enter Here" [(ngModel)]='pannumber'>
+                            </div>  
+                        </div>
+                        <!--<div class="row">-->
+                            <div class="row pull-right search-btn-holder">  
+                                <div class="form-group col-xs-4">
+                                    <button type="button" class="btn btn-primary">Search</button>
+                                </div>
+                                <div class="col-xs-7 form-group advance-search">
+                                    <a>Simple Search</a>
+                                </div>
+                            </div>
+                        <!--</div>-->
+                    </form>
+                </bs-card>
+            </div>
+        </div>
+        <div class="horizontal-scroll">
+            <table class="table table-condensed table-responsive">
+                <thead>
+                <tr>
+                <th><input type="checkbox"></th>
+                <th class="table-id">#</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Entity Type</th>
+                <th>City</th>
+                <th>Pin Code</th>
+                <th>IRDA Code</th>
+                <th>PAN number</th>
+                <th>Provider Category</th>
+                <th>Empanelment request status</th>
+                <th>Status</th>
+                <th>Tags</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of peopleTableData">
+                <td class="table-id"><input type="checkbox"></td>
+                <td class="table-id">{{ item.id }}</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.firstName }}</td>
+                <td>{{ item.lastName }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ "600120" }}</td>
+                <td>{{ "HAP100" }}</td>
+                <td>{{ "BCPN102083" }}</td>
+                <td>{{ "N/A" }}</td>
+                <td>{{ "Active" }}</td>
+                <td>{{ "status" }}</td>
+                <td>{{ "Tag" }}</td>
+                <td>
+                    <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
+                </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</custom-modal>
+<bs-card bsCardClass="with-scroll">
+    <form class="form-horizontal" #ComConfigForm="ngForm" novalidate>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Communication Event*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='commEvent' name="commEventName" #commEventModel='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Communication Mode*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='commMode' name="commModeName" #commModeModel='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'From'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='commFrom' name="commFromName" #commFromModel='ngModel' type="text" maxlength="70" required>
+            </input-wrapper>
+            <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'Subject'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='commSubject' name="commSubjectName" #commSubjectModel='ngModel' type="text" maxlength="70" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-12' [inputLabel]="'Message*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-2-10'">
+                <textarea ctype-10 class="form-control" [(ngModel)]='commMsg' name="commMsgName" #commMsgModel='ngModel' ></textarea>
+            </input-wrapper>
+        </div>
+        <uploader [labelText]="'Upload'" [(savedFile)]='commConfig.documents' [(providerCode)]='providerCode'></uploader>
+        <div class="row">
+            <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'Signature'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='commSign' name="commSignName" #commSignModel='ngModel' type="text" maxlength="70" required>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Recipient'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <div ctype-8>
+                    <input required class="form-control" placeholder="Lookup" type="text" [(ngModel)]='commLookup' name="commLookupName" #commLookupModel='ngModel'>
+                    <button (click)="modal.open()" class="btn form-control-feedback lookup-btn"><i class="fa fa-eye"></i></button>
+                </div>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Selected Providers</legend>
+            <!--<tag-input (onRemove)="removeTag($event, 'multiSpecialty')" [readonly]='!(_privilege.isCurrentTask("prvRegNew") || _privilege.isCurrentTask("prvEmpReg"))' [(ngModel)]='selectedMultiSpecialty' name="multiSpec"> </tag-input>-->
+            <option-tag [tagList]='["First Provider", "2nd Prv"]'  [templateDetail]="{ type: 4}"> </option-tag>
+        </fieldset>
+
+
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="regactionTaken" id="regactionTaken" [(ngModel)]='checkerAction' #chkRegAction="ngModel" required> 
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let item of registerActionList' [ngValue]='item.actionTakenId'>{{item.actionTakenName}}</option>
+                </select>                               
+            </input-wrapper>
+            <div class="col-sm-6">
+                <div class="pull-right">
+                    <button class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                    <button class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                </div>
+            </div>
+            <input-wrapper class='col-sm-12' [inputLabel]="'Remarks*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-2-10'">
+                <textarea ctype-10 class="form-control" name="chkremarks" id="chkremarks" [(ngModel)]="checkerActionRemarks" #prvRemark='ngModel' required></textarea>
+            </input-wrapper>
+        </div>
+
+
+
+
+        <hr>
+        <div class="pull-right">
+            <button type="button" class="btn btn-default" (click)='modal.close()'>Cancel</button>
+            <button type="button" class="btn btn-primary" (click)='modal.close()'>Send</button>
+            <button type="button" class="btn btn-primary" (click)='modal.close()'>Submit</button>
+        </div>
+
+
+    </form>
+</bs-card>

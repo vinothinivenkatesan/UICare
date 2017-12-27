@@ -1,0 +1,110 @@
+<form class="form-horizontal" #mouDetailForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Date of signing of MOU*'" [formErrors]="mouDetailForm" [inputErrors]="signingDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="signingDate" [options]="myDatePickerOptions" [(ngModel)]="signingDateModel" #signingDate='ngModel' required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Validity*'" [formErrors]="mouDetailForm" [inputErrors]="validity" [templateType]="'grid-4-8'">
+            <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='validity' #validity='ngModel' required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Rate list Effective Start Date'" [formErrors]="mouDetailForm" [inputErrors]="rateStartdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="rateStartdate" [options]="myDatePickerOptions" [(ngModel)]="rateStartdateModel" #rateStartdate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Rate list Effective End Date'" [formErrors]="mouDetailForm" [inputErrors]="rateEnddate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="rateEnddate" [options]="myDatePickerOptions" [(ngModel)]="rateEnddateModel" #rateEnddate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'MOU Start Date'" [formErrors]="mouDetailForm" [inputErrors]="mouStartdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="mouStartdate" [options]="myDatePickerOptions" [(ngModel)]="mouStartdateModel" #mouStartdate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'MOU End Date'" [formErrors]="mouDetailForm" [inputErrors]="mouEnddate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="mouEnddate" [options]="myDatePickerOptions" [(ngModel)]="mouEnddateModel" #mouEnddate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'MOU Released Date'" [formErrors]="mouDetailForm" [inputErrors]="mouReleasedate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="mouReleasedate" [options]="myDatePickerOptions" [(ngModel)]="mouReleasedateModel" #mouReleasedate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Authorized signatory name (provider)*'" [formErrors]="mouDetailForm" [inputErrors]="signName" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='signName' #signName='ngModel' required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Authorized signatory designation (provider)*'" [formErrors]="mouDetailForm" [inputErrors]="signDesignation" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='signDesignation' #signDesignation='ngModel' required>
+        </input-wrapper>
+    </div>
+    <div class="subTitle">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">SPOC Detail</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Name of the person*'" [formErrors]="mouDetailForm" [inputErrors]="personName" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='personName' #personName='ngModel' required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Designation*'" [formErrors]="mouDetailForm" [inputErrors]="Designation" [templateType]="'grid-4-8'">
+            <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='Designation' #Designation='ngModel' required>
+        </input-wrapper>    
+        <input-wrapper class='col-sm-6' [inputLabel]="'Landline Number'" [formErrors]="mouDetailForm" [inputErrors]="STDCode" [inputErrorsTwo]="landlineNumber" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="landlineCode" id="landlineCode" placeholder="Enter Here" type="text" [(ngModel)]='text' #STDCode="ngModel" number maxlength="4" required inputAddon>
+            <div ctype2-3-5 class="input-group">
+                <input class="form-control" placeholder="Enter Here" name="landlineNumber" id="landlineNumber" type="text" [(ngModel)]='text' #landlineNumber="ngModel" number maxlength="8" required inputAddon>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number'" [formErrors]="mouDetailForm" [inputErrors]="mobileNumber" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='mobileNumber' #mobileNumber='ngModel' required>
+        </input-wrapper>
+    </div>
+    <div class="subTitle">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Communication address of the provider</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'State*'" [formErrors]="mouDetailForm" [inputErrors]="state" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="state" [(ngModel)]='selectedState' #state='ngModel'>
+                <option [ngValue]='defaultSelect' selected>Select Here</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'City*'" [formErrors]="mouDetailForm" [inputErrors]="city" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="city" [(ngModel)]='selectedCity' #city='ngModel'>
+                <option [ngValue]='defaultSelect' selected>Select Here</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Pin Code*'" [formErrors]="mouDetailForm" [inputErrors]="pincode" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='pincode' #pincode="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'District'" [formErrors]="mouDetailForm" [inputErrors]="district" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="District" [(ngModel)]='selectedDistrict' #district='ngModel'>
+                <option [ngValue]='defaultSelect' selected>Select Here</option>
+            </select>
+        </input-wrapper>
+
+        <input-wrapper class='col-md-6' [inputLabel]="'Address/Locality'" [formErrors]="mouDetailForm" [inputErrors]="locality" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='locality' #locality="ngModel">
+        </input-wrapper>
+
+        <input-wrapper class='col-md-6' [inputLabel]="'Landmark'" [formErrors]="mouDetailForm" [inputErrors]="landmark" [templateType]="'grid-4-8'">
+            <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='landmark' #landmark="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-12' [inputLabel]="'Street Name*'" [formErrors]="mouDetailForm" [inputErrors]="streetname" [templateType]="'grid-2-10'">
+                       <input ctype-10 class="form-control" placeholder="Enter Here" type="text" name='streetname' [(ngModel)]='text' #streetname="ngModel" required>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Plot Number*'" [formErrors]="mouDetailForm" [inputErrors]="plotNo" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='plotNo' #plotNo="ngModel" required>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper  class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]="mouDetailForm" [inputErrors]="landlineCode" [inputErrorsTwo]="landlineNumber" [templateType]="'grid-4-3-5'">
+                        <input ctype-3-5 class="form-control" name="landlineCode" placeholder="Enter Here" type="text" [(ngModel)]='text' #landlineCode="ngModel" number maxlength="4" required>
+            <div ctype2-3-5 class="input-group">
+                <input class="form-control" placeholder="Enter Here" name="landlineNumber" type="text" [(ngModel)]='text' #landlineNumber="ngModel" number maxlength="8" required>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number*'" [formErrors]="mouDetailForm" [inputErrors]="mobile" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='mobile' #mobile="ngModel" required>
+        </input-wrapper>
+    </div>
+    <hr>
+      <div class="pull-right">
+        <button type="button" class="btn btn-default">Reset</button>
+        <button type="button" class="btn btn-primary">Next</button>
+    </div>
+</form>

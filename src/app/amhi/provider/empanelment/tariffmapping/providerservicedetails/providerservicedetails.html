@@ -1,0 +1,81 @@
+<form #providerServiceDetailsForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Tariff Item Category'" [formErrors]="providerServiceDetailsForm" [inputErrors]="itemCategory" #itemCategoryWrap [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="itemCategory" [(ngModel)]='itemCategorySelect' #itemCategory='ngModel'>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let category of itemCategoryList' [ngValue]=''></option>
+                </select>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Department Category'" [formErrors]="providerServiceDetailsForm" [inputErrors]="category" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='providerObj.category' name='category' #category='ngModel' ctype-8>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Department Sub-Category'" [formErrors]="providerServiceDetailsForm" [inputErrors]="subCategory" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='providerObj.subCategory' name='subCategory' #subCategory='ngModel' ctype-8>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Service Name*'" [formErrors]="providerServiceDetailsForm" [inputErrors]="serviceName" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='providerObj.serviceName' name='serviceName' #serviceName='ngModel' ctype-8 required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Service Code'" [formErrors]="providerServiceDetailsForm" [inputErrors]="serviceCode" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='providerObj.serviceCode' name='serviceCode' #serviceCode='ngModel' ctype-8>
+        </input-wrapper>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <span class="or-split">Or</span>
+            <hr>
+        </div>
+    </div>
+    
+    <uploader [(savedFile)]='providerServiceDetails' ></uploader>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Tariff Item Section</th>
+                <th>Department Category</th>
+                <th>Sub Category</th>
+                <th>Service Name</th>
+                <th>Service Code</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="7">No data available</td>
+                                    
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+      
+    <hr>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Reset</button>
+            <button type="button" class="btn btn-primary">Next</button>
+        </span>
+    </div>        
+</form>

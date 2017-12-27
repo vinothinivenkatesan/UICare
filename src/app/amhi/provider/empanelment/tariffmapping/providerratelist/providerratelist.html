@@ -1,0 +1,192 @@
+<custom-modal #lookUpModal [modalHeader]="'Select Network'" [buttonText]="'Cancel'" [buttonText2]="'Select'" [modalType]="'customBodyContent'" (onModalClose)="lookUpClosed($event)">
+    <fieldset>
+        <div class="row">
+            <input-wrapper class='col-sm-3' [inputLabel]="'Network ID'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <input-wrapper class='col-sm-3' [inputLabel]="'Network Name'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <input-wrapper class='col-sm-3' [inputLabel]="'Type of Network'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <div class='col-sm-3'>
+                <button class="btn btn-primary">Search</button>
+                <a class="btn-link">Simple Search</a>
+            </div>
+        </div>
+    </fieldset>
+    <table class="table table-striped">
+        <thead>
+            <tr class="black-muted-bg">
+                <th>
+                <th class="table-id">#</th>
+                <th>Network ID</th>
+                <th>Network Name</th>
+                <th>Type of Network </th>
+                <th>Purpose of Network </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="6">No data available</td>
+               
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+</custom-modal>
+<form #providerRateListForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Rate List Name*'" [formErrors]="providerRateListForm" [inputErrors]="rateName" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='rateObj.rateName' name='rateName' #rateName='ngModel' ctype-8 required>
+        </input-wrapper>
+       <input-wrapper class='col-md-6' [inputLabel]="'Network Specific Rate List'" [formErrors]="providerRateListForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="rateObj.networkRate" [toggleName]="'networkRate'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+        <input-wrapper *ngIf="rateObj.networkRate=='1'" class='col-md-6' [inputLabel]="'Network Name*'" [formErrors]="providerRateListForm" [inputErrors]="networkName" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='rateObj.networkName' name='networkName' #networkName='ngModel' ctype-8 required>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="rateObj.networkRate=='1'" class='col-md-6' [inputLabel]="'Network ID*'" [formErrors]="providerRateListForm" [inputErrors]="networkID" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='rateObj.networkID' name='networkID' #networkID='ngModel' ctype-8 required>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkIDs()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>        
+    </div>
+
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <accordion [closeOthers]="oneAtATime">
+        <accordion-group #prl_rrAcc>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': prl_rrAcc?.isOpen, 'fa-plus-circle': !prl_rrAcc?.isOpen}"> </i>
+                <span>Room Rent</span>
+            </div>
+            <prl-room-rent></prl-room-rent>
+        </accordion-group>        
+    </accordion>
+
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend class="scheduler-border">Packages</legend>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <accordion [closeOthers]="oneAtATime">
+                            <accordion-group #mmAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': mmAcc?.isOpen, 'fa-plus-circle': !mmAcc?.isOpen}"> </i>
+                                    <span>Medical Management</span>
+                                </div>
+                                <medical-management></medical-management>
+                            </accordion-group>
+                            <accordion-group #smAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': smAcc?.isOpen, 'fa-plus-circle': !smAcc?.isOpen}"> </i>
+                                    <span>Surgical Package</span>
+                                </div>
+                                <surgical-management></surgical-management>
+                            </accordion-group>
+                            <accordion-group #hcpAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': smAcc?.isOpen, 'fa-plus-circle': !smAcc?.isOpen}"> </i>
+                                    <span>Home Care Package</span>
+                                </div>
+                                <home-care-package></home-care-package>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend class="scheduler-border">Open Tariff Item</legend>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <accordion [closeOthers]="oneAtATime">
+                            <accordion-group #otpAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': otpAcc?.isOpen, 'fa-plus-circle': !otpAcc?.isOpen}"> </i>
+                                    <span>Procedure</span>
+                                </div>
+                                <open-tariff-procedure></open-tariff-procedure>
+                            </accordion-group>
+                            <accordion-group #iAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': iAcc?.isOpen, 'fa-plus-circle': !iAcc?.isOpen}"> </i>
+                                    <span>Investigation</span>
+                                </div>
+                                <investigation></investigation>
+                            </accordion-group>
+                            <accordion-group #liAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': liAcc?.isOpen, 'fa-plus-circle': !liAcc?.isOpen}"> </i>
+                                    <span>Line item</span>
+                                </div>
+                                <line-item></line-item>
+                            </accordion-group>
+                            <accordion-group #aiAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': aiAcc?.isOpen, 'fa-plus-circle': !aiAcc?.isOpen}"> </i>
+                                    <span>Actual items</span>
+                                </div>
+                                <actual-item></actual-item>
+                            </accordion-group>
+                            <accordion-group #pdAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': pdAcc?.isOpen, 'fa-plus-circle': !pdAcc?.isOpen}"> </i>
+                                    <span>Pharmacy and Drug Details</span>
+                                </div>
+                                <pharma-drug></pharma-drug>
+                            </accordion-group>
+                            <accordion-group #icAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': icAcc?.isOpen, 'fa-plus-circle': !icAcc?.isOpen}"> </i>
+                                    <span>Implants and Consumables</span>
+                                </div>
+                                <implant-consume></implant-consume>
+                            </accordion-group>
+                            <accordion-group #stgAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': stgAcc?.isOpen, 'fa-plus-circle': !stgAcc?.isOpen}"> </i>
+                                    <span>Special Tariff Guidelines</span>
+                                </div>
+                                <special-tariff></special-tariff>
+                            </accordion-group>
+                            <accordion-group #pbAcc>
+                                <div accordion-heading>             
+                                    <i class="fa" [ngClass]="{'fa-minus-circle': pbAcc?.isOpen, 'fa-plus-circle': !pbAcc?.isOpen}"> </i>
+                                    <span>Preferred Benefits</span>
+                                </div>
+                                <preferd-benefits></preferd-benefits>
+                            </accordion-group>
+                        </accordion> 
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    
+</form>

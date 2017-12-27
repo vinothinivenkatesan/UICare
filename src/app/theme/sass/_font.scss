@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 1, 2017, 7:23:49 PM
+    Author     : 564812
+*/
+
+
+$assets-root: './../../assets/';
+$fonts-root: $assets-root + 'fonts/';
+
+@font-face {
+    font-family: 'HelveticaLT';
+    src: url('#{$fonts-root}HelveticaLT.eot'); /* IE9 Compat Modes */
+    src: 
+        url('#{$fonts-root}HelveticaLT.woff') format('woff'),
+        url('#{$fonts-root}HelveticaLT.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('#{$fonts-root}HelveticaLT.svg') format('svg'); /* Legacy iOS */
+}
+
+$font-family: 'HelveticaLT';

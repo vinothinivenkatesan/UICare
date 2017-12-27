@@ -1,0 +1,126 @@
+<div #formRef=''>
+    <div>
+        <uploader [labelText]="'Biomedical waste management certificate*'" [(savedFile)]='prvHSPTLBioWstMngCert.documents' [(providerCode)]='providerCode'></uploader>
+        <!--<uploader [(labelText)]="'Make and year for all the equipment'" [(savedFile)]='prvHSPTLEquipYr.documents' [(providerCode)]='providerCode'></uploader>-->
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Building permit</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="HSPTLBldPermitFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPTLBldPermitFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLBldPermitFrom" #HSPTLBldPermitFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvHSPTLDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="HSPTLBldPermitToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="HSPTLBldPermitEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLBldPermitTo" #HSPTLBldPermitToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="HSPTLBldPermitIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLBldPermitIssue" [(ngModel)]="prvHSPTLBldPermit.issuingAuthority" #HSPTLBldPermitIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLBldPermit.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Fire safety license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="HSPTLFireSafeFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPLTFireSafeFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLFireSafeFrom" #HSPTLFireSafeFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvHSPTLDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="HSPTLFireSafeToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="HSPTLFireSafeEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLFireSafeTo" #HSPTLFireSafeToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="HSPTLFireSafeIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLFireSafeIssue" [(ngModel)]="prvHSPTLFireSafe.issuingAuthority" #HSPTLFireSafeIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLFireSafe.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">PNDT license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="HSPTLPNDTFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPTLPNDTFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLPNDTFrom" #HSPTLPNDTFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvHSPTLDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="HSPTLPNDTToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="PNDTEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLPNDTTo" #HSPTLPNDTToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="HSPTLPNDTIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLPNDTIssue" [(ngModel)]="prvHSPTLPNDT.issuingAuthority" #HSPTLPNDTIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLPNDT.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Radiation protection certificate</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="HSPTLRadiatProCertFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPTLRadiatProCertFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLRadiatProCertFrom" #HSPTLRadiatProCertFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvHSPTLDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="HSPTLRadiatProCertToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="HSPTLRadiatProCertEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLRadiatProCertTo" #HSPTLRadiatProCertToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="HSPTLRadiatProCertIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLRadiatProCertIssue" [(ngModel)]="prvHSPTLRadiatProCert.issuingAuthority" #HSPTLRadiatProCertIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLRadiatProCert.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">No objection for pollution control</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="HSPTLPollutionCntrlFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPTLPollutionCntrlFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLPollutionCntrlFrom" #HSPTLPollutionCntrlFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="HSPTLPollutionCntrlToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="HSPTLPollutionCntrlEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLPollutionCntrlTo" #HSPTLPollutionCntrlToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="HSPTLPollutionCntrlIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLPollutionCntrlIssue" [(ngModel)]="prvHSPTLPollutionCntrl.issuingAuthority" #HSPTLPollutionCntrlIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLPollutionCntrl.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Narcotics and psychotropic license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="HSPTLNarcoticsFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="HSPTLNarcoticsFrom" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLNarcoticsFrom" #HSPTLNarcoticsFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvHSPTLDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="HSPTLNarcoticsToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="HSPTLNarcoticsEnd" [options]="myDatePickerOptions" [(ngModel)]="prvHSPTLNarcoticsTo" #HSPTLNarcoticsToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="HSPTLNarcoticsIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="HSPTLNarcoticsIssue" [(ngModel)]="prvHSPTLNarcotics.issuingAuthority" #HSPTLNarcoticsIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvHSPTLNarcotics.documents' [(providerCode)]='providerCode'></uploader>
+    </div>    
+</div>

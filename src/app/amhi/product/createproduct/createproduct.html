@@ -1,0 +1,80 @@
+<div id="wizard" class="form_wizard wizard_horizontal">
+    <ul class="wizard_steps">
+        <li>
+            <a>
+                <span [ngClass]="{'step_no': true, 'onprogress':isOnprogressMaker,'inactive':isInactiveMaker,'completed':isCompletedMaker}">1</span>
+                <span class="step_descr">
+                    Maker
+                </span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressChecker,'inactive':isInactiveChecker,'completed':isCompletedChecker}">2</span>
+                <span class="step_descr">
+                    Checker
+                </span>
+            </a>
+        </li>        
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressApprover,'inactive':isInactiveApprover,'completed':isCompletedApprover}">3</span>
+                <span class="step_descr">
+                    Approver
+                </span>
+            </a>
+        </li>        
+    </ul>
+</div> 
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #group1 [isOpen]="true">
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+            <span>Channel Details</span>
+        </div>
+        <channel-details></channel-details>
+    </accordion-group>
+    <accordion-group #group2>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group2?.isOpen, 'fa-plus-circle': !group2?.isOpen}"> </i>
+            <span>  Product Details</span>  
+        </div>  
+       <product-details></product-details>
+    </accordion-group> 
+    <accordion-group #group3>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group3?.isOpen, 'fa-plus-circle': !group3?.isOpen}"> </i>
+            <span>  Product Configuration</span>  
+        </div>  
+       <product-configuration> </product-configuration>
+    </accordion-group> 
+    <accordion-group #group4>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group4?.isOpen, 'fa-plus-circle': !group4?.isOpen}"> </i>
+            <span> Coverage Details</span>  
+        </div>  
+        <coverage-details></coverage-details>
+    </accordion-group> 
+    <accordion-group #group5>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group5?.isOpen, 'fa-plus-circle': !group5?.isOpen}"> </i>
+            <span> Cost Sharing Details</span>  
+        </div>  
+        <costsharing-details></costsharing-details>
+    </accordion-group> 
+    <accordion-group #group6>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group6?.isOpen, 'fa-plus-circle': !group6?.isOpen}"> </i>
+            <span>  Geographic Details</span>  
+        </div>  
+       Geographic Details
+    </accordion-group> 
+    <accordion-group #group7>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group7?.isOpen, 'fa-plus-circle': !group7?.isOpen}"> </i>
+            <span>  Product ID Mapping</span>  
+        </div>  
+       Product ID Mapping
+    </accordion-group>
+</accordion>
+

@@ -1,0 +1,87 @@
+<div class="row">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Corporate group details</span>
+</div>
+<hr>
+<div *ngIf="parentObj">
+<div class="row">
+    <input-wrapper class='col-md-6' [inputLabel]="'Is it part of any corporate group'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.corpBlack" [toggleName]="'isCorp'" [(toggleoptions)]="corpBlackOptions"></toggle-input>
+    </input-wrapper>    
+</div>
+<div class="row">
+    <input-wrapper class='col-md-6' [inputLabel]="'Name of the Parent corporate group'" [formErrors]=[formtitle] [inputErrors]="corpName" [templateType]="'grid-4-8'">
+                   <select ctype-8 class="form-control" name="corpName" [(ngModel)]='parentObj.corpName' #corpName='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>    
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Type of corporate ownership'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.corpOwner" [toggleName]="'corpOwnerName'" [(toggleoptions)]="corpOwneroptions"></toggle-input>
+    </input-wrapper> 
+
+    <input-wrapper class='col-md-6' [inputLabel]="'State*'" [formErrors]=[formtitle] [inputErrors]="corpState" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="corpState" [(ngModel)]='parentObj.corpState' #corpState='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'City*'" [formErrors]=[formtitle] [inputErrors]="corpCity" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="corpCity" [(ngModel)]='parentObj.corpCity' #corpCity='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Pin Code*'" [formErrors]=[formtitle] [inputErrors]="corpPincode" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpPincode' name='corpPincode' #corpPincode="ngModel" required>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'District'" [formErrors]=[formtitle] [inputErrors]="corpDistrict" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="corpDistrict" [(ngModel)]='parentObj.corpDistrict' #corpDistrict='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Address/Locality'" [formErrors]=[formtitle] [inputErrors]="corpLocality" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpLocality' name='corpLocality' #corpLocality="ngModel">
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Landmark'" [formErrors]=[formtitle] [inputErrors]="corpLocality" [templateType]="'grid-4-8'">
+        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpLandmark' name='corpLandmark' #corpLocality="ngModel">
+    </input-wrapper>
+    <input-wrapper class='col-md-12' [inputLabel]="'Street Name*'" [formErrors]=[formtitle] [inputErrors]="corpStreetname" [templateType]="'grid-2-10'">
+                   <input ctype-10 class="form-control" placeholder="Enter Here" type="text" name='corpStreetname' [(ngModel)]='parentObj.corpStreetname' #corpStreetname="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Plot Number*'" [formErrors]=[formtitle] [inputErrors]="corpPlotNo" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpPlotNo' name='corpPlotNo' #corpPlotNo="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Cheque Dispatch Address'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.corpChequeAddress" [toggleName]="'corpChequeAddress'" [(toggleoptions)]="corpChequeAddressOptions"></toggle-input>
+    </input-wrapper>
+
+    <input-wrapper  class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]=[formtitle] [inputErrors]="corpLandlineCode" [inputErrorsTwo]="corpLandlineNumber" [templateType]="'grid-4-3-5'">
+                    <input ctype-3-5 class="form-control" name="corpLandlineCode" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpLandlineCode' #corpLandlineCode="ngModel" number maxlength="4" required>
+        <div ctype2-3-5 class="input-group">
+            <input class="form-control" placeholder="Enter Here" name="corpLandlineNumber" type="text" [(ngModel)]='parentObj.corpLandlineNumber' #corpLandlineNumber="ngModel" number maxlength="8" required>
+        </div>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number*'" [formErrors]=[formtitle] [inputErrors]="corpContact" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpContact' name='corpContact' #corpContact="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Fax Number'" [formErrors]=[formtitle] [inputErrors]="corpFax" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpFax' name='corpFax' #corpFax="ngModel">
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Email Address'" [formErrors]=[formtitle] [inputErrors]="corpEmail" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpEmail' name='corpEmail' #corpEmail="ngModel">
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Recognized By*'" [formErrors]=[formtitle] [inputErrors]="corpRecognized" [templateType]="'grid-4-8'">
+                   <select ctype-8 class="form-control" name="corpRecognized" [(ngModel)]='parentObj.corpRecognized' #corpRecognized='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'If Others'" [formErrors]=[formtitle] [inputErrors]="corpOthers" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.corpOthers' name='corpOthers' #corpOthers="ngModel">
+    </input-wrapper>
+    
+</div>
+</div>

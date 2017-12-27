@@ -1,0 +1,18 @@
+# Node Files #
+/node_modules
+npm-debug.log
+
+
+# DEV #
+/dev
+/src/*/dev/
+/dev/**
+.webpack.json
+/build
+/build/**
+
+# IDE #
+*.netbeans
+/nbproject
+/dist
+/src/app/debug.log

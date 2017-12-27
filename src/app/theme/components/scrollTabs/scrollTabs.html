@@ -1,0 +1,18 @@
+<div class="tab-container">
+    <div (click)="moveLeft()" class="scroller scroller-left"><i class="fa fa-chevron-left"></i></div>
+    <div  (click)="moveDown()"  class="scroller scroller-down"><i class="fa fa-chevron-down"></i></div>
+    <div  (click)="moveRight()"  class="scroller scroller-right"><i class="fa fa-chevron-right"></i></div>
+    <div class="wrapper" #wrapper>
+        <ul #list class="nav nav-tabs" id="ul-nav">
+            <li class="nav-item" [class.active]="tab.active" *ngFor="let tab of tabs" (click)="selectTab(tab)">
+                <!--<a class="nav-link" href="#">-->
+                    {{ tab.tabTitle }}
+                <!--</a>-->
+            </li>
+        </ul>
+    </div>
+    <ul class="dropdown-menu scroll-tab-dropdown" id="scroll-tab-dropdown">
+        <li  *ngFor="let tab of tabs" class="dropdown-item" #dropdown (click)="selectTab(tab)"> <i class="fa" [class.fa-check]="tab.active"></i> {{tab.tabTitle}} </li>
+    </ul>
+    <ng-content></ng-content>
+</div>

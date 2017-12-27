@@ -1,0 +1,65 @@
+<fieldset>
+    <legend class="scheduler-border">{{heading}}</legend>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                <div class="col-sm-8">
+                    <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text" [(ngModel)]='activeObj.name'>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                <div class="col-sm-8">
+                    <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text" [(ngModel)]='activeObj.number'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                <div class="col-sm-8">
+                    <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text" [(ngModel)]='activeObj.email'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" *ngIf='edit==-1' class="btn btn-success pull-right" (click)='addData(activeObj)'>Add</button>
+    <button type="button" *ngIf='edit!=-1' class="btn btn-warning pull-right" (click)='addData(activeObj)'>Update</button>
+    <div class="horizontal-scroll">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">#</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Email Address</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf='savedObj.length<1'>
+                    <td></td>
+                    <td>No data available</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr *ngFor='let obj of savedObj; let i=index;'>
+                    <td>{{i+1}}</td>
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.number}}</td>
+                    <td>{{obj.email}}</td>
+                    <td class="icon-column">
+                        <a (click)='editDetail(i, savedObj, activeObj)'> <i class="fa fa-edit"></i> </a>                        
+                        <a (click)='deleteDetail(i, savedObj, activeObj)'> <i class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</fieldset>

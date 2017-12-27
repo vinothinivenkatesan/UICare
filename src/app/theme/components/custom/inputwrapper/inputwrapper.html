@@ -1,0 +1,96 @@
+<div *ngIf='templateType=="grid-2-10"'>
+    <div class="form-group row">
+        <label class="col-md-2 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-md-10" [ngClass]="{'has-error': (!inputErrors.valid && (inputErrors.touched || formErrors.submitted)), 'has-success': (inputErrors.valid && inputErrors.touched)}">
+             <ng-content select="[ctype-10]"></ng-content>
+            <div class="help-block" *ngIf="(!inputErrors.valid && (inputErrors.touched || formErrors.submitted))" style='color: red'>{{errorMsg()}}</div>
+        </div>
+    </div>
+</div>
+<div *ngIf='templateType=="grid-10-2"'>
+    <div class="form-group row">
+        <label class="col-md-2 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-md-10" [ngClass]="{'has-error': (!inputErrors.valid && (inputErrors.touched || formErrors.submitted)), 'has-success': (inputErrors.valid && inputErrors.touched)}">
+             <ng-content select="[ctype-2]"></ng-content>
+            <div class="help-block" *ngIf="(!inputErrors.valid && (inputErrors.touched || formErrors.submitted))" style='color: red'>{{errorMsg()}}</div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='templateType=="grid-4-8"'>
+    <div class="form-group row">
+        <label class="col-md-4 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-md-8" [ngClass]="{'has-error': (!inputErrors.valid && (inputErrors.touched || formErrors.submitted)), 'has-success': (inputErrors.valid && inputErrors.touched)}">
+             <ng-content select="[ctype-8]"></ng-content><!-- input-col-8 -->
+            <!--<span class="help-block" *ngIf="errorMessage" style='color: red'>{{errorMessage}}</span>-->
+            <div class="help-block" *ngIf="(!inputErrors.valid && (inputErrors.touched || formErrors.submitted))" style='color: red'>{{errorMsg()}}</div>
+            <!--<input validate class="form-control" name="requestsource" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.requestSource' #field="ngModel" required>-->
+            <!--<p>{{field.errors | json}}</p>-->
+        </div>
+    </div>
+</div>
+
+<div *ngIf='templateType=="grid-4-3-3"'>
+    <div class="form-group row">
+        <label class="col-md-4 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="row col-md-8">
+            <div class="col-md-4" [ngClass]="{'has-error': (!inputErrors.valid && (inputErrors.touched || formErrors.submitted)), 'has-success': (inputErrors.valid && inputErrors.touched)}">            
+                 <ng-content select="[ctype-3-3]"></ng-content>
+            </div>
+            <span *ngIf="betweenText && betweenText.length>0" class="betweenText">{{betweenText}}</span>
+            <div class="col-md-4" [ngClass]="{'has-error': (!inputErrorsTwo.valid && (inputErrorsTwo.touched || formErrors.submitted)), 'has-success': (inputErrorsTwo.valid && inputErrorsTwo.touched)}">
+                 <ng-content select="[ctype2-3-3]"></ng-content>            
+            </div>
+            <div class="help-block" *ngIf="((!inputErrors.valid && (inputErrors.touched || formErrors.submitted)) || (!inputErrorsTwo.valid && (inputErrorsTwo.touched || formErrors.submitted)))" style='color: red; margin-left: 5%;'>{{errorMsg()}}</div>
+        </div>
+    </div>
+</div>
+<div *ngIf='templateType=="grid-4-3-5"'>
+    <div class="form-group row">
+        <label class="col-md-4 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4" style="padding-right:0;" [ngClass]="{'has-error': (!inputErrors.valid && (inputErrors.touched || formErrors.submitted)), 'has-success': (inputErrors.valid && inputErrors.touched)}">
+                     <ng-content select="[ctype-3-5]"></ng-content>
+                </div>
+                <span *ngIf="betweenText && betweenText.length>0" class="betweenText">{{betweenText}}</span>
+                <div class="col-md-8" [ngClass]="{'has-error': (!inputErrorsTwo.valid && (inputErrorsTwo.touched || formErrors.submitted)), 'has-success': (inputErrorsTwo.valid && inputErrorsTwo.touched)}">
+                     <ng-content select="[ctype2-3-5]"></ng-content>
+                </div>
+                <div class="help-block" *ngIf="((!inputErrors.valid && (inputErrors.touched || formErrors.submitted)) || (!inputErrorsTwo.valid && (inputErrorsTwo.touched || formErrors.submitted)))" style='color: red; margin-left: 5%;'>{{errorMsg()}}</div>
+            </div>
+        </div>
+    </div>    
+</div>
+<!-- radio button -->
+<div *ngIf='templateType=="grid-3-9"'>
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-sm-9">            
+            <ng-content select="[ctype-9]"></ng-content>
+            <div class="help-block" *ngIf="(!inputErrors.valid && (inputErrors.touched || formErrors.submitted))" style='color: red'>
+                 {{errorMsg()}}
+        </div>            
+    </div>
+</div>
+</div>
+
+<!-- Block controls -->
+<div *ngIf='templateType=="grid-12-12"'>
+    <div class="form-group row">
+        <label class="col-sm-12 form-control-label" style="margin-bottom: 0px;"><span>{{inputLabel}}<span *ngIf="shortLabel!=''" class="shortText">{{" "+shortLabel}}</span><span class="mandatory" *ngIf='isRequired()'>*</span></span>
+        </label>
+        <div class="col-sm-12">            
+            <ng-content select="[ctype-12]"></ng-content>
+            <div class="help-block" *ngIf="(!inputErrors.valid && (inputErrors.touched || formErrors.submitted))" style='color: red'>
+                 {{errorMsg()}}
+        </div>            
+    </div>
+</div>
+</div>

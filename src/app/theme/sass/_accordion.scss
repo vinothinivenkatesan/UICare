@@ -1,0 +1,77 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 13, 2017, 7:36:08 PM
+    Author     : 564812
+*/
+
+.bottom-margin{
+    margin-bottom:20px;
+}
+accordion-group .card>.card-header{
+    background: $primary2 ;
+    border-bottom: 0;
+    margin-bottom:5px;
+}
+accordion-group .card{
+    padding:0 !important;
+    margin-bottom:0px;
+}
+accordion-group .card>.card-header>a{
+    color:$label-text;
+}
+
+accordion-group .card-header:first-child{
+    border-radius:0;
+}
+
+div[accordion-heading]{
+    text-transform: none;
+    color:$label-text;
+    display: flex;
+    align-items: center;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+}
+
+div[accordion-heading]>i{
+    margin-right:10px;
+    font-size:20px;
+}
+
+accordion-group[ng-reflect-is-disabled="true"] > .card > .card-header{
+    background: $disabled-accordion;
+}
+accordion-group[ng-reflect-is-disabled="true"] div[accordion-heading]{
+    color: $disabled-accordion-text;
+}
+
+/*div.widget.form-group{
+    width: 46% !important;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;  
+}
+
+form-element>div>button{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    padding: 0.344rem 1rem;
+    font-size: 0.9rem;
+    background: #209e91;
+    border-color: #209e91;
+}
+
+*/

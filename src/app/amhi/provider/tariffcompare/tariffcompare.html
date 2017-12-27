@@ -1,0 +1,128 @@
+<custom-modal #lookUpModal [modalHeader]="'Search Provider'" [buttonText]="'Cancel'" [buttonText2]="'Select'" [modalType]="'customBodyContent'" (onModalClose)="lookUpClosed($event)">
+    Search
+    <fieldset>
+        <div class="row">
+            <input-wrapper class='col-sm-3' [inputLabel]="'Network ID'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <input-wrapper class='col-sm-3' [inputLabel]="'Network Name'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <input-wrapper class='col-sm-3' [inputLabel]="'Type of Network'" [formErrors]="''" [inputErrors]="searhNetID" [templateType]="'grid-12-12'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='searchObj.searhNetID' name='searhNetID' #searhNetID='ngModel' ctype-12>
+            </input-wrapper>
+            <div class='col-sm-3'>
+                <button class="btn btn-primary">Search</button>
+                <a class="btn-link">Simple Search</a>
+            </div>
+        </div>
+    </fieldset>
+    <table class="table table-striped">
+        <thead>
+            <tr class="black-muted-bg">
+                <th>
+                <th class="table-id">#</th>
+                <th>Network ID</th>
+                <th>Network Name</th>
+                <th>Type of Network </th>
+                <th>Purpose of Network </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="6">No data available</td>
+               
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+</custom-modal>
+<form #tariffCompareForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Select what do you want to compare'" [formErrors]="tariffCompareForm" [inputErrors]="compareSelect" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="compareSelect" id="compareSelect" [(ngModel)]='tariffObj.compareSelect' #compareSelect='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of compareSelectList' [ngValue]='option.id'>{{option.value}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper *ngIf="tariffObj.compareSelect!=''" class='col-md-6' [inputLabel]="'Select the provider'" [formErrors]="tariffCompareForm" [inputErrors]="providerSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.providerSelect' name='providerSelect' #providerSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="tariffObj.compareSelect=='1'" class='col-md-6' [inputLabel]="'Select the provider'" [formErrors]="tariffCompareForm" [inputErrors]="providerSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.providerSelect' name='providerSelect' #providerSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="tariffObj.compareSelect=='1'" class='col-md-6' [inputLabel]="'Select Tariff Version'" [formErrors]="tariffCompareForm" [inputErrors]="versionSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.versionSelect' name='versionSelect' #versionSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+         <input-wrapper *ngIf="tariffObj.compareSelect=='1'" class='col-md-6' [inputLabel]="'Select Tariff Version'" [formErrors]="tariffCompareForm" [inputErrors]="versionSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.versionSelect' name='versionSelect' #versionSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="tariffObj.compareSelect=='2'" class='col-md-6' [inputLabel]="'Select New Tariff'" [formErrors]="tariffCompareForm" [inputErrors]="versionSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.versionSelect' name='versionSelect' #versionSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="tariffObj.compareSelect=='2'" class='col-md-6' [inputLabel]="'Select Active Tariff'" [formErrors]="tariffCompareForm" [inputErrors]="versionSelect" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.versionSelect' name='versionSelect' #versionSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper *ngIf="tariffObj.compareSelect=='1'" class='col-md-6' [inputLabel]="'Select Tariff Item'" [formErrors]="tariffCompareForm" [inputErrors]="itemSelect" [templateType]="'grid-4-8'">
+            <input disabled type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='tariffObj.itemSelect' name='itemSelect' #itemSelect='ngModel' ctype-8>
+            <button (click)="lookUpModal.open()" ctype-8 class="btn form-control-feedback lookup-btn" (click)="showNetworkNames()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Reset</button>
+                    <button (click)="isCompared=true" class="btn btn-primary" type="submit">Compare</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isCompared">
+        <uploader [(savedFile)]='uploadFile' ></uploader>
+        
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken'" [formErrors]="tariffCompareForm" [inputErrors]="actiontaken" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="actiontaken" id="actiontaken" [(ngModel)]='tariffObj.actiontaken' #actiontaken='ngModel'>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let option of actiontakenList' [ngValue]='option.id'>{{option.value}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 remarks-btn">
+                <div class="pull-right">
+                    <button class="btn btn-default"  (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                    <button class="btn btn-default"  (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                </div>
+            </div>
+            <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="tariffCompareForm" [inputErrors]="remarks" [templateType]="'grid-2-10'">
+                <textarea ctype-10 class="form-control" name="remarks" id="remarks" [(ngModel)]="tariffObj.remarks" #remarks='ngModel'></textarea>
+            </input-wrapper>
+        </div>
+        <hr/>
+        <div class="pull-right">
+            <span>
+                <button class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Download</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </span>
+        </div>
+    </div>
+</form>

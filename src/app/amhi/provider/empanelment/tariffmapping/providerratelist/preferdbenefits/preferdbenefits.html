@@ -1,0 +1,247 @@
+<form #preferBenForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Benefits available*'" [formErrors]="preferBenForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="preferBenObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>        
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-12' [inputLabel]="'AMHI Benefits Type*'" [formErrors]="preferBenForm" [inputErrors]="amhiBenType" #amhiBenTypeWrap [templateType]="'grid-2-10'">
+            <div class='row' ctype-10>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='preferBenObj.amhiBenType' #amhiBenType='ngModel' name="amhiBenType" id="option1" value="nonpayShare" required>
+                        <span>Non Payable Sharing</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='preferBenObj.amhiBenType' #amhiBenType='ngModel' name="amhiBenType" id="option2" value="freeservice" required>
+                        <span>Free services</span>
+                    </label>
+                </div>            
+            </div>
+        </input-wrapper>
+    </div>
+     
+    <form #preferBenDetForm="ngForm" novalidate>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Non Payable contract section</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Non Payable Sharing basis*'" [formErrors]="preferBenDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="preferBenObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'% age basis'},{id:0,name:'Flat amount'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'AMHI Share*'" [formErrors]="preferBenDetForm" [inputErrors]="amhiSharePercent" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.amhiSharePercent' name='amhiSharePercent' #amhiSharePercent='ngModel' ctype-8 required>
+                <i *ngIf="preferBenObj.toggleValue==1" class="fa fa-percent form-control-feedback"></i>
+                <i *ngIf="preferBenObj.toggleValue==0" class="fa fa-inr form-control-feedback"></i>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Provider Share*'" [formErrors]="preferBenDetForm" [inputErrors]="proSharePercent" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.proSharePercent' name='proSharePercent' #proSharePercent='ngModel' ctype-8 required>
+                <i *ngIf="preferBenObj.toggleValue==1" class="fa fa-percent form-control-feedback"></i>
+                <i *ngIf="preferBenObj.toggleValue==0" class="fa fa-inr form-control-feedback"></i>
+            </input-wrapper>
+        </div>
+        
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Services/Freebies section</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Free Services agreed*'" [formErrors]="preferBenDetForm" [inputErrors]="freeAgree" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="freeAgree" [(ngModel)]='preferBenObj.freeAgree' #freeAgree='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let option of freeAgreeList' [ngValue]='option.id'>{{option.name}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Inclusions*'" [formErrors]="preferBenDetForm" [inputErrors]="inclusion" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="inclusion" [(ngModel)]='preferBenObj.inclusion' #inclusion='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let option of inclusionList' [ngValue]='option.id'>{{option.name}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-12' [inputLabel]="'Free/Cost basis*'" [formErrors]="preferBenDetForm" [inputErrors]="costBasis" #costBasisWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.costBasis' #costBasis='ngModel' name="costBasis" id="option1" value="free" required>
+                            <span>Free</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.costBasis' #costBasis='ngModel' name="costBasis" id="option2" value="cost" required>
+                            <span>Cost/discount basis</span>
+                        </label>
+                    </div>            
+                </div>
+            </input-wrapper>
+        </div>
+         <div class="row">
+             <input-wrapper class='col-md-6' [inputLabel]="'Number of free services*'" [formErrors]="preferBenDetForm" [inputErrors]="numOfFree" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.numOfFree' name='numOfFree' #numOfFree='ngModel' ctype-8 required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Cost of the service*'" [formErrors]="preferBenDetForm" [inputErrors]="costOfService" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.costOfService' name='costOfService' #costOfService='ngModel' ctype-8 required>
+            </input-wrapper>
+         </div>
+        <div class="row">
+            <input-wrapper class='col-sm-12' [inputLabel]="'Discount type*'" [formErrors]="preferBenDetForm" [inputErrors]="discType" #discTypeWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.discType' #discType='ngModel' name="discType" id="option1" value="free" required>
+                            <span>% age</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.discType' #costBasis='ngModel' name="discType" id="option2" value="cost" required>
+                            <span>Flat amount</span>
+                        </label>
+                    </div>            
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Discount % age*'" [formErrors]="preferBenDetForm" [inputErrors]="discountAge" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.discountAge' name='discountAge' #discountAge='ngModel' ctype-8 required>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-12' [inputLabel]="'Discount ceiling*'" [formErrors]="preferBenDetForm" [inputErrors]="discountCeil" #discountCeilWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.discountCeil' #discountCeil='ngModel' name="discountCeil" id="option1" value="higher" required>
+                            <span>Higher of both</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='preferBenObj.discountCeil' #discountCeil='ngModel' name="discountCeil" id="option2" value="lower" required>
+                            <span>Lower of both</span>
+                        </label>
+                    </div>            
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Discount services eligible period*'" [formErrors]="preferBenDetForm" [inputErrors]="discountEligPerid" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='preferBenObj.discountEligPerid' name='discountEligPerid' #discountEligPerid='ngModel' ctype-8 required>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Start Date*'" [formErrors]="preferBenDetForm" [inputErrors]="pbStart" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="pbStart" [options]="myDatePickerOptions" [(ngModel)]="preferBenObj.pbStart" #pbStart='ngModel' (dateChanged)="onDateChanged($event)" required date></my-date-picker> 
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'End Date*'" [formErrors]="preferBenDetForm" [inputErrors]="pbEnd" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="pbEnd" [options]="myDatePickerOptions" [(ngModel)]="preferBenObj.pbEnd" #pbEnd='ngModel' (dateChanged)="onDateChanged($event)" required date></my-date-picker> 
+            </input-wrapper>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <span>
+                        <button class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Free Service</th>
+                <th>Free/Cost Basis</th>               
+                <th>Number of free services</th>
+                <th>Cost of the service*</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6">No data available</td>                           
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+    
+
+    <div class="form-group row">                    
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Member Benefits</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Member Benefits Available*'" [formErrors]="preferBenDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="preferBenObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>        
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Free Service</th>
+                <th>Free/Cost Basis</th>               
+                <th>Number of free services</th>
+                <th>Cost of the service*</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6">No data available</td>                           
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+
+     <div class="row" >
+        <div class="col-sm-12 remarks-btn">
+            <div class="pull-right">
+                <button class="btn btn-default"  (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                <button class="btn btn-default"  (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+            </div>
+        </div>
+        <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="preferBenDetForm" [inputErrors]="pbRemarks" [templateType]="'grid-2-10'">
+            <textarea placeholder="Enter Here" ctype-10 class="form-control" name="pbRemarks" id="pbRemarks" [(ngModel)]="preferBenObj.pbRemarks" #pbRemarks='ngModel'></textarea>
+        </input-wrapper>
+    </div>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button class="btn btn-warning">Save</button>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>

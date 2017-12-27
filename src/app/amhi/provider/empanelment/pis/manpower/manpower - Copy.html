@@ -1,0 +1,721 @@
+<div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Doctors/Other staffs</span>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Number of qualified doctor*</label>
+                    <div class="col-sm-8">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminUnit">Number of visiting consultant*</label>
+                    <div class="col-sm-8">
+                        <input placeholder="Enter Here" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Number of qualified registered nurse*</label>
+                    <div class="col-sm-8">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminUnit">Number of qualified Un-registered nurse*</label>
+                    <div class="col-sm-8">
+                        <input placeholder="Enter Here" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Subordinate <span class='mutedText'>(Ward boy, Ayahs, sweepers) </span>*</label>
+                    <div class="col-sm-8">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Ratios</span>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Nurses to Beds <span class='mutedText'>(Ward) </span>*</label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div><b>:</b>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Nurses to Beds <span class='mutedText'>(ICU) </span>*</label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div><b>:</b>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Doctor to Beds *</label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div><b>:</b>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Administrative staff to Beds *</label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div><b>:</b>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label" for="adminName">Provider Area to Beds [Sqft]*</label>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div><b>:</b>
+                    <div class="col-sm-3">
+                        <input placeholder="Enter Here" class="form-control" name="adminName" id="adminName" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <manpower-details *ngFor="let item of titles" [heading]='item.title' [requestObj]='item.reqObj' [serviceUrl]='item.url'></manpower-details>
+        <!--<manpower-details [title]='title'></manpower-details>
+        <manpower-details [title]='title'></manpower-details>-->
+        <!--<fieldset>
+            <legend class="scheduler-border">Head of the Provider</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Medical Superintendent</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Head Operation</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Head of Emergency</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Head of Medical Records</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Head of Marketing</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Head of Billing</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Administrator</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>-->
+        <fieldset>
+            <legend class="scheduler-border">Ambulance Coordinator</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">TPA coordinator</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Name*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Name" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminUnit">Contact number*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Contact Number" class="form-control" name="adminUnit" id="adminUnit" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label" for="adminName">Email Address*</label>
+                        <div class="col-sm-8">
+                            <input placeholder="Enter Email Address" class="form-control" name="adminName" id="adminName" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success pull-right">Add</button>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>my name</td>
+                            <td>567</td>
+                            <td>id@email.com</td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <td>
+            </td>
+        </fieldset>
+    </div>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-warning" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Save</button>        
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<bs-card>  
+    <h3>Reference table : {{tableschema.name }}</h3>
+    <schema-form [schema]="mySchema" (onChange)="value=$event.value" [actions]="myActions" [model]="myModel"></schema-form>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th *ngFor="let col of tableschema.schema">{{col.name}}</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>                   
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let yol of tableschema.references; let i = index;">
+                <td *ngFor="let col of generateArray(yol)">{{col}}</td>
+                <td (click)="showid(yol)"><a><i class="fa fa-edit"></i></a></td>
+                <td (click)="deleteid(yol)"><a><i class="fa fa-trash"></i></a></td>
+            </tr>                   
+        </tbody>
+    </table>
+    <p>No Of Records : {{tableschema.totalNumberOfRecords }}</p>    
+    <ngb-pagination [collectionSize]="tableschema.totalNumberOfRecords" [(page)]="page"></ngb-pagination>
+   
+</bs-card>

@@ -1,0 +1,65 @@
+.btn-group>label.btn{
+    padding-bottom: 0px;
+    color: #fff;   
+}
+
+.btn-group>label.btn:first-child{
+    border-right: 2px solid #088679;
+}
+.show-remarks{
+    margin-left: 85%;
+    margin-bottom: 10px;
+}
+
+.remarks-btn{
+    margin-bottom:10px; 
+}
+.close{
+    width:10px;
+    display: inline-block;
+    height: auto;
+}
+
+.remarks-wrapper{
+    width: 83%;
+    margin-left: 17%;
+}
+
+ul.remarks-list{
+    padding-left: 0;
+    margin-bottom:0;
+}
+ul.remarks-list>li{
+    list-style: none;
+    width: 100%;
+    margin-bottom:10px;
+}
+.text-block.text-message {
+    font-size: 12px;
+    width: inherit;
+}
+.text-block {
+    padding: 5px 20px;
+    color: #333;
+    width: 280px;
+    min-height: 70px;
+    background: #eeeeee;
+}
+
+.message-header{    
+    float: left;
+}
+.message-time{
+    float:right;
+}
+.message-content{
+    clear:both;
+    margin-top:20px;
+}
+.message-header .author {
+    font-size: 13px;
+    padding-right: 5px;
+    font-weight:bold;
+}
+
+

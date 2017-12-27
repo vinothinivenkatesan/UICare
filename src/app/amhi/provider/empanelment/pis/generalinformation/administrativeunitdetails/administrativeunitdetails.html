@@ -1,0 +1,77 @@
+<div class="row">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Administrative Unit details</span>
+</div>
+<hr>
+<div class="row" *ngIf="parentObj">
+    <input-wrapper class='col-md-6' [inputLabel]="'Is this Administrative Unit'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.isAdmin" [toggleName]="'isAdmin'" [(toggleoptions)]="adminUnitoptions"></toggle-input>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Is the Administrative Unit empaneled*'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.isAdminEmpanel" [toggleName]="'isAdminEmpanel'" [(toggleoptions)]="adminEmpaneloptions"></toggle-input>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Name of the Administrative Unit'" [formErrors]=[formtitle] [inputErrors]="adminName" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminName' name='adminName' #adminName="ngModel">
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'AMHI ID of Administrative Unit'" [formErrors]=[formtitle] [inputErrors]="adminUnit" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminUnit' name='adminUnit' #adminUnit="ngModel">
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'State*'" [formErrors]=[formtitle] [inputErrors]="adminState" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="adminState" [(ngModel)]='parentObj.adminState' #adminState='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'City*'" [formErrors]=[formtitle] [inputErrors]="adminCity" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="adminCity" [(ngModel)]='parentObj.adminCity' #adminCity='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Pin Code*'" [formErrors]=[formtitle] [inputErrors]="adminPincode" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminPincode' name='adminPincode' #adminPincode="ngModel" required>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'District'" [formErrors]=[formtitle] [inputErrors]="adminDistrict" [templateType]="'grid-4-8'">
+        <select ctype-8 class="form-control" name="adminDistrict" [(ngModel)]='parentObj.adminDistrict' #adminDistrict='ngModel'>
+            <option [ngValue]='defaultSelect' selected>Select Here</option>
+        </select>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Address/Locality'" [formErrors]=[formtitle] [inputErrors]="adminLocality" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminLocality' name='adminLocality' #adminLocality="ngModel" >
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Landmark'" [formErrors]=[formtitle] [inputErrors]="adminLocality" [templateType]="'grid-4-8'">
+        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminLandmark' name='adminLandmark' #adminLocality="ngModel">
+    </input-wrapper>
+    <input-wrapper class='col-md-12' [inputLabel]="'Street Name*'" [formErrors]=[formtitle] [inputErrors]="adminStreetname" [templateType]="'grid-2-10'">
+                   <input ctype-10 class="form-control" placeholder="Enter Here" type="text" name='adminStreetname' [(ngModel)]='parentObj.adminStreetname' #adminStreetname="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Plot Number*'" [formErrors]=[formtitle] [inputErrors]="adminPlotNo" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminPlotNo' name='adminPlotNo' #adminPlotNo="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Cheque Dispatch Address'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                   <toggle-input ctype-8 [(toggle)]="parentObj.adminChequeAddress" [toggleName]="'adminChequeAddress'" [(toggleoptions)]="adminChequeAddressOptions"></toggle-input>
+    </input-wrapper>
+
+    <input-wrapper  class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]=[formtitle] [inputErrors]="adminLandlineCode" [inputErrorsTwo]="adminLandlineNumber" [templateType]="'grid-4-3-5'">
+                    <input ctype-3-5 class="form-control" name="adminLandlineCode" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminLandlineCode' #adminLandlineCode="ngModel" number maxlength="4" required>
+        <div ctype2-3-5 class="input-group">
+            <input class="form-control" placeholder="Enter Here" name="adminLandlineNumber" type="text" [(ngModel)]='parentObj.adminLandlineNumber' #adminLandlineNumber="ngModel" number maxlength="8" required>
+        </div>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number*'" [formErrors]=[formtitle] [inputErrors]="adminContact" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminContact' name='adminContact' #adminContact="ngModel" required>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Fax Number'" [formErrors]=[formtitle] [inputErrors]="adminFax" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminFax' name='adminFax' #adminFax="ngModel">
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Email Address'" [formErrors]=[formtitle] [inputErrors]="adminEmail" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.adminEmail' name='adminEmail' #adminEmail="ngModel">
+    </input-wrapper>
+</div>

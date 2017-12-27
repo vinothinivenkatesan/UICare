@@ -1,0 +1,72 @@
+<div *ngIf='modalType=="confirm"' bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" [config]="{backdrop: 'static'}">
+    {{assignModalRef(smModal)}}
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" (click)="smModal.hide()">&times;</span>
+                <h5>{{modalHeader}}</h5>
+            </div>
+            <div class="modal-body">
+                {{modalBody}}
+            </div>
+            <div class="modal-footer">               
+                <button type="button" class="btn btn-default" (click)="close(buttonText1)">{{buttonText1}}</button>
+                <button type="button" class="btn btn-primary" (click)="close(buttonText2)">{{buttonText2}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf='modalType=="alert"' bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" [config]="{backdrop: 'static'}">
+    {{assignModalRef(smModal)}}
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" (click)="smModal.hide()">&times;</span>
+                <h5>{{modalHeader}}</h5>
+            </div>
+            <div class="modal-body">
+                {{modalBody}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="close(buttonText1)">{{buttonText1}}</button>
+                <!--<button *ngIf='buttonText2' type="button" class="btn btn-primary" (click)="smModal.hide()">{{buttonText2}}</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='modalType=="customBodyContent"' bsModal #mdModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    {{assignModalRef(mdModal)}}
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>{{modalHeader}}</h5>
+            </div>
+            <div class="modal-body">
+                <ng-content select="[modal-md]"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <span style="float:left"><pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"  previousText="&lsaquo;" nextText="&rsaquo;"></pagination></span>
+                <button type="button" class="btn btn-default" (click)="mdModal.hide()">{{buttonText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf='modalType=="customBodyContentLarge"' bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    {{assignModalRef(lgModal)}}
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>{{modalHeader}}</h5>
+            </div>
+            <div class="modal-body">
+                <ng-content select="[modal-lg]"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <span style="float:left"><pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"  previousText="&lsaquo;" nextText="&rsaquo;"></pagination></span>
+                <button type="button" class="btn btn-default" (click)="lgModal.hide()">{{buttonText}}</button>
+                <button *ngIf='buttonText3==""' type="button" class="btn btn-primary" (click)="lgModal.hide()">{{buttonText3}}</button>
+            </div>
+        </div>
+    </div>
+</div>

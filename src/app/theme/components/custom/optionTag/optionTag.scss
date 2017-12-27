@@ -1,0 +1,57 @@
+.tagBox{
+    background-color: grey;
+    color: white;
+    min-width: 35px;
+    font-size: 14px;
+    padding-bottom: 1px;
+    line-height: 30px;
+    height: 35px;
+    margin-top: 10px !important;
+}
+.divSize{
+    margin:5px;
+    padding:6px;
+}
+.boxparent{
+    margin: 0px;
+    text-align: left;
+}
+.closeIcon{
+    position: absolute;
+    right:10px;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 20px;
+}
+.closeIcon:hover{
+    font-size: 20px;
+}/*
+.filename{
+    cursor: pointer;
+    color:white !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 50%;
+}*/
+.fileIcon{
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: 3px;
+}
+.verifiedBox{
+    background-color: white;
+    line-height: 35px;
+}
+.textParent{
+    max-width: 90%;
+    max-height: 25px;
+}
+.tagText{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tagText:before {
+    background-color: white !important;
+}

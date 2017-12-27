@@ -1,0 +1,46 @@
+<!--Large modal-->
+<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+     <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" (click)="lgModal.hide()">&times;</span>
+                <h3>Modal Header</h3>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">               
+                <button type="button" class="btn btn-default" (click)="lgModal.hide()">Cancel</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Notification modal-->
+<button type="button" class="btn btn-primary" (click)="smModal.show()">Notification modal</button>
+
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+             <div class="modal-header">
+                <span class="close" (click)="smModal.hide()">&times;</span>
+                <h5>Modal Header</h5>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">               
+                <button type="button" class="btn btn-default" (click)="smModal.hide()">Cancel</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+

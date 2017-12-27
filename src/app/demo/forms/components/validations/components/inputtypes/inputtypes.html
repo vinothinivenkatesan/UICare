@@ -1,0 +1,197 @@
+<form class="form-horizontal" #typeForm="ngForm" novalidate>
+    <div class="row">
+        <!-- Normal Text input -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Text type*'" [formErrors]="typeForm" [inputErrors]="Input1" [templateType]="'grid-2-10'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='tex' #Input1='ngModel' ctype-10 required>
+        </input-wrapper>
+
+        <!-- Normal textarea -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Text Area*'" [formErrors]="typeForm" [inputErrors]="Input2" [templateType]="'grid-2-10'">
+            <textarea class='form-control' placeholder="Enter Here" [(ngModel)]='textarea' name='textarea' #Input2='ngModel' ctype-10 required></textarea>
+        </input-wrapper>
+
+        <!-- date -->
+        <!-- time -->
+
+        <!-- dropdown -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Dropdown*'" [formErrors]="typeForm" [inputErrors]="prvEntity" #prvEntityWrap [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="entitytype" [(ngModel)]='dropdownSelect' #prvEntity='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of entityTypeList' [ngValue]='type.entityTypeId'>{{type.entityTypeName}}</option>
+                </select>
+        </input-wrapper>
+
+
+        <!-- multiselect component validation -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Known Clinical Specialty*'" [formErrors]="typeForm" [inputErrors]="Input6" [templateType]="'grid-4-8'">
+            
+            <ss-multiselect-dropdown [options]="clinicalSpecialityList" name='1' [(ngModel)]="selectedClinicalSpecialityId" (ngModelChange)="multiselectChange($event, 'clinicalSpeciality')" #Input6='ngModel' ctype-8 required></ss-multiselect-dropdown>
+
+        </input-wrapper>
+            
+        <input-wrapper class='col-sm-6' [inputLabel]="'Major Services Available*'" [formErrors]="typeForm" [inputErrors]="Input7" [templateType]="'grid-4-8'">
+            <div ctype-8>
+                <ss-multiselect-dropdown [options]="majorServiceList" name='2' [(ngModel)]="selectedMajorServiceId" (ngModelChange)="multiselectChange($event, 'majorService')" #Input7='ngModel' required></ss-multiselect-dropdown><!--
+                {{check(multi, 'outside')}}-->
+            </div>
+        </input-wrapper>
+    </div>
+    <fieldset *ngIf="selectedClinicalSpeciality.length>0">
+        <legend class="scheduler-border">Known Clinical Specialty</legend>
+        <tag-input (onRemove)="removeTag($event, 'clinicalSpeciality')" [(ngModel)]='selectedClinicalSpeciality' name="clinical"> </tag-input>
+    </fieldset>
+    <fieldset *ngIf="selectedMajorService.length>0">
+        <legend class="scheduler-border">Major Services Available</legend>
+        <tag-input (onRemove)="removeTag($event, 'majorService')" [(ngModel)]='selectedMajorService' name="service"> </tag-input>
+    </fieldset>
+    <!-- <div *ngFor='let object of selectedMajorServiceObj; let index=index;'>
+        <div *ngFor='let obj of object; let i=index;'>
+            <div class="row">
+                <input-wrapper class='col-sm-6' [inputLabel]="obj.set0.name" [formErrors]="typeForm" [inputErrors]="obj.set0.model" [templateType]="'grid-4-8'">                    
+                        <div>
+                            <ss-multiselect-dropdown [options]="obj.set0.List" name='1' [(ngModel)]="obj.set0.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set0')" required #dug='ngModel'></ss-multiselect-dropdown>
+                            {{setDynamicModel(dug, 'inside')}}
+                        </div>
+                </input-wrapper>
+
+                <input-wrapper  *ngIf='obj.set1' class='col-sm-6' [inputLabel]="obj.set1.name" [formErrors]="typeForm" [inputErrors]="obj.set1.model" [templateType]="'grid-4-8'">
+                        <div>
+                            <ss-multiselect-dropdown [options]="obj.set1.List" name='1' [(ngModel)]="obj.set1.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set1')" #dug2='ngModel'></ss-multiselect-dropdown>
+                            {{setDynamicModel(dug2, 'inside')}}
+                        </div>
+                </input-wrapper>
+            </div>
+            <fieldset *ngIf="obj.set0.selected.length>0">
+                <legend class="scheduler-border">{{obj.set0.name}}</legend>
+                <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set0')" [(ngModel)]='obj.set0.selected' name="1"> </tag-input>
+            </fieldset>
+            <div *ngIf='obj.set1'> 
+                <fieldset *ngIf="obj.set1.selected.length>0">
+                    <legend class="scheduler-border">{{obj.set1.name}}</legend>
+                    <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set1')" [(ngModel)]='obj.set1.selected' name="1"> </tag-input>
+                </fieldset>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <!-- radio group validation -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Radio Group'" [formErrors]="typeForm" [inputErrors]="radioGrp" #prvBlacklistWrap [templateType]="'grid-3-9'">
+        <div class='row' ctype-9>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
+                    <span>Option 1</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+                    <span>Option 2</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio3" value="option3" required>
+                    <span>Option3</span>
+                </label>
+            </div>
+        </div>
+        </input-wrapper>
+    </div>
+
+    <!-- Checkbox group validation -->
+    <div class="row">        
+        <input-wrapper class='col-sm-6' [inputLabel]="'Checkbox Group'" [formErrors]="typeForm" [inputErrors]="checkGrp"  [templateType]="'grid-3-9'">
+        <div class='row' ctype-9>
+            <div class="col-md-4">
+                <label class="checkbox-inline nowrap">
+                    <input type="checkbox" [(ngModel)]='checkValue1' #checkGrp='ngModel' name="inlineCheckOptions" id="inlineCheck1" value="option1" >
+                    <span>Option 1</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="checkbox-inline nowrap">
+                    <input type="checkbox" [(ngModel)]='checkValue2' #checkGrp='ngModel' name="inlineCheckOptions" id="inlineCheck2" value="option2" >
+                    <span>Option 2</span>
+                </label>
+            </div>
+        </div>
+        </input-wrapper>
+    </div>
+    
+    <!-- Date Picker -->
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="typeForm" [inputErrors]="regCertExpirydate" [templateType]="'grid-4-8'">
+            <my-date-picker ctype-8 name="regCertExpirydate" [options]="myDatePickerOptions" [(ngModel)]="prvRegCertDataOfExpiry" #regCertExpirydate='ngModel' (dateChanged)="onDateChanged($event)" required date></my-date-picker> 
+        </input-wrapper>
+    </div>
+
+    <!-- Input with Add button -->
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Input with Add*'" [formErrors]="typeForm" [inputErrors]="prvAlsoknown" [templateType]="'grid-4-8'">
+            <div class="input-group" ctype-8>
+                <input required class="form-control"  type="text" name="alsoKnown" (keyup.enter)='addAlternateName(alsoKnown); alsoKnown="";' [(ngModel)]='alsoKnown' #prvAlsoknown="ngModel">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" (click)='addAlternateName(alsoKnown); alsoKnown="";'> <i class="fa fa-plus"></i></button>
+                </span>
+            </div>
+        </input-wrapper>
+    </div>
+
+    <!-- Input Lookup -->
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Input with Add*'" [formErrors]="typeForm" [inputErrors]="prvAlsoknown" [templateType]="'grid-4-8'">
+            
+            <div ctype-8>                
+                <input required class="form-control"  type="text" name="alsoKnown" (keyup.enter)='addAlternateName(alsoKnown); alsoKnown="";' [(ngModel)]='alsoKnown' #prvAlsoknown="ngModel">
+                <button class="btn form-control-feedback lookup-btn"><i class="fa fa-eye"></i></button>
+            </div>
+        </input-wrapper>
+    </div>
+
+    <!-- Toggle Input -->
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Specialty'" [formErrors]="typeForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [toggle]="0" [toggleName]="'togglename'" [toggleoptions]="[{id:'1',name:'Ok'},{id:0,name:'Cancel'}]" (onToggle)="onToggle($event)"></toggle-input>
+        </input-wrapper>
+    </div>
+
+    <!-- Landline Number -->
+    <div class="row">
+         <input-wrapper class='col-sm-6' [inputLabel]="'Landline Number*'" [formErrors]="typeForm" [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                <input ctype-3-5 class="form-control" name="code" placeholder="Enter Here"  type="text" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4" required>
+                
+            <div ctype2-3-5 class="input-group">
+                <input class="form-control" placeholder="Enter Here" name="landlineNumber"  type="text" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" > <i class="fa fa-plus"></i></button>
+                </span>
+            </div>
+        </input-wrapper>
+    </div>
+<!-- Number of Beds -->
+    <div class="row">
+        <input-wrapper class='col-sm-6' [betweenText]="':'" [inputLabel]="'Number of Beds*'" [formErrors]="typeForm" [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 class="form-control" name="code" placeholder="Enter Here"  type="text" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4" required>
+            <div ctype2-3-3 class="input-group">                
+                <input class="form-control" placeholder="Enter Here" name="landlineNumber"  type="text" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8" required>
+               
+            </div>
+        </input-wrapper>
+    </div>
+
+    <!-- Block Label & Text input -->
+    <div class="row">
+        <input-wrapper class='col-sm-12' [inputLabel]="'Text type*'" [formErrors]="typeForm" [inputErrors]="Input1" [templateType]="'grid-12-12'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='tex' #Input1='ngModel' ctype-12 required>
+        </input-wrapper>
+    </div>
+
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </span>
+    </div>
+</form>

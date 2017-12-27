@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 14, 2017, 6:12:14 PM
+    Author     : 564812
+*/
+
+.custom-rating>li{
+    display:inline-block;
+    position: relative;
+}
+.custom-rating>li label{
+    padding: 7px 11px;
+    border:1px solid $primary; 
+    margin-right:20px;
+    cursor:pointer;
+}
+
+.custom-rating>li label:hover{
+    background: $primary; 
+    color: #fff;
+}
+
+.custom-rating>li>input{
+    width: 40px;
+    height: 33px;
+    position: absolute;
+    visibility:hidden;
+    cursor:pointer;
+}
+
+.custom-rating>li>input:focus {
+    border: 0;
+    outline: 0 none;
+}
+
+.custom-rating input[type="radio"]:checked + label { 
+    background-color:$primary;
+    color:#fff;
+}
+
+

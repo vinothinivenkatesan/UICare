@@ -1,0 +1,58 @@
+<form #demoForm="ngForm" novalidate>
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Range Length</label>
+        <div [ngClass]="{'has-error':username?.errors?.rangeLength,'col-sm-9':true}" >
+            <input type="text" class="form-control" ngModel name="username" #username="ngModel" [rangeLength]="[5, 9]" />
+            <p class="has-error" *ngIf="username?.errors?.rangeLength">Range length error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Minimun</label>
+        <div [ngClass]="{'has-error':min?.errors?.min,'col-sm-9':true}">
+            <input type="text" class="form-control" ngModel name="min" #min="ngModel" [min]="55" />
+            <p class="has-error" *ngIf="min?.errors?.min">Minimum error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Maximun</label>
+        <div [ngClass]="{'has-error':max?.errors?.max,'col-sm-9':true}">
+            <input type="text" ngModel class="form-control" name="max" #max="ngModel" [max]="56" />
+            <p class="has-error" *ngIf="max?.errors?.max">Maximum error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Range</label>
+        <div [ngClass]="{'has-error':range?.errors?.range,'col-sm-9':true}">
+            <input type="text" ngModel class="form-control" name="range" #range="ngModel" [range]="[5, 9]" />
+            <p class="has-error" *ngIf="range?.errors?.range">Range error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Credit Card</label>
+        <div  [ngClass]="{'has-error':creditCard?.errors?.creditCard,'col-sm-9':true}">
+            <input type="text" ngModel  class="form-control" name="creditCard" #creditCard="ngModel" creditCard/>
+            <p class="has-error" *ngIf="creditCard?.errors?.creditCard">creditCard error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">JSON</label>
+        <div [ngClass]="{'has-error':json?.errors?.json,'col-sm-9':true}">
+            <input type="text" ngModel  class="form-control" name="json" #json="ngModel" json/>
+            <p class="has-error" *ngIf="json?.errors?.json">JSON error</p>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-3 form-control-label">Phone</label>
+        <div [ngClass]="{'has-error':phone?.errors?.phone,'col-sm-9':true}">
+            <p>Indian number are <em>NOT</em> supported</p>
+            <input type="text" ngModel class="form-control" name="phone" #phone="ngModel" [phone]="'en-US'" />
+            <p class="has-error" *ngIf="phone?.errors?.phone">Phone error</p>
+        </div>
+    </div>
+</form>

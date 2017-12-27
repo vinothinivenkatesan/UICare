@@ -1,0 +1,65 @@
+<form #roomRentForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Room Name*'" [formErrors]="roomRentForm" [inputErrors]="roomName" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='roomObj.name' name='roomName' #roomName='ngModel' ctype-8 required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Room Code'" [formErrors]="roomRentForm" [inputErrors]="roomCode" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='roomObj.code' name='roomCode' #roomCode='ngModel' ctype-8>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Room Rate*'" [formErrors]="roomRentForm" [inputErrors]="roomRate" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='roomObj.rate' name='roomRate' #roomRate='ngModel' ctype-8 required>
+        </input-wrapper>
+    </div>
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <span class="or-split">Or</span>
+            <hr>
+        </div>
+    </div>
+
+    <uploader [(savedFile)]='savedRoomDetails' ></uploader>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Provider Room Name</th>
+                <th>Provider Room Code</th>
+                <th>Provider Room Rate [in Rs]</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>                
+                <td colspan="5">No data available</td>                
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+       
+
+    <hr>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Reset</button>
+            <button type="button" class="btn btn-primary">Next</button>
+        </span>
+    </div>
+</form>

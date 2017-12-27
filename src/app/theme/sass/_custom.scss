@@ -1,0 +1,50 @@
+.basic-border{
+    border:$outer-border;
+}
+.no-data{
+    margin: 10px;
+    padding: 10px;
+    height: 38px;
+    width: 150px;
+    background: #999;
+    display: block;
+}
+
+@mixin display-flexbox() {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+}
+@mixin vertical-align($value){
+    @include display-flexbox;
+    align-items: $value;
+}
+@mixin horizontal-align($value){
+    @include display-flexbox;
+    justify-content: $value;
+}
+.or-split{
+    position: absolute;
+    background-color: #ccc;
+    padding: 8px;
+}
+.lookup-btn{
+    display: flex;
+    justify-content: center;
+    //@include horizontal-align('center');
+}
+
+.subTitle{
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.subTitle>span{
+    margin-left:10px;
+}
+
+.bottom-margin{
+    margin-bottom:20px;
+}

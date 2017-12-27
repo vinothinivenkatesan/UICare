@@ -1,0 +1,26 @@
+ngb-accordion .card>div.card-header{
+    background: #ccc !important;
+    text-align: left;
+    margin-bottom:5px;
+}
+ngb-accordion .card-header>a{
+    float: left;    
+    margin-left: 20px;
+}
+.icon-left{
+    width: 97%;
+    position: absolute;
+    margin-top: -30px;
+    height: 43px;
+    padding-top: 10px;
+    margin-left: -25px;
+    font-size: 20px;
+}
+.dropdown-menu>li>div.input-group-sm{
+    margin-bottom: 0px;
+}
+
+ngb-accordion .card{
+    overflow: visible !important;
+    padding:0 !important;
+}

@@ -1,0 +1,185 @@
+<form #specialityForm="ngForm">
+    <div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Major Services Available*'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <ss-multiselect-dropdown ctype-8 [options]="majorServiceList" name='1' [(ngModel)]="selectedMajorServiceId" (ngModelChange)="multiselectChange($event, 'majorService')" required></ss-multiselect-dropdown>
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedMajorService.length>0">
+            <legend class="scheduler-border">Major Services Available</legend>
+            <tag-input (onRemove)="removeTag($event, 'majorService')" [(ngModel)]='selectedMajorService' name="2"> </tag-input>
+        </fieldset>
+
+        <div *ngFor='let object of selectedMajorServiceObj; let index=index;'>
+            <div *ngFor='let obj of object; let i=index;'>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="obj.set0.name+'*'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="obj.set0.List" name='dynamic0' [(ngModel)]="obj.set0.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set0')" required></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <input-wrapper *ngIf='obj.set1' class='col-md-6' [inputLabel]="obj.set1.name+'*'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="obj.set1.List" name='dynamic1' [(ngModel)]="obj.set1.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set1')" required></ss-multiselect-dropdown>
+                    </input-wrapper>
+                </div>
+                <fieldset *ngIf="obj.set0.selected.length>0">
+                    <legend class="scheduler-border">{{obj.set0.name}}</legend>
+                    <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set0')" [(ngModel)]='obj.set0.selected' name="3"> </tag-input>
+                </fieldset>
+                <div *ngIf='obj.set1'> 
+                    <fieldset *ngIf="obj.set1.selected.length>0">
+                        <legend class="scheduler-border">{{obj.set1.name}}</legend>
+                        <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set1')" [(ngModel)]='obj.set1.selected' name="4"> </tag-input>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Known Clinical Specialty'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <ss-multiselect-dropdown ctype-8 [options]="clinicalSpecialityList" name='7' [(ngModel)]="selectedClinicalSpecialityId" (ngModelChange)="multiselectChange($event, 'clinicalSpeciality')"></ss-multiselect-dropdown>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Known Economical Specialty'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <ss-multiselect-dropdown ctype-8 [options]="economicalSpecialityList" name='8' [(ngModel)]="selectedEconomicalSpecialityId" (ngModelChange)="multiselectChange($event, 'economicalSpeciality')"></ss-multiselect-dropdown>
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedClinicalSpeciality.length>0">
+            <legend class="scheduler-border">Known Clinical Specialty</legend>
+            <tag-input (onRemove)="removeTag($event, 'clinicalSpeciality')" [(ngModel)]='selectedClinicalSpeciality' name="9"> </tag-input>
+        </fieldset>
+        <fieldset *ngIf="selectedEconomicalSpeciality.length>0">
+            <legend class="scheduler-border">Known Economical Specialty</legend>
+            <tag-input (onRemove)="removeTag($event, 'economicalSpeciality')" [(ngModel)]='selectedEconomicalSpeciality' name="10"> </tag-input>
+        </fieldset>
+    </div>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Specialties available*'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <ss-multiselect-dropdown ctype-8 [options]="specialtiesAvailableList" name='11' [(ngModel)]="selectedSpecialtiesAvailableId" (ngModelChange)="multiselectChange($event, 'specialtiesAvailable')" required></ss-multiselect-dropdown>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Service / Facilities detail*'" [formErrors]="specialityForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <ss-multiselect-dropdown ctype-8 [options]="facilitiesDetailsList" name='12' [(ngModel)]="selectedFacilitiesDetailsId" (ngModelChange)="multiselectChange($event, 'facilitiesDetails')" required></ss-multiselect-dropdown>
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedSpecialtiesAvailable.length>0">
+            <legend class="scheduler-border">Specialties available</legend>
+            <tag-input (onRemove)="removeTag($event, 'specialtiesAvailable')" [(ngModel)]='selectedSpecialtiesAvailable' name="13"> </tag-input>
+        </fieldset>
+        <fieldset *ngIf="selectedFacilitiesDetails.length>0">
+            <legend class="scheduler-border">Service / Facilities detail</legend>
+            <tag-input (onRemove)="removeTag($event, 'facilitiesDetails')" [(ngModel)]='selectedFacilitiesDetails' name="14"> </tag-input>
+        </fieldset>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="row" *ngFor="let obj of checkboxGroups">
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <label for="reqSource" class="col-sm-3 form-control-label">{{obj.title}}</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="marginBot col-sm-4" *ngFor="let item of obj.items"><input type="checkbox" class="" value=""><span>{{item}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" *ngFor="let obj of data.servicesProvided">
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <label for="reqSource" class="col-sm-3 form-control-label">{{obj.servicesProvidedName}}</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="marginBot col-sm-4" *ngFor="let item of obj.services">
+                            <input type="checkbox" value=""><span>{{item.servicesName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="clinicalSpec">Known Clinical Specialty</label>
+                <div class="col-sm-8" #object>                    
+                    <select class="form-control" name="clinicalSpec" id="clinicalSpec" type="text">
+                        <option value="" disabled selected>Select Here</option>                        
+                        <span value="" *ngFor="let o of geo"><option *ngFor="let obj of o.states">{{obj.stateName}}</option></span>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="economicalSpec">Known Economical Specialty</label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="economicalSpec" id="economicalSpec" type="text">
+                        <option value="" disabled selected>Select Here</option>                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <fieldset class="hidedelete">
+        <legend class="scheduler-border">Known Clinical Specialty</legend>
+        <tag-input [(ngModel)]='clinicalSpe' name=""> </tag-input>
+    </fieldset>
+    <fieldset class="hidedelete">
+        <legend class="scheduler-border">Known Economical Specialty</legend>
+        <tag-input [(ngModel)]='economicSpe' name=""> </tag-input>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <label for="reqSource" class="col-sm-3 form-control-label">Specialties available*</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="marginBot col-sm-4" *ngFor="let obj of data.specialtiesAvailable"><input type="checkbox" value=""><span>{{obj.codeDescription}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="others">If others, please specify </label>
+                <div class="col-sm-8">
+                    <input class="form-control" name="others" id="others" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <label for="reqSource" class="col-sm-3 form-control-label">service / Facilities
+detail*</label>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="marginBot col-sm-4" *ngFor="let obj of data.facilitiesDetails   "><input type="checkbox" value=""><span>{{obj.codeDescription}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Save</button>        
+    </div>
+
+</form>

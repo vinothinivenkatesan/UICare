@@ -1,0 +1,249 @@
+<form #prlRoomRentForm="ngForm"> 
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Room Rent Mapping</span>
+    </div>
+    <hr>
+    <div class="row">   
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Room Name*'" [formErrors]="prlRoomRentForm" [inputErrors]="proRoomName" #prlRoomRentWrap [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="prlRoomName" [(ngModel)]='prlRoomObj.proRoomName' #proRoomName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proRoomNameList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Room Name*'" [formErrors]="prlRoomRentForm" [inputErrors]="amhiRoomName" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiRoomName" [(ngModel)]='prlRoomObj.amhiRoomName' #amhiRoomName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiRoomNameList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Room Code'" [formErrors]="prlRoomRentForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <select ctype-8 disabled class="form-control" name="proRoomCode" [(ngModel)]='prlRoomObj.proRoomCode' #proRoomCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proRoomCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Room Code*'" [formErrors]="prlRoomRentForm" [inputErrors]="amhiRoomCode" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiRoomCode" [(ngModel)]='prlRoomObj.amhiRoomCode' #amhiRoomCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiRoomCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>   
+    </div>
+
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Room Type</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" value="inc_excApplicable">
+                <span>Inclusive and Exclusive Applicable for all</span>
+            </label>
+        </div>
+        <div class="col-md-6">
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" value="discountApplicable">
+                <span>Discount Applicable for all</span>
+            </label>
+        </div>
+    </div>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Provider Room Name</th>
+                <th>AMHI Room Name</th>
+                <th>Provider Room Code</th>
+                <th>AMHI Room Code</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td colspan="6">No data available</td>
+                
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form #prlRoomRentDetailsForm="ngForm"> 
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Room Rent Details</span>
+    </div>
+    <hr>
+    <div class="row">   
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Room Name*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="proRoomName" #prlRoomRentWrap [templateType]="'grid-4-8'">
+            <select disabled ctype-8 class="form-control" name="prlRoomName" [(ngModel)]='prlRoomObj.proRoomName' #prlproRoomName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proRoomNameList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Room Name*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="amhiRoomName" [templateType]="'grid-4-8'">
+            <select disabled ctype-8 class="form-control" name="amhiRoomName" [(ngModel)]='prlRoomObj.amhiRoomName' #prlamhiRoomName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiRoomNameList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Discounts</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicable*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="isDiscountAvail" [toggleName]="'discountApplicable'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+    </div>
+     <div class="row">
+         <input-wrapper class='col-md-6' [inputLabel]="'Discount Percentage*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="discountPercent" [templateType]="'grid-4-8'">
+            <input disabled type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='discountObj.discountPercent' name='discountPercent' #discountPercent='ngModel' ctype-8 required>            
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Discount Amount*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="discountAmt" [templateType]="'grid-4-8'">
+            <input disabled type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='discountObj.discountAmt' name='discountAmt' #discountAmt='ngModel' ctype-8 required>            
+        </input-wrapper> 
+     </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicability*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="isDiscountAvail" [toggleName]="'discountApplicablity'" [toggleoptions]="[{id:'1',name:'Higher'},{id:0,name:'Lower'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+    </div>
+
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Inclusive Item</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Limit Applicable*'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="limitApplicable" [toggleName]="'limitApplicable'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Inclusive Items'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="incItem" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="incItem" [(ngModel)]='incObj.incItem' #incItem='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of incItemList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Limit Up to'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="limitUpto" [templateType]="'grid-4-8'">
+            <div class="input-group" ctype-8>
+                <input required class="form-control"  type="text" name="limitUpto" (keyup.enter)='addLimit(limitModel); limitModel="";' [(ngModel)]='limitModel' #limitUpto="ngModel">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" (click)='addLimit(limitModel); limitModel="";'> <i class="fa fa-plus"></i></button>
+                </span>
+            </div>
+        </input-wrapper>
+    </div>
+
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Exclusive Item</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Exclusive Items'" [formErrors]="prlRoomRentDetailsForm" [inputErrors]="excItem" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="excItem" [(ngModel)]='incObj.excItem' #excItem='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of excItemList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Room Details</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <span class="or-split">Or</span>
+            <hr>
+        </div>
+    </div>
+
+    <uploader [(savedFile)]='savedRoomDetails' ></uploader>
+
+</form>
+
+<table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Provider Room Name</th>
+                <th>AMHI Room Name</th>
+                <th>Provider Room Code</th>
+                <th>AMHI Room Code</th>
+                <th>AMHI Room Rate</th>
+                <th>Discount Percentage</th>
+                <th>Discount Amount</th>
+                <th>Discount Applicability</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="10">No data available</td>
+               
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+<hr>
+<div class="pull-right">
+    <span>
+        <button class="btn btn-default">Cancel</button>
+        <button type="button" class="btn btn-primary">Next</button>
+    </span>
+</div>

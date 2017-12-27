@@ -1,0 +1,8 @@
+<div class="content-top clearfix">
+  <h1 class="al-title">{{ childTitle }}</h1>
+  <ul class="breadcrumb al-breadcrumb">
+    <li *ngIf='parentTitle' class="breadcrumb-item">{{parentTitle}}</li>
+    <li *ngIf='secondparentTitle' class="breadcrumb-item"><a routerLink='{{root}}/{{secondparentTitle}}'>{{secondparentTitle}}</a></li>
+    <li class="breadcrumb-item active">{{ childTitle }}</li>
+  </ul>
+</div>

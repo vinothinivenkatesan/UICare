@@ -1,0 +1,47 @@
+<style>
+    .my-drop-zone { border: dotted 3px lightgray; }
+    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+    .another-file-over-class { border: dotted 3px green; }
+
+    html, body { height: 100%; }
+</style>
+
+<div class="container">  
+    <bs-card>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label"></label>
+            <div class="col-sm-8 browse-wrapper textAlign">
+                <span *ngFor="let item of uploader.queue">
+                    <strong *ngIf="!item?.isUploaded">{{ item?.file?.name }}; </strong>
+                </span>
+                <span class="btn btn-success btn-file browse-btn">
+                    Browse <input type="file"  ng2FileSelect [uploader]="uploader" multiple>
+                </span>
+            </div>
+            <div class="col-sm-2 upload-btn"><!--uploader.uploadAll()-->
+                <input class="btn btn-warning" type="button" value="Upload" (click)="myUpload()" [disabled]="!uploader.getNotUploadedItems().length">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p class="mini col-sm-12">File type doc, pdf, xls, jpeg, png, jpg, gif is accepted with the max of 5 documents with the size of each document restricted to 10MB</p>
+</div>
+<div class="boxparent row">
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label"></label>
+            <div class="col-sm-8 row">
+                <div class="col-sm-2 fileBox" *ngFor="let obj of savedFile; let i=index;">
+                     <i class="fa-file-text-o fa fa-lg fileIcon"></i>
+                    <a class="filename" [(href)]="'http://10.24.142.53:8080/carefileupload/viewdocument?dName='+obj.docName" target='_blank'>{{obj.docTitle}}</a>
+                    <span class="pull-right icon" (click)='removeFile(i)'>X</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</bs-card>    
+</div>

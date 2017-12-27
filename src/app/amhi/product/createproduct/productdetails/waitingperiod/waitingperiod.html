@@ -1,0 +1,79 @@
+<fieldset>
+    <legend class="scheduler-border">Waiting Period</legend>
+    <form #f="ngForm" (ngSubmit)="addData(f.value)">
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Exclusion Type'" [formErrors]="f" [inputErrors]="prdExclusion" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="exclusiontype" [(ngModel)]='activeObj.exclusiontype' #prdExclusion='ngModel' >
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option  [ngValue]='1'>Specific Illness</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Period'" [formErrors]="f" [inputErrors]="prdPeriodcount" [inputErrorsTwo]="prdPeriod" [templateType]="'grid-4-3-5'">
+                <input ctype-3-5 class="form-control" name="periodcount" placeholder="Enter Here"  type="text" [(ngModel)]='activeObj.periodcount' #prdPeriodcount="ngModel" number maxlength="4" >
+                <select ctype2-3-5 class="form-control" name="period" [(ngModel)]='activeObj.period' #prdPeriod='ngModel' required>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="year">Year</option>
+                </select> 
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Exclusion Name'" [formErrors]="f" [inputErrors]="prdExclusionname" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="exclusionname" [(ngModel)]='activeObj.exclusionname' #prdExclusionname='ngModel' >
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option>ICICI</option>
+                    <option>Bank Of India</option>
+                    <option>State Bank Of India</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Exclusion Grouping'" [formErrors]="f" [inputErrors]="prdExclusiongroup" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="exclusiongrouping" [(ngModel)]='activeObj.exclusiongrouping' #prdExclusiongroup='ngModel' >
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option>ICICI</option>
+                    <option>Bank Of India</option>
+                    <option>State Bank Of India</option>
+                </select>
+            </input-wrapper>           
+        </div>
+        <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" *ngIf='edit==-1' class="btn btn-primary" (click)='addData(activeObj)'>Add</button>
+            <button type="button" *ngIf='edit!=-1' class="btn btn-primary"  (click)='addData(activeObj)'>Update</button>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-bordered" style="margin-top:2%;">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">#</th>
+                    <th>Exclusion Type</th>
+                    <th>Period</th>
+                    <th>Exclusion Name</th>
+                    <th>Exclusion Grouping</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf='savedObj.length<1'>
+                    <td></td>
+                    <td>No data available</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr *ngFor='let obj of savedObj; let i=index;'>
+                    <td>{{i+1}}</td>
+                    <td>{{obj.exclusiontype}}</td>
+                    <td>{{obj.periodcount}}{{obj.period}} </td>
+                    <td>{{obj.exclusionname}}</td>
+                    <td>{{obj.exclusiongrouping}}</td>                    
+                    <td class="icon-column">
+                        <a (click)='editDetail(i, savedObj, activeObj)'> <i class="fa fa-edit"></i> </a>                        
+                        <a (click)='deleteDetail(i, savedObj, activeObj)'> <i class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</fieldset>

@@ -1,0 +1,157 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Bulk/Volume Package/Procedure Discounts</span>
+</div>
+<hr>
+
+<form #bulkdiscountForm="ngForm">
+    <div class="row">  
+        <input-wrapper class='col-md-6' [inputLabel]="'Discount applicable'" [formErrors]="bulkdiscountForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'discountApplicable'" [(toggleoptions)]="bulkApplicableoptions"></toggle-input>
+        </input-wrapper>        
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">Procedure and Discount</legend>
+        <div class="row">  
+            <input-wrapper class='col-sm-6' [inputLabel]="'Add Package /Procedure*'" [formErrors]="bulkdiscountForm" [inputErrors]="addPackage" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="addPackage" [(ngModel)]='selectedPackage' #addPackage='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Package/Procedure Quantity'" [formErrors]="bulkdiscountForm" [inputErrors]="quantityFrom" [inputErrorsTwo]="quantityTo" [templateType]="'grid-4-8'">
+                           <div ctype-8 class="fromtoinput">
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='quantityFrom' #quantityFrom="ngModel">
+                    <span>to</span>
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='quantityTo' #quantityTo="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-12' [inputLabel]="'Rate contract type*'" [formErrors]="bulkdiscountForm" [inputErrors]="rateContract" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #rateContract='ngModel' name="rateContract" id="rateContract1" value="option1" required>
+                            <span>Fixed Rate</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #rateContract='ngModel' name="rateContract" id="rateContract2" value="option2" required>
+                            <span>Discount Type</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #rateContract='ngModel' name="rateContract" id="rateContract3" value="option3" required>
+                            <span>Both</span>
+                        </label>
+                    </div>
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Fix rate for the range*'" [formErrors]="bulkdiscountForm" [inputErrors]="fixRate" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='fixRate' #fixRate="ngModel">
+                </div>
+            </input-wrapper> 
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Discount Type*'" [formErrors]="bulkdiscountForm" [inputErrors]="discountType" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType1' #discountType='ngModel' name="discountType" id="discountType1" value="option1" >
+                            <span>%age</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType2' #discountType='ngModel' name="discountType" id="discountType2" value="option1" >
+                            <span>Flat Amount</span>
+                        </label>
+                    </div>                        
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType3' #discountType='ngModel' name="discountType" id="discountType3" value="option1" >
+                            <span>Free Services</span>
+                        </label>
+                    </div>                        
+                </div>
+            </input-wrapper> 
+            <input-wrapper class='col-md-6' [inputLabel]="'Discount %age*'" [formErrors]="bulkdiscountForm" [inputErrors]="discountPercentage" [templateType]="'grid-4-8'">
+                <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountPercentage' #discountPercentage="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Discount flat amount*'" [formErrors]="bulkdiscountForm" [inputErrors]="discountAmt" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountAmt' #discountAmt="ngModel">
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of free services*'" [formErrors]="bulkdiscountForm" [inputErrors]="freeService" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='freeService' #freeService="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Discount services eligible period*'" [formErrors]="bulkdiscountForm" [inputErrors]="discountService" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountService' #discountService="ngModel">
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-md-12' [inputLabel]="'Discount ceiling'" [formErrors]="bulkdiscountForm" [inputErrors]="discountCeiling" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #discountCeiling='ngModel' name="discountCeiling" id="discountCeiling1" value="option1" required>
+                            <span>Higher of Both</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #discountCeiling='ngModel' name="discountCeiling" id="discountCeiling2" value="option2" required>
+                            <span>Lower of Both</span>
+                        </label>
+                    </div>
+                </div>
+            </input-wrapper>
+        </div> 
+        <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Package/Procedure for bulk discounts</th>
+                <th>Quantity</th>
+                <th>Rate contract Type</th>
+                <th>Fix rate for the range</th>
+                <th>Discount Type</th>
+                <th>Value</th>
+                <th>Discount Ceiling</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-eye"></i> </a>                        
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,442 @@
+<form #specialTariffForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'High risk charges contract applicable*'" [formErrors]="specialTariffForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Additional % age charge on original procedure charges*'" [formErrors]="specialTariffDetForm" [inputErrors]="origProCharge" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.origProCharge' name='origProCharge' #origProCharge='ngModel' ctype-8 required>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Emergency charges contract applicable*'" [formErrors]="specialTariffForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Additional % age emergency charge on original charges*'" [formErrors]="specialTariffDetForm" [inputErrors]="origEmerCharge" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.origEmerCharge' name='origEmerCharge' #origEmerCharge='ngModel' ctype-8 required>
+        </input-wrapper>
+    </div>
+    <form #specialTariffDetForm="ngForm" novalidate>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Billing cycle contract applicable</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Are half day charges applicable*'" [formErrors]="specialTariffForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Hour up to which the Half day charges applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="halfDayCharge" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.halfDayCharge' name='halfDayCharge' #halfDayCharge='ngModel' ctype-8 required>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'From*'" [formErrors]="specialTariffDetForm" [inputErrors]="fromTime" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.fromTime' name='fromTime' #fromTime='ngModel' ctype-8 required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'To*'" [formErrors]="specialTariffDetForm" [inputErrors]="toTime" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.toTime' name='toTime' #toTime='ngModel' ctype-8 required>
+            </input-wrapper>
+        </div>
+       
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Operation Theatre Fee Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'OT Fee basis*'" [formErrors]="specialTariffDetForm" [inputErrors]="feeBasisOT" #amhiBenTypeWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisOT' #feeBasisOT='ngModel' name="feeBasisOT" id="option1" value="0" required>
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisOT' #feeBasisOT='ngModel' name="feeBasisOT" id="option2" value="1" required>
+                            <span>Hourly basis</span>
+                        </label>
+                    </div>
+                     <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisOT' #feeBasisOT='ngModel' name="feeBasisOT" id="option2" value="2" required>
+                            <span>Fixed value</span>
+                        </label>
+                    </div>           
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Hourly Rate*'" [shortLabel]="'[INR per Hour]'" [formErrors]="specialTariffDetForm" [inputErrors]="hourRate" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourRate' name='hourRate' #hourRate='ngModel' ctype-8 required>
+                <i class="fa fa-inr"></i>
+            </input-wrapper>
+        </div>
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Surgeon Fee Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Fee basis*'" [formErrors]="specialTariffDetForm" [inputErrors]="feeBasis" #amhiBenTypeWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasis' #feeBasis='ngModel' name="feeBasis" id="option1" value="0" required>
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasis' #feeBasis='ngModel' name="feeBasis" id="option2" value="1" required>
+                            <span>Hourly basis</span>
+                        </label>
+                    </div>
+                     <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasis' #feeBasis='ngModel' name="feeBasis" id="option2" value="2" required>
+                            <span>Fixed value</span>
+                        </label>
+                    </div>           
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Hourly Rate*'" [shortLabel]="'[INR per Hour]'" [formErrors]="specialTariffDetForm" [inputErrors]="hourRateSur" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourRateSur' name='hourRateSur' #hourRateSur='ngModel' ctype-8 required>
+                <i class="fa fa-inr"></i>
+            </input-wrapper>
+        </div>
+
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Assistant Surgeon Fee Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Fee basis*'" [formErrors]="specialTariffDetForm" [inputErrors]="feeBasisAss" #amhiBenTypeWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAss' #feeBasisAss='ngModel' name="feeBasisAss" id="option1" value="0" required>
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAss' #feeBasisAss='ngModel' name="feeBasisAss" id="option2" value="1" required>
+                            <span>% age of Surgeon fee</span>
+                        </label>
+                    </div>
+                     <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAss' #feeBasisAss='ngModel' name="feeBasisAss" id="option2" value="2" required>
+                            <span>Hourly basis</span>
+                        </label>
+                    </div>           
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Fixed fee in INR*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourRateSur" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourRateSur' name='hourRateSur' #hourRateSur='ngModel' ctype-8 required>
+                <i class="fa fa-inr"></i>
+            </input-wrapper>
+        </div>
+
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Anesthetist Fee Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Fee basis*'" [formErrors]="specialTariffDetForm" [inputErrors]="feeBasisAnes" #feeBasisAnesWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAnes' #feeBasisAnes='ngModel' name="feeBasisAnes" id="option1" value="0" required>
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAnes' #feeBasisAnes='ngModel' name="feeBasisAnes" id="option2" value="1" required>
+                            <span>% age of Surgeon fee</span>
+                        </label>
+                    </div>
+                     <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAnes' #feeBasisAnes='ngModel' name="feeBasisAnes" id="option2" value="2" required>
+                            <span>Hourly basis</span>
+                        </label>
+                    </div>  
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAnes' #feeBasisAnes='ngModel' name="feeBasisAnes" id="option2" value="3" required>
+                            <span>Fixed value</span>
+                        </label>
+                    </div>          
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Hourly Rate*'" [shortLabel]="'[INR per Hour]'" [formErrors]="specialTariffDetForm" [inputErrors]="hourRateAnes" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourRateAnes' name='hourRateAnes' #hourRateAnes='ngModel' ctype-8 required>
+                <i class="fa fa-inr"></i>
+            </input-wrapper>
+        </div>
+
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Assistant Anesthetist Fee Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Fee basis*'" [formErrors]="specialTariffDetForm" [inputErrors]="feeBasisAssAnes" #feeBasisAssAnesWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAssAnes' #feeBasisAssAnes='ngModel' name="feeBasisAssAnes" id="option1" value="0" required>
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAssAnes' #feeBasisAssAnes='ngModel' name="feeBasisAssAnes" id="option2" value="1" required>
+                            <span>% age of Surgeon fee</span>
+                        </label>
+                    </div>
+                     <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAssAnes' #feeBasisAssAnes='ngModel' name="feeBasisAssAnes" id="option3" value="2" required>
+                            <span>% age of Anesthetist fee</span>
+                        </label>
+                    </div>  
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAssAnes' #feeBasisAssAnes='ngModel' name="feeBasisAssAnes" id="option4" value="3" required>
+                            <span>Hourly basisFixed value</span>
+                        </label>
+                    </div>  
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.feeBasisAssAnes' #feeBasisAssAnes='ngModel' name="feeBasisAssAnes" id="option5" value="4" required>
+                            <span>Fixed value</span>
+                        </label>
+                    </div>         
+                </div>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'% of Anesthetist fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPercAssAnes" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPercAssAnes' name='hourPercAssAnes' #hourPercAssAnes='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+        </div>
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Multiple Surgeries Contract</span>
+        </div>
+        <hr> 
+       
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Same Sitting Applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'% of procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPro" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPro' name='hourPro' #hourPro='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'2nd % of procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPro2nd" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPro2nd' name='hourPro2nd' #hourPro2nd='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Subsequent procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourSubPro" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourSubPro' name='hourSubPro' #hourSubPro='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+        </div>
+         <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Same Region/site Applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+         </div>
+         <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'% of procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPro" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPro' name='hourPro' #hourPro='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'2nd % of procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPro2nd" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPro2nd' name='hourPro2nd' #hourPro2nd='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Subsequent procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourSubPro" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourSubPro' name='hourSubPro' #hourSubPro='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+        </div>
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Re-exploration Fee Contract</span>
+        </div>
+        <hr> 
+        <div class="row">           
+            <input-wrapper class='col-md-6' [inputLabel]="'Re-exploration contract applicable*'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>            
+        </div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Day Range*'" [formErrors]="specialTariffDetForm" [inputErrors]="dayRangeFrom" [inputErrorsTwo]="dayRangeTo" [templateType]="'grid-4-3-5'">
+                <input ctype-3-5 class="form-control" name="code" placeholder="Enter Here"  type="text" [(ngModel)]='specialTariffDetailObj.dayRangeFrom' #dayRangeFrom="ngModel" number maxlength="4" required>
+                
+                <div ctype2-3-5 class="input-group">
+                    <input class="form-control" placeholder="Enter Here" name="landlineNumber"  type="text" [(ngModel)]='specialTariffDetailObj.dayRangeTo' #dayRangeTo="ngModel" number maxlength="8" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" > <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'% of procedure fee*'" [formErrors]="specialTariffDetForm" [inputErrors]="hourPro" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='specialTariffObj.hourPro' name='hourPro' #hourPro='ngModel' ctype-8 required>
+                <i class="fa fa-percent"></i>
+            </input-wrapper>
+        </div>
+
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Re-exploration Fee Contract</span>
+        </div>
+        <hr> 
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="' Multiple room type contract applicable'" [formErrors]="specialTariffDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="specialTariffDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+            </input-wrapper>
+         </div>
+         <div class="row">
+            <input-wrapper class='col-md-12' [inputLabel]="'Tariff calculation basis'" [formErrors]="specialTariffDetForm" [inputErrors]="tarifCalcBasis" #tarifCalcBasisWrap [templateType]="'grid-2-10'">
+                <div class='row' ctype-10>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.tarifCalcBasis' #tarifCalcBasis='ngModel' name="tarifCalcBasis" id="option1" value="0" >
+                            <span>% age of procedure fee</span>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.tarifCalcBasis' #tarifCalcBasis='ngModel' name="tarifCalcBasis" id="option2" value="1" >
+                            <span>% age of Surgeon fee</span>
+                        </label>
+                    </div>
+                     <div class="col-md-3">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='specialTariffDetailObj.tarifCalcBasis' #tarifCalcBasis='ngModel' name="tarifCalcBasis" id="option3" value="2" >
+                            <span>% age of Anesthetist fee</span>
+                        </label>
+                    </div> 
+                </div>
+            </input-wrapper>
+         </div>
+
+        <div class="row">                    
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Other Special Tariff Guideline</span>
+        </div>
+        <hr> 
+        <div class="row">
+            <input-wrapper class='col-sm-12' [inputLabel]="'Guideline Description'" [formErrors]="specialTariffDetForm" [inputErrors]="guideDesc" [templateType]="'grid-2-10'">
+                <textarea placeholder="Enter Here" ctype-10 class="form-control" name="guideDesc" id="guideDesc" [(ngModel)]="specialTariffDetailObj.guideDesc" #guideDesc='ngModel'></textarea>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Applicable to*'" [formErrors]="specialTariffDetForm" [inputErrors]="applicTo" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="applicTo" [(ngModel)]='specialTariffDetailObj.applicTo' #applicTo='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let option of applicToList' [ngValue]='option.id'>{{option.name}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <span>
+                        <button class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Guideline</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Guideline Description</th>
+                <th>Applicable To</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="4">No data available</td>
+                               
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+     <!--<hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Reset</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </span>
+            </div>
+        </div>
+    </div>-->
+</form>

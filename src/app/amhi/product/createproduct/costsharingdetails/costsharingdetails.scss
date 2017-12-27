@@ -1,0 +1,49 @@
+.costsharing-tab{
+    margin-bottom: 30px;
+}
+
+.costsharing-tab .nav.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+    color:#4c4d4f;
+    border-radius:0;
+}
+
+.costsharing-tab .nav-tabs .nav-item + .nav-item{
+    margin-left:0;
+}
+
+.costsharing-tab .nav.nav-tabs > li > a{
+    color:#4c4d4f;
+}
+
+.costsharing-tab .nav.nav-tabs > li{
+    width: 25%;
+    text-align: center;
+}
+
+.costsharing-tab .nav.nav-tabs > li > a:hover {
+    background-color: #fff;
+    color:#f26522;
+}
+
+.costsharing-tab .nav.nav-tabs > li.active > a{
+    color: #f26522;
+    border-bottom: 5px solid #f26522;
+    font-weight: bolder;
+    background: #ffffff;
+}
+
+.costsharing-tab .nav.nav-tabs > li:first-of-type a{
+    border-radius:0;
+}
+
+.costsharing-tab .card-body{
+    padding:0;
+} 
+
+.costsharing-tab bs-card>div{
+    padding:0;
+    border:0;
+}

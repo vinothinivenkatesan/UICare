@@ -1,0 +1,32 @@
+.search-box{
+    margin-top:5%;
+}
+
+.advance-search{
+    margin-left: 5%;
+    margin-top: 0.8%;
+}    
+
+.advance-search>a{
+    text-decoration: underline !important;
+}  
+
+
+.form-control-feedback{
+    top: -4px;
+    right: 10px;
+}
+
+.create-btn{
+    right: 35px;
+    position: absolute;
+    top: 5%;
+}
+
+.create-btn>a>i.fa.fa-plus{
+    margin-right:5px;
+}
+
+.setColor{
+    color: darkslateblue;
+}

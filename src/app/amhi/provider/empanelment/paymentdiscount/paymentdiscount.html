@@ -1,0 +1,328 @@
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #group1 [isOpen]="true">
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+            <span>Discount and Payment</span>
+        </div>
+        <div class="subTitle">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Contract configurations</span>
+        </div>
+        <hr>
+        <form #paymentForm="ngForm" >
+            <div class="row">  
+                <input-wrapper class='col-md-6' [inputLabel]="'Advance payment applicable'" [formErrors]="paymentForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                               <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'advanceApplicable'" [(toggleoptions)]="advanceApplicableoptions"></toggle-input>
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Advance payment amount*'" [formErrors]="paymentForm" [inputErrors]="advanceAmt" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='advanceAmt' #advanceAmt="ngModel">
+                </input-wrapper>  
+                <input-wrapper class='col-md-12' [inputLabel]="'Min value Criteria'" [formErrors]="paymentForm" [inputErrors]="minCriteria" [templateType]="'grid-2-10'">
+                               <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='minCriteria1' #minCriteria='ngModel' name="minCriteria" id="minCriteria1" value="option1" >
+                                <span>Fixed value</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='minCriteria2' #minCriteria='ngModel' name="minCriteria" id="minCriteria2" value="option1" >
+                                <span>% of advance payment amount</span>
+                            </label>
+                        </div>                        
+                    </div>
+                </input-wrapper>                
+                <input-wrapper class='col-md-6' [inputLabel]="'Min value to be maintained'" [formErrors]="paymentForm" [inputErrors]="minValue" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='minValue' #minValue="ngModel">
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Min % to be maintained'" [formErrors]="paymentForm" [inputErrors]="minPercentage" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='minPercentage' #minPercentage="ngModel">
+                </input-wrapper>  
+            </div>
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Floater status display</span>
+            </div>
+            <hr>
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Advance payment release date</th>
+                            <th>Total no of claims adjusted in current cycle</th>
+                            <th>Amount utilized from advance payment till date in current cycle</th>
+                            <th>Amount left in the cycle in current cycle</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Agreed Payment Period Section</span>
+            </div>
+            <hr>
+            <div class='row'>
+                <input-wrapper class='col-md-6' [inputLabel]="'Payment period {in days}*'" [formErrors]="paymentForm" [inputErrors]="paymentPeriod" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='paymentPeriod' #paymentPeriod="ngModel">
+                </input-wrapper> 
+            </div>
+            <early-payment></early-payment>
+            <late-payment></late-payment>
+            <bulk-payment></bulk-payment>
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Payment cycle status</span>
+            </div>
+            <hr>
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Free Procedure</th>
+                            <th>Payment cycle start date</th>
+                            <th>Payment cycle end date</th>
+                            <th>Total no of claims settled till date in current cycle</th>
+                            <th>Total value of claims settled till date in current cycle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>  
+
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Free procedures status</span>
+            </div>
+            <hr>
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Free Procedure</th>
+                            <th>Free procedures accumulated for the cycle</th>
+                            <th>Free procedures consumed for the cycle</th>
+                            <th>Free procedures remained for the cycle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <bulk-payment></bulk-payment>
+
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Payment cycle status</span>
+            </div>
+            <hr>
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Free Procedure</th>
+                            <th>Payment cycle start date</th>
+                            <th>Payment cycle end date</th>
+                            <th>Total no of claims settled for contracted procedure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Free procedures status</span>
+            </div>
+            <hr>
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Free Procedure</th>
+                            <th>Free procedures accumulated for the cycle</th>
+                            <th>Free procedures consumed for the cycle</th>
+                            <th>Free procedures remained for the cycle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Capitation Payment</span>
+            </div>
+            <hr>
+            <div class="row">  
+                <input-wrapper class='col-md-6' [inputLabel]="'Payment applicable'" [formErrors]="paymentForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                               <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'paymentApplicable'" [(toggleoptions)]="paymentApplicableoptions"></toggle-input>
+                </input-wrapper>   
+                <input-wrapper class='col-md-12' [inputLabel]="'Payment Basis*'" [formErrors]="paymentForm" [inputErrors]="paymentBasis" [templateType]="'grid-2-10'">
+                               <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" [(ngModel)]='radioGroup' #paymentBasis='ngModel' name="paymentBasis" id="paymentBasis1" value="option1" required>
+                                <span>Per member per period</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" [(ngModel)]='radioGroup' #paymentBasis='ngModel' name="paymentBasis" id="paymentBasis2" value="option2" required>
+                                <span>Fixed amount per period</span>
+                            </label>
+                        </div>
+                    </div>
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Capitation Period (in months)*'" [formErrors]="paymentForm" [inputErrors]="capitationPeriod" [templateType]="'grid-4-8'">
+                               <div ctype-8 >
+                        <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='capitationPeriod' #capitationPeriod="ngModel">
+                    </div>
+                </input-wrapper>  
+                <input-wrapper class='col-md-6' [inputLabel]="'Capitation fixed amount per period*'" [formErrors]="paymentForm" [inputErrors]="fixedamtPeriod" [templateType]="'grid-4-8'">
+                               <div ctype-8 >
+                        <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='fixedamtPeriod' #fixedamtPeriod="ngModel">
+                    </div>
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Variance Lower limit in %age'" [formErrors]="paymentForm" [inputErrors]="variancelimitLower" [templateType]="'grid-4-8'">
+                               <div ctype-8 >
+                        <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='variancelimitLower' #variancelimitLower="ngModel">
+                    </div>
+                </input-wrapper>  
+                <input-wrapper class='col-md-6' [inputLabel]="'Variance Higher limit in %age*'" [formErrors]="paymentForm" [inputErrors]="variancelimitHigher" [templateType]="'grid-4-8'">
+                               <div ctype-8 >
+                        <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='variancelimitHigher' #variancelimitHigher="ngModel">
+                    </div>
+                </input-wrapper>
+            </div>
+
+            <div class="subTitle">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Claims accululation display</span>
+            </div>
+            <hr>
+
+            <div class="table-responsive floater-table">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Total no. of claims adjusted in current period</th>
+                            <th>Accumulated Claim value utilized till date in current period</th>
+                            <th>% age of capitation fixed amount till date in current period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <down-billing></down-billing>
+            <tax-details></tax-details>
+            <div class="row">
+                <input-wrapper class='col-md-6' [inputLabel]="'Service Tax Applicable'" [formErrors]="paymentForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                               <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'taxApplicable'" [(toggleoptions)]="taxApplicableoptions"></toggle-input>
+                </input-wrapper>    
+                <input-wrapper class='col-md-6' [inputLabel]="'Service Tax Registration No.*'" [formErrors]="paymentForm" [inputErrors]="taxRegno" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='taxRegno' #taxRegno="ngModel">
+                </input-wrapper>  
+                <input-wrapper class='col-md-6' [inputLabel]="'Category of Services*'" [formErrors]="paymentForm" [inputErrors]="servicesCategory" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='servicesCategory' #servicesCategory="ngModel">
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Service Tax %age*'" [formErrors]="paymentForm" [inputErrors]="taxPercentage" [templateType]="'grid-4-8'">
+                               <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='taxPercentage' #taxPercentage="ngModel">
+                </input-wrapper>
+                <input-wrapper class='col-md-12' [inputLabel]="'TDS Rate (as applicable)*'" [formErrors]="paymentForm" [inputErrors]="tdsrateRecieved" [templateType]="'grid-2-10'">
+                               <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" [(ngModel)]='radioGroup' #tdsrateRecieved='ngModel' name="tdsrateRecieved" id="tdsrateRecieved1" value="option1" required>
+                                <span>Recieved</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" [(ngModel)]='radioGroup' #tdsrateRecieved='ngModel' name="tdsrateRecieved" id="tdsrateRecieved2" value="option2" required>
+                                <span>Not Recieved</span>
+                            </label>
+                        </div>
+                    </div>
+                </input-wrapper>
+                <div class="col-md-12">
+                    <uploader [(savedFile)]='savedFiles'></uploader>
+                </div>
+                <div class="col-sm-12 remarks-btn bottom-margin">
+                    <div class="pull-right">
+                        <button class="btn btn-default" >Show Remarks</button>
+                    </div>
+                </div>
+                <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="paymentForm" [inputErrors]="remarks" [templateType]="'grid-2-10'">
+                    <textarea ctype-10 class="form-control" name="remarks" [(ngModel)]="text" #remarks='ngModel'></textarea>
+                </input-wrapper>
+            </div>
+            <hr>
+            <div class="pull-right" >
+                <button class="btn btn-default" type="button">Cancel</button>
+                <button class="btn btn-default" type="button">Save</button>
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+        </form>
+    </accordion-group>
+</accordion>

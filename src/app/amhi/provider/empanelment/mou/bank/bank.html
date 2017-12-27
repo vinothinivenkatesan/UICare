@@ -1,0 +1,129 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Bank Guarantee</span>
+</div>
+<hr>
+<form class="form-horizontal" #bankGuaranteeForm="ngForm" >
+    <div class="row">
+        <input-wrapper class='col-md-12' [inputLabel]="'Bank Guarantee*'" [formErrors]="bankGuaranteeForm" [inputErrors]="''" [templateType]="'grid-2-10'">
+                       <toggle-input ctype-10 [(toggle)]="Y" [toggleName]="'bankGuarantee'" [(toggleoptions)]="bankGuaranteeoptions"></toggle-input>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Amount*'" [formErrors]="bankGuaranteeForm" [inputErrors]="amount" [templateType]="'grid-4-8'">
+            <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='amount' [(ngModel)]='text' #amount="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Start Date*'" [formErrors]="bankGuaranteeForm" [inputErrors]="startDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="startDate" [options]="myDatePickerOptions" [(ngModel)]="startDateModel" #startDate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Reference Number*'" [formErrors]="bankGuaranteeForm" [inputErrors]="refNumber" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='refNumber' [(ngModel)]='text' #refNumber="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Expiry Date*'" [formErrors]="bankGuaranteeForm" [inputErrors]="expiryDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="expiryDate" [options]="myDatePickerOptions" [(ngModel)]="expiryDateModel" #expiryDate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <div class="col-md-12">
+            <uploader [(savedFile)]='savedFiles'></uploader>
+        </div>  
+    </div>
+    <div class="table-responsive floater-table bottom-margin">
+        <table class="table table-bordered" style="margin-top:2%;">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">#</th>
+                    <th>Bank Guarantee Amount</th>
+                    <th>Reference Number</th>
+                    <th>Start Date</th>
+                    <th>Expiry Date</th>                    
+                    <th>Expiry Received Date</th>
+                    <th>Bank Guarantee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>No data available</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="subTitle">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Bank Deposit</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-12' [inputLabel]="'Bank Deposit*'" [formErrors]="bankGuaranteeForm" [inputErrors]="''" [templateType]="'grid-2-10'">
+                       <toggle-input ctype-10 [(toggle)]="Y" [toggleName]="'bankDeposit'" [(toggleoptions)]="bankDepositoptions"></toggle-input>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Amount*'" [formErrors]="bankGuaranteeForm" [inputErrors]="depAmount" [templateType]="'grid-4-8'">
+            <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='depAmount' [(ngModel)]='text' #depAmount="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Start Date*'" [formErrors]="bankGuaranteeForm" [inputErrors]="depStartDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="depStartDate" [options]="myDatePickerOptions" [(ngModel)]="depStartDateModel" #depStartDate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Reference Number*'" [formErrors]="bankGuaranteeForm" [inputErrors]="depRefNumber" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='depRefNumber' [(ngModel)]='text' #depRefNumber="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Expiry Date*'" [formErrors]="bankGuaranteeForm" [inputErrors]="depExpiryDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="depExpiryDate" [options]="myDatePickerOptions" [(ngModel)]="depExpiryDateModel" #depExpiryDate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <div class="col-md-12">
+            <uploader [(savedFile)]='savedFiles'></uploader>
+        </div>  
+    </div>
+    <div class="subTitle">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Refund</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Refund Amount*'" [formErrors]="bankGuaranteeForm" [inputErrors]="refundAmount" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='refundAmount' [(ngModel)]='text' #refundAmount="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Refund Date*'" [formErrors]="bankGuaranteeForm" [inputErrors]="refundDate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="refundDate" [options]="myDatePickerOptions" [(ngModel)]="refundDateModel" #refundDate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <div class="col-md-12 pull-right">
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <uploader [(savedFile)]='savedFiles'></uploader>
+    </div>  
+</form>
+<div class="table-responsive floater-table bottom-margin">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Refund Amount</th>
+                <th>Refund Date</th>
+                <th>Document</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<div class="pull-right">
+    <button type="button" class="btn btn-default">Cancel</button>
+    <button type="button" class="btn btn-default">Save</button>
+    <button type="button" class="btn btn-primary">Submit</button>
+</div>

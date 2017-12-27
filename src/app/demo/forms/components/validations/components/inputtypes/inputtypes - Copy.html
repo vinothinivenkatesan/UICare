@@ -1,0 +1,117 @@
+<form class="form-horizontal" #typeForm="ngForm" novalidate>
+    <div class="row">
+        <!-- Normal Text input -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Text type'" [formErrors]="typeForm" [inputErrors]="Input1" [templateType]="'grid-12-2-10'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='tex' #Input1='ngModel' box-one-10>
+        </input-wrapper>
+
+        <!-- Normal textarea -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Text Area'" [formErrors]="typeForm" [inputErrors]="Input2" [templateType]="'grid-12-2-10'">
+            <textarea class='form-control' placeholder="Enter Here" [(ngModel)]='textarea' name='textarea' #Input2='ngModel' box-one-10></textarea>
+        </input-wrapper>
+
+        <!-- date -->
+        <!-- time -->
+
+        <!-- dropdown -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Dropdown*'" [formErrors]="typeForm" [inputErrors]="prvEntity" #prvEntityWrap [templateType]="'grid-6-4-8'">
+                <select box-one-8 class="form-control" name="entitytype" [(ngModel)]='dropdownSelect' #prvEntity='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of entityTypeList' [ngValue]='type.entityTypeId'>{{type.entityTypeName}}</option>
+                </select>
+        </input-wrapper>
+
+
+        <!-- multiselect component validation -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Known Clinical Specialty*'" [formErrors]="typeForm" [inputErrors]="Input6" [templateType]="'grid-6-4-8'">
+            
+            <ss-multiselect-dropdown [options]="clinicalSpecialityList" name='1' [(ngModel)]="selectedClinicalSpecialityId" (ngModelChange)="multiselectChange($event, 'clinicalSpeciality')" #Input6='ngModel' box-one-8 required></ss-multiselect-dropdown>
+
+        </input-wrapper>
+            
+        <input-wrapper class='col-sm-6' [inputLabel]="'Major Services Available*'" [formErrors]="typeForm" [inputErrors]="Input7" [templateType]="'grid-6-4-8'">
+            <div box-one-8>
+                <ss-multiselect-dropdown [options]="majorServiceList" name='1' [(ngModel)]="selectedMajorServiceId" (ngModelChange)="multiselectChange($event, 'majorService')" #Input7='ngModel' required></ss-multiselect-dropdown><!--
+                {{check(multi, 'outside')}}-->
+            </div>
+        </input-wrapper>
+    </div>
+    <fieldset *ngIf="selectedClinicalSpeciality.length>0">
+        <legend class="scheduler-border">Known Clinical Specialty</legend>
+        <tag-input (onRemove)="removeTag($event, 'clinicalSpeciality')" [(ngModel)]='selectedClinicalSpeciality' name="clinical"> </tag-input>
+    </fieldset>
+    <fieldset *ngIf="selectedMajorService.length>0">
+        <legend class="scheduler-border">Major Services Available</legend>
+        <tag-input (onRemove)="removeTag($event, 'majorService')" [(ngModel)]='selectedMajorService' name="service"> </tag-input>
+    </fieldset>
+    <!-- <div *ngFor='let object of selectedMajorServiceObj; let index=index;'>
+        <div *ngFor='let obj of object; let i=index;'>
+            <div class="row">
+                <input-wrapper class='col-sm-6' [inputLabel]="obj.set0.name" [formErrors]="typeForm" [inputErrors]="obj.set0.model" [templateType]="'grid-6-4-8'">                    
+                        <div>
+                            <ss-multiselect-dropdown [options]="obj.set0.List" name='1' [(ngModel)]="obj.set0.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set0')" required #dug='ngModel'></ss-multiselect-dropdown>
+                            {{setDynamicModel(dug, 'inside')}}
+                        </div>
+                </input-wrapper>
+
+                <input-wrapper  *ngIf='obj.set1' class='col-sm-6' [inputLabel]="obj.set1.name" [formErrors]="typeForm" [inputErrors]="obj.set1.model" [templateType]="'grid-6-4-8'">
+                        <div>
+                            <ss-multiselect-dropdown [options]="obj.set1.List" name='1' [(ngModel)]="obj.set1.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set1')" #dug2='ngModel'></ss-multiselect-dropdown>
+                            {{setDynamicModel(dug2, 'inside')}}
+                        </div>
+                </input-wrapper>
+            </div>
+            <fieldset *ngIf="obj.set0.selected.length>0">
+                <legend class="scheduler-border">{{obj.set0.name}}</legend>
+                <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set0')" [(ngModel)]='obj.set0.selected' name="1"> </tag-input>
+            </fieldset>
+            <div *ngIf='obj.set1'> 
+                <fieldset *ngIf="obj.set1.selected.length>0">
+                    <legend class="scheduler-border">{{obj.set1.name}}</legend>
+                    <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set1')" [(ngModel)]='obj.set1.selected' name="1"> </tag-input>
+                </fieldset>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <!-- radio group validation -->
+        <input-wrapper class='col-sm-6' [inputLabel]="'Radio Group'" [formErrors]="typeForm" [inputErrors]="radioGrp" #prvBlacklistWrap [templateType]="'grid-12-3-9'">
+        <div box-on-9>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
+                    <span>Option 1</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+                    <span>Option 2</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio3" value="option3" required>
+                    <span>Option3</span>
+                </label>
+            </div>
+        </div>
+        </input-wrapper>
+    </div>
+
+
+
+
+    <!-- toogel button radio validation -->
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Toogel Button'" [formErrors]="typeForm" [inputErrors]="blacklistInputObj" #prvBlacklistWrap [templateType]="'grid-6-4-8'">
+            <div class="btn-group" data-toggle="buttons"  box-one-8>
+                <label class="btn btn-primary" *ngFor="let obj of network; let first=first">
+                        <input type="radio" name="network" autocomplete="off" [value]='obj.value' [(ngModel)]='BlacklistIndicator' #prvBlacklist="ngModel" required> {{obj.display}}
+                        <span *ngIf="first && blacklistFlag">{{setModel(prvBlacklist, 'blacklist')}}</span>
+                </label>
+            </div>
+        </input-wrapper>
+    </div>
+</form>

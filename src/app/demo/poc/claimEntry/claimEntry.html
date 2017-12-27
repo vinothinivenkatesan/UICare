@@ -1,0 +1,155 @@
+<bs-card>
+    <!--<form class="form-horizontal" #demoForm="ngForm" novalidate name="coverageForm">-->
+    <div style="min-height:700px">
+        <div class="row">            
+            <div class="col-sm-9">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 form-control-label" style="line-height: 2;">Diagnosis</label>
+                    <div class="col-sm-7">
+                        <ss-multiselect-dropdown [options]="diagnosisList" name='multiselect' [settings]="mySettings"  [(ngModel)]="selectedDiagnosis" (ngModelChange)="onSelectDiagnosis($event)"></ss-multiselect-dropdown>                        
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-success" (click)='addDiagnosis()'>Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <ngb-accordion [closeOthers]="true" #acc="ngbAccordion" (panelChange)="setActiveAccordian($event)">
+            <div *ngFor="let Cover of diagnosisPanels" class="testclass">
+                <ngb-panel [attr.name]='Cover' id="{{Cover.code}}" title="{{Cover.name}}" >
+                    <template ngbPanelTitle>                        
+                        <div class="icon-left" (click)="loadData(Cover.id)">
+                         <i class='fa' [ngClass]="{'fa-minus-circle':activeAcordian==Cover.code, 'fa-plus-circle':!(activeAcordian==Cover.code)}"></i>
+                        </div>
+                    </template>
+                    <template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Diagnosis Code</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" value="{{Cover.code}}" class="form-control" name="diagnosis_code">
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Signs</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="signs" [(ngModel)]="Cover.signs" [settings]="mySettings" (ngModelChange)="onChange(Cover,'signs')"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Symptoms</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="symptoms" [(ngModel)]="Cover.symptoms" [settings]="mySettings" (ngModelChange)="onChange(Cover,'symptoms')"></ss-multiselect-dropdown> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Investigations</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="investigations" [(ngModel)]="Cover.investigations" [settings]="mySettings" (ngModelChange)="onChange(Cover,'investigations')"></ss-multiselect-dropdown> 
+                                        <!--<ss-multiselect-dropdown [options]="signMust" [(ngModel)]="selectedsignMust" (ngModelChange)="onChange(selectedsignMust)"></ss-multiselect-dropdown>-->
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Co-morbidities</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="comorbidities" [(ngModel)]="Cover.comorbidities" [settings]="mySettings" (ngModelChange)="onChange(Cover,'comorbidities')"></ss-multiselect-dropdown> 
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Age</label>
+                                    <div class="col-sm-8">
+                                        <select name="age" class="form-control" [(ngModel)]="selectedage" (ngModelChange)="convertjson(Cover,selectedage,'age')">
+                                            <option [ngValue]="1" selected disabled>Select</option>
+                                            <option *ngFor="let x of age" [ngValue]="x"> {{x.name}} </option>
+                                        </select>                                        
+                                    </div>
+                                </div>
+                            </div>      
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Gender</label>
+                                    <div class="col-sm-8">
+                                        <select name="gender" class="form-control" [(ngModel)]="selectedgender" (ngModelChange)="convertjson(Cover,selectedgender,'gender')">
+                                            <option [ngValue]="1" selected disabled>Select</option>
+                                            <option *ngFor="let x of gender" [ngValue]="x"> {{x.name}} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>                             
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Treatment</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="treatment" [(ngModel)]="Cover.treatment" [settings]="mySettings" (ngModelChange)="onChange(Cover,'treatment')"></ss-multiselect-dropdown> 
+                                    </div>
+                                </div>
+                            </div>      
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Procedure</label>
+                                    <div class="col-sm-8">
+                                        <select name="procedure" class="form-control" [(ngModel)]="selectedprocedure" (ngModelChange)="convertjson(Cover,selectedprocedure,'procedure')">
+                                           <option [ngValue]="1" selected disabled>Select</option>
+                                            <option *ngFor="let x of procedure" [ngValue]="x"> {{x.name}} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Drugs</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="drugs" [(ngModel)]="Cover.drugs" [settings]="mySettings" (ngModelChange)="onChange(Cover,'drugs')"></ss-multiselect-dropdown> 
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">LOS</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" value="{{lengthofstay}}"  class="form-control" name="los" [(ngModel)]="Cover.lengthofstay">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Claim Amount</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" value="{{claimamount}}"  class="form-control" name="claim_amount" [(ngModel)]="Cover.claimamount"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </ngb-panel>
+            </div>
+        </ngb-accordion>
+        <hr/>
+        <span class='dev-result'>{{output|json}}</span>
+        <div class='row'>           
+            <div class="col-sm-8" style="margin-left: 44%;">
+                <button type="submit" (click)="postData()" class="btn btn-success" style='float:left'>Save</button>
+            </div>
+        </div>
+         <div class='row'> 
+         <div class="col-sm-8" style="width: 70%; margin-left: 15%; margin-top: 10px;">
+                <div class="input-group">
+                    <span class="input-group-addon input-group-addon-primary addon-left" style='font-size:13px;cursor:pointer' (click)="showstatus();">Apply Medical Scrutiny</span>
+                    <input value='{{scrutiny}}' class="form-control with-primary-addon" style='color:#333;font-weight:bold' type="text" readonly="">
+                </div>
+            </div>
+         </div>
+    </div>
+</bs-card>

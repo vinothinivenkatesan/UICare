@@ -1,0 +1,77 @@
+<template ngbModalContainer></template>
+<template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Search Provider</h4>
+    </div>
+    <div class="modal-body">
+        <home></home>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-success" (click)="c('Selected')">Select</button>
+    </div>
+</template>
+<form>
+    <div class="row">
+        <div class="col-sm-4">
+            <label class="control-label" for="gradeParam">Select the Grading Parameters you want to compare</label>
+                <!--<div class="col-sm-8">-->
+            <!--<select class="form-control" name="gradeParam" id="gradeParam" type="text">
+                <option>"My Options"</option>
+            </select>-->
+            <ss-multiselect-dropdown [options]="gradeParam" disabled name='multiselect' [(ngModel)]="selectedOptions" (ngModelChange)="onParamChange($event)"></ss-multiselect-dropdown>
+                <!--</div>-->
+        </div>
+        <div class="col-sm-4">
+            <label class="control-label" for="gradeVer">Select the Grade & Version</label>
+                <!--<div class="col-sm-8">-->
+            <select class="form-control" name="gradeVer" id="gradeVer" type="text">
+                <option>"My Options"</option>
+            </select>
+                <!--</div>-->
+        </div>
+        <div class="col-sm-4">
+            <label class="control-label" for="comp">Select the Provider to compare</label>
+                <!--<div class="col-sm-8">-->
+            <div class="input-group">
+                <input class="from-control" id="compName" name="compName" placeholder="Look Up" type="text"> 
+                <span class="input-group-btn">
+                    <button class="btn btn-success" (click)="open(content)" type="button"><i class="fa fa-lg fa-eye"></i></button>
+                </span>
+            </div>
+            <select class="form-control" name="compVer" id="compVer" type="text">
+                <option>"My Options"</option>
+            </select>
+                <!--</div>-->
+        </div>
+        
+    </div>
+</form>
+<fieldset>
+    <div class="horizontal-scroll">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th>Grading Parameters</th>
+                    <th>Points</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-id">No data available</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!--<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>-->
+            </tbody>
+        </table>
+    </div>
+</fieldset>

@@ -1,0 +1,59 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Max SI</span>
+</div>
+<hr>
+<form #maxForm="ngForm" (ngSubmit)="addData(maxForm.value)">
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Max SI applicable from age'" [formErrors]="maxForm" [inputErrors]="prdFromCount" [inputErrorsTwo]="prdFromPeriod" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="prdFromCount" placeholder="Enter Here"  type="text" [(ngModel)]='text' #prdFromCount="ngModel" number maxlength="4" >
+            <select ctype2-3-5 class="form-control" name="prdFromPeriod" [(ngModel)]='text' #prdFromPeriod='ngModel' required>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+                <option value="year">Year</option>
+            </select> 
+        </input-wrapper>            
+        <input-wrapper class='col-md-6' [inputLabel]="'Max SI applicable to age'" [formErrors]="maxForm" [inputErrors]="prdTocount" [inputErrorsTwo]="prdToPeriod" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="prdTocount" placeholder="Enter Here"  type="text" [(ngModel)]='text' #prdTocount="ngModel" number maxlength="4" >
+            <select ctype2-3-5 class="form-control" name="prdToPeriod" [(ngModel)]='text' #prdToPeriod='ngModel' required>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+                <option value="year">Year</option>
+            </select> 
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Max SI Amount'" [formErrors]="maxForm" [inputErrors]="prdMaxAmount" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='prdMaxAmount' #prdMaxAmount='ngModel' required>
+        </input-wrapper>
+    </div>        
+    <div class="pull-right">                
+        <button type="submit" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Max SI Applicable from age</th>
+                <th>Max SI Applicable to age</th>
+                <th>Max SI Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

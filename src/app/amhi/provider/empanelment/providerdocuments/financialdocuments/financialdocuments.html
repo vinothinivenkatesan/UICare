@@ -1,0 +1,127 @@
+<div #formRef=''>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Tariff rate list</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvTariffRate.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Discount letter</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvDiscount.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Payment terms letter</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvPaymentTerms.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Payee confirmation letter</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvPayeeConfirm.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">PAN Card</span>
+        </div>
+        <hr>
+        
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="PANCardEffectivedate" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="PANCardEffective" [options]="myDatePickerOptions" [(ngModel)]="prvPANCardDateOfIssue" #PANCardEffectivedate='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="PANCardExpirydate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="PANCardEnd" [options]="myDatePickerOptions" [(ngModel)]="prvPANCardDataOfExpiry" #PANCardExpirydate='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="PANCardIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="panCardIssuer" [(ngModel)]="prvPANCard.issuingAuthority" #PANCardIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Name as on PAN Card*'" [formErrors]="formRef" [inputErrors]="PANCardName" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="panCardName" [(ngModel)]="prvPANCard.pancardName" #PANCardName='ngModel' required maxlength="180">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvPANCard.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Cancelled Cheque <span class="mandatory">*</span></span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvCancelledCheque.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Service Tax Registration certificate</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="serviceTaxCertEffectivedate" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="serviceTaxEffective" [options]="myDatePickerOptions" [(ngModel)]="prvServiceTaxCertDateOfIssue" #serviceTaxCertEffectivedate='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="serviceTaxCertExpirydate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="serviceTaxEnd" [options]="myDatePickerOptions" [(ngModel)]="prvServiceTaxCertDataOfExpiry" #serviceTaxCertExpirydate='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="serviceTaxCertIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="serviceTaxIssuer" [(ngModel)]="prvServiceTaxCert.issuingAuthority" #serviceTaxCertIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvServiceTaxCert.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Income Tax exemption certificate</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="ITExemptionEffectivedate" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="ITExemptionEffective" [options]="myDatePickerOptions" [(ngModel)]="prvITExemptionDateOfIssue" #ITExemptionEffectivedate='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="ITExemptionExpirydate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="ITExemptionEnd" [options]="myDatePickerOptions" [(ngModel)]="prvITExemptionDataOfExpiry" #ITExemptionExpirydate='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="ITExemptionIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="ITExemptionIssuer" [(ngModel)]="prvITExemption.issuingAuthority" #ITExemptionIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvITExemption.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">NEFT Declaration form <span class="mandatory">*</span></span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvNEFTDeclaration.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Bank Statement/ Pass book</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvBankStatement.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Next</button>
+    </div>
+</div>

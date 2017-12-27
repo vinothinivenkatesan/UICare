@@ -1,0 +1,192 @@
+<h1>Test History</h1>
+<div class="dropdown settings-icon  pull-right" style="margin-top: -52px;margin-right: 10%;background: #eee;
+     padding: 10px;">
+    <a href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-cog" style="font-size:20px"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-item form-check">
+            <label class="form-check-inline">
+                <input type="checkbox" name="tyty" class="form-check-input">
+                tyty
+            </label>
+        </div>
+    </div>
+</div>
+<div class="dropdown settings-icon  pull-right" style="margin-top: -52px;margin-right: 13%;background: #eee;margin-left:2px;
+     padding: 10px;">
+    <a href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-file" style="font-size:20px"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-item form-check">
+            <label class="form-check-inline">
+                <input type="checkbox" name="tyty" class="form-check-input">
+                tyty
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown menu-large" (click)="selectTab('summary')" [ngClass]="{'highlight': summary}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-clock-o"></i> </a>
+                    <ul class="dropdown-menu megamenu row">
+                        <li>
+                            <div class="col-sm-6 col-md-3">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/150x120" />
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/150x120" />
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/150x120" />
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/150x120" />
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>                
+                <li (click)="selectTab('contact')" [ngClass]="{'highlight': contact,'menu-large':true,'dropdown':true}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i></a>				
+                    <ul class="dropdown-menu megamenu row">
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Glyphicons</li>
+                                <li><a href="#">Available glyphs</a></li>
+                                <li class="disabled"><a href="#">How to use</a></li>
+                                <li><a href="#">Examples</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Dropdowns</li>
+                                <li><a href="#">Example</a></li>
+                                <li><a href="#">Aligninment options</a></li>
+                                <li><a href="#">Headers</a></li>
+                                <li><a href="#">Disabled menu items</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Button groups</li>
+                                <li><a href="#">Basic example</a></li>
+                                <li><a href="#">Button toolbar</a></li>
+                                <li><a href="#">Sizing</a></li>
+                                <li><a href="#">Nesting</a></li>
+                                <li><a href="#">Vertical variation</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Button dropdowns</li>
+                                <li><a href="#">Single button dropdowns</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Input groups</li>
+                                <li><a href="#">Basic example</a></li>
+                                <li><a href="#">Sizing</a></li>
+                                <li><a href="#">Checkboxes and radio addons</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Navs</li>
+                                <li><a href="#">Tabs</a></li>
+                                <li><a href="#">Pills</a></li>
+                                <li><a href="#">Justified</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Navbar</li>
+                                <li><a href="#">Default navbar</a></li>
+                                <li><a href="#">Buttons</a></li>
+                                <li><a href="#">Text</a></li>
+                                <li><a href="#">Non-nav links</a></li>
+                                <li><a href="#">Component alignment</a></li>
+                                <li><a href="#">Fixed to top</a></li>
+                                <li><a href="#">Fixed to bottom</a></li>
+                                <li><a href="#">Static top</a></li>
+                                <li><a href="#">Inverted navbar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="dropdown menu-large" (click)="selectTab('documents')" [ngClass]="{'highlight': documents}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> </a>
+                    <ul class="dropdown-menu megamenu row">
+                        <div class='history-title'>
+                            <h2>Documents</h2>
+                        </div>
+                        <div class='pull-right'>
+                            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 form-control-label">Sort By</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="sort">
+                            <option>Ascending</option>
+                            <option>Descending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+                        </div>
+                        <li>
+                            <div class="text-block text-message">
+                                <div class="message-header">
+                                    <span class="author">Rejected By:123345</span>
+                                </div>
+                                <div class="message-time">
+                                    Created on: 01/10/2017 11:55 pm
+                                </div>
+                                <div class="message-content">
+                                    Comments here...
+                                </div>      
+                            </div>
+                        </li>
+                        <li>
+                            <div class="text-block text-message">
+                                <div class="message-header">
+                                    <span class="author">Rejected By:123345</span>
+                                </div>
+                                <div class="message-time">
+                                    Created on: 01/10/2017 11:55 pm
+                                </div>
+                                <div class="message-content">
+                                    Comments here...
+                                </div>      
+                            </div>
+                        </li>
+                        <li>                           
+                            <div class="text-block text-message">
+                                <div class="message-header">
+                                    <span class="author">Rejected By:123345</span>
+                                </div>
+                                <div class="message-time">
+                                    Created on: 01/10/2017 11:55 pm
+                                </div>
+                                <div class="message-content">
+                                    Comments here...
+                                </div>      
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

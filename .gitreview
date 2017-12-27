@@ -1,0 +1,5 @@
+[gerrit]
+host=10.142.130.83
+port=29418
+project=UICare
+defaultbranch=amhi_care_dev

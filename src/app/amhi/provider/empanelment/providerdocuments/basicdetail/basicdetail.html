@@ -1,0 +1,125 @@
+<div #formRef='' #inputRef=''>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Provider Information update supporting document<span class="mandatory">*</span></span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'Document Name*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='docName' name="docNameName" #docNameModel='ngModel' type="text" maxlength="70" required>
+        </input-wrapper>
+        <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'Document Description*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='docDescription' name="docDescriptionName" #commSignModel='ngModel' type="text" maxlength="70" required>
+        </input-wrapper>
+    </div>
+    <uploader [(savedFile)]='prvInfoSheetUpdate.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvInfoSheetUpdate.documentTitle"></uploader>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Next</button>
+    </div>
+</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Provider Information Sheet <span class="mandatory">*</span></span>
+    </div>
+    <hr>
+    <uploader [(savedFile)]='prvInfoSheet.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvInfoSheet.documentTitle"></uploader>
+</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Provider Registration Certificate</span>
+    </div>
+    <hr>
+    
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="regCertEffectivedate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">
+            <my-date-picker ctype-8 name="regCertEffectivedate" [options]="myDatePickerOptions" [(ngModel)]="prvRegCertDateOfIssue" #regCertEffectivedate='ngModel' (dateChanged)="onDateChanged($event, 'prvRegCertificate', 'dateOfIssue', regCertEffectivedate)" required></my-date-picker>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="regCertExpirydate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">
+            <my-date-picker ctype-8 name="regCertExpirydate" [options]="myDatePickerOptions" [(ngModel)]="prvRegCertDataOfExpiry" #regCertExpirydate='ngModel' (dateChanged)="onDateChanged($event, 'prvRegCertificate', 'dataOfExpiry', regCertExpirydate)" required></my-date-picker>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="regIssueAuthority" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="regCertIssue" [(ngModel)]="prvRegCertificate.issuingAuthority" #regIssueAuthority='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let type of certificateTypesList' [ngValue]='type.certificateTypeName'>{{type.certificateTypeName}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+    <uploader [(savedFile)]='prvRegCertificate.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvRegCertificate.documentTitle"></uploader>
+</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">List of provider branches</span>
+    </div>
+    <hr>
+    <uploader [(savedFile)]='prvBranches.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvBranches.documentTitle"></uploader>
+</div>
+<div *ngIf='false'>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Photograph of the provider</span>
+    </div>
+    <hr>
+    <uploader [(savedFile)]='prvPhotograph.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvPhotograph.documentTitle"></uploader>
+</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Photograph of the provider</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Photograph Type*'" [formErrors]="formRef" [inputErrors]="regPhotographType" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="photoType" [(ngModel)]="selectedPhotographType" #regPhotographType='ngModel' (ngModelChange)="photographTypeChange();" required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let type of photographTypesList' [ngValue]='type.photographTypeName'>{{type.photographTypeName}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+    <fieldset [(disabled)]="isPhotographDisable" class="no-border">
+        <uploader [(savedFile)]='currentPhotoDoc' [isUploadShow]='false' [(providerCode)]='providerCode' [docBusinessType]="'photographDoc'"></uploader>
+    </fieldset>
+        <div *ngFor="let obj of photographTypesListObj">
+            <fieldset *ngIf='isFileAdded(obj.documents)'>
+                <legend class="scheduler-border">{{obj.documentTitle}}</legend>
+                <div class="boxparent row">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-8 row">
+                                <div  [ngClass]="addClass(docObj.isDeleted)" *ngFor="let docObj of obj.documents; let i=index;">
+                                    <div class="" *ngIf="docObj.isDeleted=='N'">    
+                                        <i class="fa-file-text-o fa fa-lg fileIcon"></i>
+                                        <a class="filename" (click)='openFile(docObj.documentId)'>{{docObj.documentName}}</a>
+                                        <span class="pull-right icon" (click)='removeFile(obj.documents, i)'>X</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">List of TPA/insurance company with which provider is registered:</span>
+    </div>
+    <hr>
+    <uploader [(savedFile)]='prvTPAList.documents' [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(docBusinessType)]="prvTPAList.documentTitle"></uploader>
+    <!--{{prvInfoSheet | json}}
+    {{prvRegCertificate | json}}
+    {{prvBranches | json}}
+    {{prvPhotograph | json}}
+    {{prvTPAList | json}}
+    {{photographTypesListObj | json}}-->
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Next</button>
+    </div>
+</div>

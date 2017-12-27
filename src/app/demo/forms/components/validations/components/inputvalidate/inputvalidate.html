@@ -1,0 +1,88 @@
+<form class="form-horizontal" #validateForm="ngForm" novalidate>
+    <div class="row">
+
+        <!-- Required field validation -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Required Validation *'" [formErrors]="validateForm" [inputErrors]="Input1" [templateType]="'grid-2-10'">
+
+            <input type='text' name='requiredValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal1' #Input1='ngModel' required ctype-10>
+
+        </input-wrapper>
+
+        <!-- Custom Message -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Required Validation *'" [formErrors]="validateForm" [inputErrors]="Input1" [templateType]="'grid-2-10'" [errorDefs]="customError">
+
+            <input type='text' name='requiredValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal1' #Input1='ngModel' required ctype-10>
+
+        </input-wrapper>
+
+        <!-- Number only -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Number only Validation *'" [formErrors]="validateForm" [inputErrors]="Input2" [templateType]="'grid-2-10'">
+
+            <input type='text' name='numberValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal2' #Input2='ngModel' number required ctype-10>
+
+        </input-wrapper>
+
+        <!-- Range -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Range Validation *'" [formErrors]="validateForm" [inputErrors]="Input3" [templateType]="'grid-2-10'">
+
+            <input type='text' name='rangeValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal3' #Input3='ngModel' [rangeLength]="[5, 9]" required ctype-10>
+
+        </input-wrapper>
+
+        <!-- Max length -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Maximum character Validation *'" [formErrors]="validateForm" [inputErrors]="Input4" [templateType]="'grid-2-10'">
+
+            <input type='text' name='maxValValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal4' #Input4='ngModel' required maxlength="8" ctype-10>
+
+        </input-wrapper>
+
+        <!-- Min length-->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Minimum Valacter Validation *'" [formErrors]="validateForm" [inputErrors]="Input5" [templateType]="'grid-2-10'">
+
+            <input type='text' name='minValValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal5' #Input5='ngModel' required minlength="4" ctype-10>
+
+        </input-wrapper>
+
+        <!-- Max Value -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Maximum Value*'" [formErrors]="validateForm" [inputErrors]="Input9" [templateType]="'grid-2-10'">
+
+            <input type='text' name='maxCharValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal9' #Input9='ngModel' required number [max]="20" ctype-10>
+
+        </input-wrapper>
+
+        <!-- Min Value-->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Minimum Value*'" [formErrors]="validateForm" [inputErrors]="Input10" [templateType]="'grid-2-10'">
+
+            <input type='text' name='minCharValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal10' #Input10='ngModel' required number [min]="10" ctype-10>
+
+        </input-wrapper>
+
+        <!-- pattern -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Pattern Validation *'" [formErrors]="validateForm" [inputErrors]="Input6" [templateType]="'grid-2-10'">
+
+            <input type='text' name='patterValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal6' #Input6='ngModel' required pattern="06([0-9]{8})" number ctype-10>
+
+        </input-wrapper>
+
+        <!-- email -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'Email Validation *'" [formErrors]="validateForm" [inputErrors]="Input7" [templateType]="'grid-2-10'">
+
+            <input type='text' name='emailValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal7' #Input7='ngModel' required email ctype-10>
+
+        </input-wrapper>
+
+        <!-- url -->
+        <input-wrapper class='col-sm-12' [inputLabel]="'URL Validation *'" [formErrors]="validateForm" [inputErrors]="Input8" [templateType]="'grid-2-10'">
+
+            <input type='text' name='urlValidation' class='form-control' placeholder="Enter Here" [(ngModel)]='sampleVal8' #Input8='ngModel' required url ctype-10>
+
+        </input-wrapper>
+
+    </div>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </span>
+    </div>
+</form>

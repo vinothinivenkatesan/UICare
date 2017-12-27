@@ -1,0 +1,24 @@
+<div class="page-top clearfix" bsScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+     [ngClass]="{scrolled: isScrolled}">
+     <a href (click)="toggleMenu()" class="collapse-menu-link fa fa-bars"></a>
+    <a routerLink="/pages/dashboard" class="al-logo clearfix"> 
+        <img src="assets/img/amhi-logo-header.jpg" alt="logo"/>       
+    </a>
+
+
+    <div class="user-profile clearfix">
+        <span>{{userName}}</span>
+        <div class="dropdown al-user-profile">
+            <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+
+                <img src="{{ ('user' | bsProfilePicture)}}">
+
+            </a>
+            <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+                <li class="dropdown-item"><i class="dropdown-arr"></i></li>
+                <li class="dropdown-item" (click)="signout()"><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>

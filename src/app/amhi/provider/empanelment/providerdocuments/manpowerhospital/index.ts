@@ -1,0 +1,1 @@
+export * from './manpowerhospital.component';

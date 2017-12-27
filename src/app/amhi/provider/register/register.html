@@ -1,0 +1,494 @@
+<div id="wizard" class="form_wizard wizard_horizontal">
+    <ul class="wizard_steps">
+        <li>
+            <a>
+                <span [ngClass]="{'step_no': true, 'onprogress':isOnprogressMaker,'inactive':isInactiveMaker,'completed':isCompletedMaker}">1</span>
+                <span class="step_descr">
+                    Maker
+                </span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressChecker,'inactive':isInactiveChecker,'completed':isCompletedChecker}">2</span>
+                <span class="step_descr">
+                    Checker
+                </span>
+            </a>
+        </li>        
+    </ul>
+</div> 
+
+<custom-modal #modal1 [(notificationPurpose)]='notifyPurpose' [(modalHeader)]='notifyHeader' [(modalBody)]='notifyBody' [(modalType)]='notifyType' [(buttonText1)]='notifyBtn1' [(buttonText2)]='notifyBtn2' (onModalClose)="modalClosed($event)">
+</custom-modal>
+{{assingAlertNotifyModal(modal1)}}
+<custom-modal #modal2 [(notificationPurpose)]='notifyPurpose' [(modalHeader)]='notifyHeader' [(modalBody)]='notifyBody' [(modalType)]='notifyType2' [(buttonText1)]='notifyBtn1' [(buttonText2)]='notifyBtn2' (onModalClose)="modalClosed($event)">
+</custom-modal>
+{{assingConfirmNotifyModal(modal2)}}
+<bs-card bsCardClass="with-scroll">
+    <form class="form-horizontal" #prvRegForm="ngForm" novalidate>
+        <fieldset [disabled]="!privilege.isEditable('RegisterationForm')" class="no-border">
+            <fieldset [disabled]="!privilege.isEditable('prvRegReqSrc')" class="no-border">
+                <div class="row">
+                    <input-wrapper *ngIf='privilege.isCurrentTask("prvRegNew")' class='col-sm-6' [inputLabel]="'Request Source*'" [formErrors]="prvRegForm" [inputErrors]="prvReqSrc" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="regrequest" id="regrequest" [(ngModel)]='registerObj.requestSourceId' #prvReqSrc='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor='let type of requestSourceList' [ngValue]='type.referenceDataId'>{{type.referenceTypeValue}}</option>
+                        </select>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Provider Name*'" [formErrors]="prvRegForm" [inputErrors]="prvPrvName" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name="regprovidername" id="regprovidername" [(ngModel)]="registerObj.providerName" placeholder="Enter Here" type="text" #prvPrvName="ngModel" required>
+                    </input-wrapper>
+                </div>
+            </fieldset>
+            <div class="row">            
+                <input-wrapper class='col-sm-6' [inputLabel]="'Also Known As'" [formErrors]="prvRegForm" [inputErrors]="prvAlsoknown" [templateType]="'grid-4-8'">
+                    <div class="input-group" ctype-8>
+                        <input ctype-8 class="form-control"  type="text" name="alsoKnown" id="alsoKnown" (keyup.enter)='addAlternateName(alsoKnown); alsoKnown="";' [(ngModel)]='alsoKnown' #prvAlsoknown="ngModel" inputAddon>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" [disabled]="isAddonDisabel(prvAlsoknown)" (click)='addAlternateName(alsoKnown); alsoKnown="";'> <i class="fa fa-plus"></i></button>
+                        </span>
+                    </div>
+                </input-wrapper>
+                <fieldset [disabled]="!privilege.isEditable('prvRegEntityType')" class="no-border col-sm-6 row">
+                    <input-wrapper class='col-sm-12' [inputLabel]="'Entity Type'" [formErrors]="prvRegForm" [inputErrors]="prvEntity" [templateType]="'grid-4-8'">                
+                        <select ctype-8 class="form-control" name="regentitytype" id="regentitytype" [(ngModel)]='registerObj.entityTypeId' #prvEntity='ngModel'>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor='let type of entityTypeList' [ngValue]='type.entityTypeId'>{{type.entityTypeName}}</option>
+                        </select>
+                    </input-wrapper>
+                </fieldset>
+
+            </div>       
+            <fieldset *ngIf='alternateNames.length>0'>
+                <legend class="scheduler-border">Also Known as</legend>
+                <!--<tag-input *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!(privilege.isCurrentTask("prvRegNew"))' (onRemove)="updateItem($event,'alternateNames','alternateName')" [(ngModel)]='alternateNames' name="alternateName"> </tag-input>-->
+                <option-tag *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!(privilege.isCurrentTask("prvRegNew"))' (onRemove)="updateItem($event,'alternateNames','alternateName')" [(tagList)]='alternateNames' [templateDetail]="{ type: 4}" name="alternateName"> </option-tag>
+                <option-tag *ngIf='privilege.isCurrentTask("prvEmpReg")' [(tagList)]='alternateNames' [templateDetail]="myType1" [(preferedTag)]='myObj1' (onRemove)="updateItem($event,'alternateNames','alternateName')" (onSelect)='selectPrefered($event)'></option-tag>
+            </fieldset>
+
+            <fieldset [disabled]="!privilege.isEditable('prvRegGeoDetail')" class="no-border">
+                <div class="row">
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'State*'" [formErrors]="prvRegForm" [inputErrors]="prvState" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="regstate" id="regstate" [(ngModel)]='registerObj.stateId' (ngModelChange)='stateChanged(registerObj.stateId)' #prvState='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let stateObj of stateList'  [ngValue]='stateObj.stateId'>{{stateObj.stateName}}</option>
+                        </select>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'City*'" [formErrors]="prvRegForm" [inputErrors]="prvCity" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="regcity" id="regcity" [(ngModel)]='selectedCity' (ngModelChange)='resetDistrict();setDistrictList(selectedCity)' #prvCity='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let cityObj of cityList' [ngValue]='cityObj'>{{cityObj.cityName}}</option>
+                        </select>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Pin Code*'" [formErrors]="prvRegForm" [inputErrors]="prvPincode" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="regpincode" id="regpincode" [(ngModel)]="registerObj.pincode" additionalData='regcity' (blur)="validatePincode()" #prvPincode='ngModel' number maxlength="6" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'District'" [formErrors]="prvRegForm" [inputErrors]="prvDistrict" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="regdistrict" id="regdistrict" [(ngModel)]='registerObj.districtId' #prvDistrict='ngModel'>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let districtObj of districtList'  [ngValue]='districtObj.districtId'>{{districtObj.districtName}}</option>
+                        </select>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Address/Locality*'" [formErrors]="prvRegForm" [inputErrors]="prvLocality" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name="reglocality" id="reglocality" [(ngModel)]="registerObj.localityName" placeholder="Enter Here" type="text" #prvLocality='ngModel' required>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Landmark'" [formErrors]="prvRegForm" [inputErrors]="prvLandmark" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name="reglandmark" id="reglandmark" [(ngModel)]="registerObj.landmarkName" placeholder="Enter Here" type="text" #prvLandmark="ngModel">
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-12' [inputLabel]="'Street Name*'" [formErrors]="prvRegForm" [inputErrors]="prvStreet" [templateType]="'grid-2-10'">
+                        <input ctype-10 class="form-control" name="regstreetname" id="regstreetname" [(ngModel)]="registerObj.streetName" placeholder="Enter Here" type="text" #prvStreet="ngModel" required>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Plot Number*'" [formErrors]="prvRegForm" [inputErrors]="prvPlot" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name="regplotnumber" id="regplotnumber" [(ngModel)]="registerObj.plotNumber" placeholder="Enter Here" type="text" #prvPlot="ngModel" required>
+                    </input-wrapper>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Longitude'" [formErrors]="prvRegForm" [inputErrors]="prvLongitude" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="reglongitude" id="reglongitude" [(ngModel)]='registerObj.additionalDetails.longitude' #prvLongitude="ngModel">
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Latitude'" [formErrors]="prvRegForm" [inputErrors]="prvLatitude" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="reglatitude" id="reglatitude" [(ngModel)]='registerObj.additionalDetails.latitude' #prvLatitude="ngModel">
+                    </input-wrapper>
+
+                    <input-wrapper *ngIf='!(landlineNumbers.length>0)' class='col-sm-6' [inputLabel]="'Landline Number*'" [formErrors]="prvRegForm" [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                        <input ctype-3-5 class="form-control" name="landlineCode" id="landlineCode" placeholder="Enter Here" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="number" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4" required inputAddon>
+                        <div ctype2-3-5 class="input-group">
+                            <input class="form-control" placeholder="Enter Here" name="landlineNumber" id="landlineNumber" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="number" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8" required inputAddon>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" [disabled]="isAddonDisabel(prvSTDCode,prvLandlineNumber)" (click)='addLandline(landlineCode,landlineNumber);'> <i class="fa fa-plus"></i></button>
+                            </span>
+                        </div>
+                    </input-wrapper>
+                    <input-wrapper *ngIf='landlineNumbers.length>0' class='col-sm-6' [inputLabel]="'Landline Number*'" [formErrors]="prvRegForm" [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                        <input ctype-3-5 class="form-control" name="landlineCode" id="landlineCode" placeholder="Enter Here" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="number" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4" inputAddon>
+                        <div ctype2-3-5 class="input-group">
+                            <input class="form-control" placeholder="Enter Here" name="landlineNumber" id="landlineNumber" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="number" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8" inputAddon>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" [disabled]="isAddonDisabel(prvSTDCode,prvLandlineNumber)" (click)='addLandline(landlineCode,landlineNumber);'> <i class="fa fa-plus"></i></button>
+                            </span>
+                        </div>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Mobile Number'" [formErrors]="prvRegForm" [inputErrors]="prvMobile" [templateType]="'grid-4-8'">
+                        <div ctype-8 class="input-group">
+                            <input class="form-control" placeholder="Enter Here" name="mobileNumber" id="mobileNumber" (keyup.enter)='addContactDetails(mobileNumber,"mobileNumbers");' type="number" [(ngModel)]='mobileNumber' #prvMobile="ngModel" number maxlength="10" inputAddon>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" [disabled]="isAddonDisabel(prvMobile)" (click)='addContactDetails(mobileNumber,"mobileNumbers");'> <i class="fa fa-plus"></i></button>
+                            </span>
+                        </div>
+                    </input-wrapper>
+                </div>
+            </fieldset>
+            <fieldset *ngIf='landlineNumbers.length>0'>
+                <legend class="scheduler-border">Landline Number</legend>
+                <!--<tag-input (onRemove)="updateItem($event,'landlineNumbers','contactNumber')" [readonly]='!(privilege.isCurrentTask("prvRegNew") || privilege.isCurrentTask("prvEmpReg"))' [(ngModel)]='landlineNumbers' name="landlineNumbers"> </tag-input>-->
+                <option-tag (onRemove)="updateItem($event,'landlineNumbers','contactNumber')" [readonly]='!(privilege.isCurrentTask("prvRegNew") || privilege.isCurrentTask("prvEmpReg"))' [(tagList)]='landlineNumbers' [templateDetail]="{ type: 4}" name="landlineNumbers"> </option-tag>
+                <!--<option-tag *ngIf="riseEmpanel && userRole=='maker1'" [(tagList)]='landlineNumbers' [templateDetail]="myType2" [(preferedTag)]='myObj2' (onRemove)="updateItem($event,'landlineNumbers','contactNumber')"></option-tag>-->
+            </fieldset>  
+            <fieldset  *ngIf='mobileNumbers.length>0'>
+                <legend class="scheduler-border">Mobile Number</legend>
+                <!--<tag-input *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!privilege.isCurrentTask("prvRegNew")' (onRemove)="updateItem($event,'mobileNumbers','contactNumber')" [(ngModel)]='mobileNumbers' name="mobileNumbers"> </tag-input>-->
+                <option-tag *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!privilege.isCurrentTask("prvRegNew")' (onRemove)="updateItem($event,'mobileNumbers','contactNumber')" [(tagList)]='mobileNumbers' name="mobileNumbers" [templateDetail]="{ type: 4}"> </option-tag>
+                <option-tag *ngIf='privilege.isCurrentTask("prvEmpReg")' [(tagList)]='mobileNumbers' [templateDetail]="myType3" [(preferedTag)]='myObj3' (onRemove)="updateItem($event,'mobileNumbers','contactNumber')" (onSelect)='validateContact($event, myObj3)' (verify)='verifyOTP($event)' (resend)='resendOTP($event)'></option-tag>
+            </fieldset>
+            <fieldset [disabled]="!privilege.isEditable('prvRegEmail')" class="no-border">
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'E-mail Address '" [formErrors]="prvRegForm" [inputErrors]="prvEmail" [templateType]="'grid-4-8'">
+                        <div ctype-8 class="input-group">
+                            <input class="form-control" name="emailAddress" id="emailAddress" type="text" (keyup.enter)='addContactDetails(emailAddress,"emailAddresses");' placeholder="Enter Here" emailPattern [(ngModel)]='emailAddress' #prvEmail='ngModel' inputAddon>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" [disabled]="isAddonDisabel(prvEmail)" (click)='addContactDetails(emailAddress,"emailAddresses");'> <i class="fa fa-plus"></i></button>
+                            </span>
+                        </div>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Website'" [formErrors]="prvRegForm" [inputErrors]="prvWebsite" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name="regwebsite" id="regwebsite" [(ngModel)]="registerObj.additionalDetails.website" placeholder="Enter Here" type="text" #prvWebsite="ngModel">
+                    </input-wrapper>
+                </div>
+            </fieldset>
+            <fieldset  *ngIf='emailAddresses.length>0'>
+                <legend class="scheduler-border">Email Address</legend>
+                <!--<tag-input *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!privilege.isCurrentTask("prvRegNew")'  (onRemove)="updateItem($event,'emailAddresses','emailAddress')" [(ngModel)]='emailAddresses' name="emailAddr"> </tag-input>-->
+                <option-tag *ngIf='!privilege.isCurrentTask("prvEmpReg")' [readonly]='!privilege.isCurrentTask("prvRegNew")'  (onRemove)="updateItem($event,'emailAddresses','emailAddress')" [(tagList)]='emailAddresses' [templateDetail]="{ type: 4}"> </option-tag>
+                <option-tag *ngIf='privilege.isCurrentTask("prvEmpReg")' [(tagList)]='emailAddresses' [templateDetail]="myType4" [(preferedTag)]='myObj4' (onRemove)="updateItem($event,'emailAddresses','emailAddress')" (onSelect)='validateContact($event, myObj4)' (verify)='verifyOTP($event)' (resend)='resendOTP($event)'></option-tag>
+            </fieldset>
+            <fieldset *ngIf='!privilege.isCurrentTask("prvEmpReg")' [disabled]="!privilege.isEditable('prvRegEntityDetail')" class="no-border">
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Number of Beds'" [formErrors]="prvRegForm" [inputErrors]="prvBeds" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="number" [(ngModel)]='registerObj.bedCount.strengthCount' name='regbeds' id='regbeds' #prvBeds="ngModel">
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Rohini ID'" [formErrors]="prvRegForm" [inputErrors]="prvRohinId" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.additionalDetails.rohiniId' name='regrohiniId' id='regrohiniId' #prvRohinId="ngModel">
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Specialty'" [formErrors]="prvRegForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [toggleDisabled]="!privilege.isEditable('prvRegEntityDetail')" [(toggle)]="registerObj.additionalDetails.specialtyTypeId" [toggleName]='"specialty"' [(toggleoptions)]="specialtyOptions" (onToggle)='setSpecialty($event)'></toggle-input>
+                    </input-wrapper>
+
+                    <input-wrapper *ngIf="specalityTypeCheck(specialtyOptions[0].id)" class='col-sm-6' [inputLabel]="'Multi Specialty'" [formErrors]="prvRegForm" [inputErrors]="prvMultiSpec" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown [options]="multiSpecialtyList" name='regmultiSpe' id='regmultiSpe' [(ngModel)]="selectedMultiSpecialtyId" (ngModelChange)="multiselectChange($event, 'multiSpecialty')" #prvMultiSpec='ngModel' ctype-8></ss-multiselect-dropdown>
+                    </input-wrapper>
+
+                    <input-wrapper *ngIf="specalityTypeCheck(specialtyOptions[1].id)" class='col-sm-6' [inputLabel]="'Single Specialty'" [formErrors]="prvRegForm" [inputErrors]="prvSingleSpec" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="regsingleSpec" id="regsingleSpec" [(ngModel)]='singelSpecVal' #prvSingleSpec='ngModel' (ngModelChange)="singelSpecialtyChange(event)">
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor='let type of multiSpecialtyList' [ngValue]='type.id'>{{type.name}}</option>
+                        </select>
+                    </input-wrapper>
+                </div>
+            </fieldset>
+            <fieldset *ngIf='privilege.isCurrentTask("prvEmpReg")' [disabled]="!privilege.isEditable('prvEmpEntityDetail')" class="no-border">
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Number of Beds*'" [formErrors]="prvRegForm" [inputErrors]="prvBeds" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="number" [(ngModel)]='registerObj.bedCount.strengthCount' name='empbeds' id='empbeds' #prvBeds="ngModel" required>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Rohini ID*'" [formErrors]="prvRegForm" [inputErrors]="prvRohinId" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.additionalDetails.rohiniId' name='emprohiniId' id='emprohiniId' #prvRohinId="ngModel" required>
+                    </input-wrapper>
+
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Specialty*'" [formErrors]="prvRegForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [toggleDisabled]="!privilege.isEditable('prvEmpEntityDetail')" [(toggle)]="registerObj.additionalDetails.specialtyTypeId" [toggleName]='"specialty"' [(toggleoptions)]="specialtyOptions" (onToggle)='setSpecialty($event)'></toggle-input>
+                    </input-wrapper>
+
+                    <input-wrapper  *ngIf="specalityTypeCheck(specialtyOptions[0].id)" class='col-sm-6' [inputLabel]="'Multi Specialty*'" [formErrors]="prvRegForm" [inputErrors]="prvMultiSpec" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown [options]="multiSpecialtyList" name='empmultiSpe' id='empmultiSpe' [(ngModel)]="selectedMultiSpecialtyId" (ngModelChange)="multiselectChange($event, 'multiSpecialty')" #prvMultiSpec='ngModel' ctype-8 required></ss-multiselect-dropdown>
+                    </input-wrapper>
+
+                    <input-wrapper *ngIf="specalityTypeCheck(specialtyOptions[1].id)" class='col-sm-6' [inputLabel]="'Single Specialty*'" [formErrors]="prvRegForm" [inputErrors]="prvSingleSpec" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="empsingleSpec" id="empsingleSpec" [(ngModel)]='singelSpecVal' #prvSingleSpec='ngModel' (ngModelChange)="singelSpecialtyChange(event)" required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor='let type of multiSpecialtyList' [ngValue]='type.id'>{{type.name}}</option>
+                        </select>
+                    </input-wrapper>
+                </div>
+            </fieldset>
+
+            <fieldset *ngIf="selectedMultiSpecialty.length>0">
+                <legend class="scheduler-border">Specialty</legend>
+                <!--<tag-input (onRemove)="removeTag($event, 'multiSpecialty')" [readonly]='!(privilege.isCurrentTask("prvRegNew") || privilege.isCurrentTask("prvEmpReg"))' [(ngModel)]='selectedMultiSpecialty' name="multiSpec"> </tag-input>-->
+                <option-tag (onRemove)="removeTag($event, 'multiSpecialty')" [readonly]='!(privilege.isCurrentTask("prvRegNew") || privilege.isCurrentTask("prvEmpReg"))' [(tagList)]='selectedMultiSpecialty'  [templateDetail]="{ type: 4}"> </option-tag>
+            </fieldset>
+            <fieldset [disabled]="!privilege.isEditable('prvRegIndBlacklist')" class="no-border">
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Industry Blacklist*'" [formErrors]="prvRegForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [toggleDisabled]="!privilege.isEditable('prvRegIndBlacklist')" [(toggle)]="registerObj.industryBlacklistIndicator" [toggleName]='"blacklist"' [(toggleoptions)]="blacklistOptions" [(togglevalue)]="blacklistValues" (onToggle)='setIndustryBlacklist($event)'></toggle-input>
+                    </input-wrapper>
+                </div>
+                <uploader [(savedFile)]='savedFiles' [(providerCode)]='providerCode' [(docBusinessType)]='docBusinessType'></uploader>
+                <div class="row" *ngIf='privilege.isCurrentTask("prvRegNew")'>
+                    <div class="col-sm-12 remarks-btn" *ngIf='remarksList.length>0 && privilege.currentProviderId!=""'>
+                        <div class="pull-right">
+                            <button class="btn btn-default"  (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                            <button class="btn btn-default"  (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                        </div>
+                    </div>
+                    <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="prvRegForm" [inputErrors]="prvRemark" [templateType]="'grid-2-10'">
+                        <textarea ctype-10 class="form-control" name="regremarks" id="regremarks" [(ngModel)]="registerObj.remarks" #prvRemark='ngModel'></textarea>
+                    </input-wrapper>
+                </div>
+            </fieldset>
+        </fieldset>
+        <fieldset [disabled]="!privilege.isEditable('RegisterationCheckerForm')" class="no-border">
+            <div class="row" *ngIf='privilege.isCurrentTask("prvRegChk")'>
+                <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken*'" [formErrors]="prvRegForm" [inputErrors]="chkRegAction" [templateType]="'grid-4-8'">
+                    <select ctype-8 class="form-control" name="regactionTaken" id="regactionTaken" [(ngModel)]='checkerAction.actionTakenId' #chkRegAction="ngModel" required> 
+                        <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                        <option *ngFor=' let item of registerActionList' [ngValue]='item.actionTakenId'>{{item.actionTakenName}}</option>
+                    </select>                               
+                </input-wrapper>
+                <div class="col-sm-6" *ngIf='remarksList.length>0'><!-- [ngClass]="{'col-sm-12':(userRole!='checker1')}" removed since maker and checker is isolated-->
+                    <div class="pull-right">
+                        <button class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                        <button class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                    </div>
+                </div>
+                <!--<input-wrapper *ngIf="!isRemarkRequired()" class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="prvRegForm" [inputErrors]="prvRemark" [templateType]="'grid-2-10'">
+                                    <textarea ctype-10 class="form-control" name="remarks" [(ngModel)]="checkerAction.remarks" #prvRemark='ngModel'></textarea>
+                                </input-wrapper>-->
+                <input-wrapper class='col-sm-12' [inputLabel]="'Remarks*'" [formErrors]="prvRegForm" [inputErrors]="prvRemark" [templateType]="'grid-2-10'">
+                    <textarea ctype-10 class="form-control" name="chkremarks" id="chkremarks" [(ngModel)]="checkerAction.remarks" #prvRemark='ngModel' required></textarea>
+                </input-wrapper>
+
+            </div>
+        </fieldset>
+        <fieldset [disabled]="!privilege.isEditable('RegisteredFormStatus')" class="no-border">
+            <div  *ngIf='privilege.isCurrentTask("prvRegView")'>
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Status'" [formErrors]="prvRegForm" [inputErrors]="prvStatus" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.status' name='regstatus' id='regstatus' #prvStatus="ngModel">
+                    </input-wrapper>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Current Tag 1'" [formErrors]="prvRegForm" [inputErrors]="prvCurTag1" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.currentTag1' name='regcurrentTag1' id='regcurrentTag1' #prvCurTag1="ngModel">
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Current Tag 2'" [formErrors]="prvRegForm" [inputErrors]="prvCurTag2" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='registerObj.currentTag2' name='regcurrentTag2' id='regcurrentTag2' #prvCurTag2="ngModel">
+                    </input-wrapper>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset [disabled]="!privilege.isEditable('EmpanelForm')" class="no-border">
+            <div  *ngIf='privilege.isCurrentTask("prvEmpReg")'>
+                <!--<div  *ngIf='userRole=="maker1" && registerObj.providerId!=null && riseEmpanel'>-->
+                <div>
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle" style="font-weight:bolder;">Empanel Request</span>
+                </div>
+                <hr>
+
+                <!--<div class="row">
+                     <input-wrapper class='col-sm-6' [inputLabel]="'Request Source*'" [formErrors]="prvRegForm" [inputErrors]="prvEmpReqSrc" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='empanelment.empanelmentReqSrc' name='empanelmentReqSrc' #prvEmpReqSrc="ngModel" required>
+                    </input-wrapper>
+                </div>-->
+                <div class="row">
+                    <input-wrapper *ngIf='!privilege.isCurrentTask("prvRegNew")' class='col-sm-6' [inputLabel]="'Request Source*'" [formErrors]="prvRegForm" [inputErrors]="prvEmpReqSrc" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="emprequest" id="emprequest" [(ngModel)]='registerObj.requestSourceId' #prvEmpReqSrc='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor='let type of requestSourceList' [ngValue]='type.referenceDataId'>{{type.referenceTypeValue}}</option>
+                        </select>
+                    </input-wrapper>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'AMHI Administrative Office Name'" [formErrors]="prvRegForm" [inputErrors]="prvAdminOfficeName" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="empanelmentAdminName" id="empanelmentAdminName" [(ngModel)]='selectedAdminOffice' #prvAdminOfficeName="ngModel" (ngModelChange)="setOfficeAddress(selectedAdminOffice)">
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let item of adminOfficeList' [ngValue]='item'>{{item.administrativeOfficeName}}</option>
+                        </select>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'AMHI Administrative Office Address'" [formErrors]="prvRegForm" [inputErrors]="prvAdminOfficeAddress" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='adminOfficeAddress' name='empanelmentAdminAddress' id='empanelmentAdminAddress' #prvAdminOfficeAddress="ngModel" disabled required>
+                    </input-wrapper>
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken*'" [formErrors]="prvRegForm" [inputErrors]="MkrEmpAction" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="empactionTaken" id="empactionTaken" [(ngModel)]='registerObj.actionTakenId' #MkrEmpAction="ngModel" required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let item of empanelActionList' [ngValue]='item.actionTakenId'>{{item.actionTakenName}}</option>
+                        </select>
+                    </input-wrapper>
+                    <input-wrapper *ngIf="isReasonVisible()" class='col-sm-6' [inputLabel]="'Reason*'" [formErrors]="prvRegForm" [inputErrors]="MkrEmpReason" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="empReason" id="empReason" [(ngModel)]='registerObj.reasonId' #MkrEmpReason="ngModel" required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option *ngFor=' let item of empanelReasonList' [ngValue]='item.reasonId'>{{item.reasonName}}</option>
+                        </select>
+                    </input-wrapper>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 remarks-btn"  *ngIf='remarksList.length>0'>
+                        <div class="pull-right">
+                            <button class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                            <button class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                        </div>
+                    </div>
+                    <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="prvRegForm" [inputErrors]="prvRemark" [templateType]="'grid-2-10'">
+                        <textarea ctype-10 class="form-control" name="empremarks" id="empremarks" [(ngModel)]="registerObj.remarks" #prvRemark='ngModel'></textarea>
+                    </input-wrapper>
+                </div>
+
+            </div>
+        </fieldset>
+
+        <div class="remarks-wrapper" *ngIf='remark'>
+            <label class="form-control-lable col-sm-2">
+            </label>
+
+            <ul class="remarks-list" *ngIf='reasonList!=[]'>                            
+                <li *ngFor='let obj of remarksList' >
+                    <div class="text-block text-message">
+                        <div class="message-header">
+                            <span class="author"> Created By : [{{obj.createdBy}}]</span>
+                        </div>
+                        <div class="message-time">
+                            Created On : {{obj.createdOn}}
+                        </div>
+                        <div class="message-content">
+                            {{obj.remarks}}
+                        </div>      
+                    </div>
+                </li>
+            </ul> 
+        </div>
+        <!--<div class="row" *ngIf='remark'>
+            <label class="form-control-lable col-sm-2">
+            </label>
+            <div class="col-sm-8 remarksBox">
+                <div class="row">
+                    <div class="col-sm-7">
+                        Created By : Maker 1 [123456]
+                    </div>
+                    <div class="col-sm-4 col-sm-5">
+                        Created On : MM/DD/YY TT:MM AM/PM
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-1">
+                        Product enplanement requested
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <hr/>
+        <div class="pull-right">
+            <span *ngIf='!(privilege.isCurrentTask("prvRegView"))'>
+                <button type="button" (click)='cancelBtn()' class="btn btn-default">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)='formSubmit(prvRegForm)'>Submit</button>
+            </span>
+            <span *ngIf='(privilege.isCurrentTask("prvRegView"))'>
+                <button type="" class="btn btn-primary">Information Update</button>
+                <button type="" class="btn btn-primary">Change Status</button>
+                <button type="" (click)='riseEmpanelReq()' class="btn btn-primary">Empanel</button>
+            </span>
+        </div>
+
+        {{prvRegForm.valid}}
+
+
+        <!--Empanel req form start-->
+        <!--<div *ngIf='userRole=="maker1" && registerObj.providerId!=null'>
+            <div class="row">
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Empanel Request</span>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Request Source*</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" name="reqSource" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">AMHI Administrative Office Name</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="officeName">
+                                <option>Delhi</option>
+                                <option>Chennai</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">AMHI Administrative Office Address</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" name="officAddress" placeholder="Enter Here" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Action Taken*</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="actionTaken">
+                                <option>Initiate Empanelment</option>
+                                <option>Rejected</option>
+                                <option>On Hold</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 form-control-label">Reason*</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="reason">
+                                <option>Initiate Empanelment</option>
+                                <option>Rejected</option>
+                                <option>On Hold</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!--Empanel req form stop-->
+        <!--        <div>
+                    {{registerObj | json}}
+                </div>
+                <div>
+                    {{checkerAction | json}}
+                </div>-->
+        <!--<div>
+            {{selectedCity | json}}
+        </div>
+        <div>
+            {{selectedDistrict | json}}
+        </div>-->
+    </form>
+</bs-card>

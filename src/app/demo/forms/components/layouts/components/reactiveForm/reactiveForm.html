@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)" >
+    <fieldset [disabled]=true class="no-border">
+    <div  [ngClass]="{'form-group': true, 'has-error': form.controls.firstname.errors}">
+        Firstname: <input type="text" formControlName="firstname" class="form-control"/>
+        <p *ngIf="form.controls.firstname.errors">This field is required!</p>
+    </div>
+    <div class="form-group">
+        Surname: <input type="text" formControlName="surname" class="form-control"/>
+    </div>
+    <div class="form-group">
+        Age: <input type="text" formControlName="age" class="form-control"/>
+    </div>
+    <fieldset formGroupName="address">
+        <legend class="scheduler-border">Address</legend>
+        <div class="form-group">
+            Street: <input type="text" formControlName="street" class="form-control"/>
+        </div>
+        <div class="form-group">
+            ZipCode: <input type="text" formControlName="zipCode" class="form-control" />
+        </div>
+    </fieldset>
+    <input class="btn btn-danger" type="submit" formControlName="submit">
+    </fieldset>
+</form>

@@ -1,0 +1,110 @@
+<form class="form-horizontal" #productDetailForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Product Name*'" [formErrors]="productDetailForm" [inputErrors]="prdName" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='prdName' #prdName='ngModel' required>
+        </input-wrapper>
+
+        <input-wrapper class='col-md-6' [inputLabel]="'Product Short Name'" [formErrors]="productDetailForm" [inputErrors]="prdShortName" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='prdShortName' #prdShortName='ngModel' required>
+        </input-wrapper>
+
+        <input-wrapper class='col-md-6' [inputLabel]="'Product Version'" [formErrors]="productDetailForm" [inputErrors]="prdVersion" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='prdVersion' #prdVersion='ngModel' required>
+        </input-wrapper>
+
+        <input-wrapper class='col-md-6' [inputLabel]="'Product UIN (IRDA)*'" [formErrors]="productDetailForm" [inputErrors]="prdIrda" [templateType]="'grid-4-8'">
+                       <input  ctype-8 type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='text' name='prdIrda' #prdIrda='ngModel' required>
+        </input-wrapper>
+
+        <input-wrapper class='col-sm-6' [inputLabel]="'Setup Date'" [formErrors]="productDetailForm" [inputErrors]="prdSetupdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="prdSetupdate" [options]="myDatePickerOptions" [(ngModel)]="setupdateModel" #prdSetupdate='ngModel' required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Effective Date'" [formErrors]="productDetailForm" [inputErrors]="prdSetupdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="prdSetupdate" [options]="myDatePickerOptions" [(ngModel)]="effectivedateModel" #prdSetupdate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Expiry Date'" [formErrors]="productDetailForm" [inputErrors]="prdSetupdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="prdSetupdate" [options]="myDatePickerOptions" [(ngModel)]="expirydateModel" #prdSetupdate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+
+        <input-wrapper class='col-sm-6' [inputLabel]="'LOB'" [formErrors]="productDetailForm" [inputErrors]="prdLob" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="prdLob" [(ngModel)]='selectedLob' #prdLob='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Product Segment'" [formErrors]="productDetailForm" [inputErrors]="prdSegment" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="prdSegment" [(ngModel)]='selectedSegment' #prdSegment='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Product Exclusion'" [formErrors]="productDetailForm" [inputErrors]="prdExclusion" [templateType]="'grid-4-8'">
+                       <ss-multiselect-dropdown [options]="exclusionList" name='prdExclusion' [(ngModel)]="selectedExclusionId"  #prdExclusion='ngModel' ctype-8 required></ss-multiselect-dropdown>
+        </input-wrapper>
+    </div>
+    <fieldset *ngIf="true">
+        <legend class="scheduler-border">Product Exclusion</legend>
+        <tag-input [(ngModel)]='selectedExclusionId' name="selectedExclusionList"> </tag-input>
+    </fieldset>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="''" [formErrors]="productDetailForm" [inputErrors]="prdRider" [templateType]="'grid-4-8'">
+            <div ctype-8>
+                <input class="pull-left" type="checkbox" name="rider" [(ngModel)]='selectedRider' #prdRider='ngModel'>
+                <label class="col-md-6 form-control-label">Rider</label>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="''" [formErrors]="productDetailForm" [inputErrors]="prdMaster" [templateType]="'grid-4-8'">
+            <div ctype-8>
+                <input class="pull-left" type="checkbox" name="master" [(ngModel)]='selectedMaster' #prdMaster='ngModel'>
+                <label class="col-md-6 form-control-label">Master Product</label>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'SI Currency Type'" [formErrors]="productDetailForm" [inputErrors]="prdCurrencytype" [templateType]="'grid-4-8'">
+                       <ss-multiselect-dropdown [options]="currencyList" name='prdCurrencytype' [(ngModel)]="selectedCurrency"  #prdCurrencytype='ngModel' ctype-8 required></ss-multiselect-dropdown>
+        </input-wrapper>
+    </div>
+    <fieldset *ngIf="true">
+        <legend class="scheduler-border">SI Currency Type</legend>
+        <tag-input [(ngModel)]='selectedCurrency' name="selectedCurrencytypeList"> </tag-input>
+    </fieldset>
+    <waiting-period [formTitle]="productDetailForm"> </waiting-period>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Minimum age of entry (adult)'" [formErrors]="productDetailForm" [inputErrors]="minAdultAge" [templateType]="'grid-4-8'">
+                       <div ctype-8>                
+                <input required class="form-control"  type="text" name="minAdultAge" [(ngModel)]='text' #minAdultAge="ngModel">
+                <span class="form-control-feedback">Years</span>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Maximum age of entry (adult)'" [formErrors]="productDetailForm" [inputErrors]="maxAdultAge" [templateType]="'grid-4-8'">
+                       <div ctype-8>                
+                <input required class="form-control"  type="text" name="maxAdultAge" [(ngModel)]='text' #maxAdultAge="ngModel">
+                 <span class="form-control-feedback">Years</span>
+            </div>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Minimum age for child dependent'" [formErrors]="productDetailForm" [inputErrors]="minChildAge" [inputErrorsTwo]="minChildAgePeriod" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="minChildAge" placeholder="Enter Here"  type="text" [(ngModel)]='text' #minChildAge="ngModel" number maxlength="4" >
+            <select ctype2-3-5 class="form-control" name="minChildAgePeriod" [(ngModel)]='text' #minChildAgePeriod='ngModel' required>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+                <option value="year">Year</option>
+            </select> 
+        </input-wrapper>            
+        <input-wrapper class='col-md-6' [inputLabel]="'Maximum age for child dependent'" [formErrors]="productDetailForm" [inputErrors]="maxChildAge" [inputErrorsTwo]="maxChildAgePeriod" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="maxChildAge" placeholder="Enter Here"  type="text" [(ngModel)]='text' #maxChildAge="ngModel" number maxlength="4" >
+            <select ctype2-3-5 class="form-control" name="maxChildAgePeriod" [(ngModel)]='text' #maxChildAgePeriod='ngModel' required>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+                <option value="year">Year</option>
+            </select> 
+        </input-wrapper>
+    </div>
+    <max-si [formTitle]="productDetailForm"> </max-si>   
+    <relation-ship [formTitle]="productDetailForm"> </relation-ship>   
+    
+    <hr/>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-primary">Next</button>
+    </div>
+</form>

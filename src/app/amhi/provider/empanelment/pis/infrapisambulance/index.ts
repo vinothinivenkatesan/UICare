@@ -1,0 +1,1 @@
+export * from './infrapisambulance.component.ts'

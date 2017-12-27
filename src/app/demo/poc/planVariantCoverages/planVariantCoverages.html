@@ -1,0 +1,79 @@
+<bs-card>
+    <div>
+        <fieldset>
+            <legend class="scheduler-border">Plan Variant Details</legend>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-4 form-control-label">Plan Variant</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" [(ngModel)]="selectedVarient"  (ngModelChange)="onVarientChange($event)" name="varient" id="channel">
+                                <option>Platinum</option>
+                                <option>Gold</option>
+                                <option>Silver</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 form-control-label">Coverage Details</label>
+                        <div class="col-sm-8">
+                            <ss-multiselect-dropdown [options]="myCoverageList" disabled name='multiselect' [(ngModel)]="selectedOptions" (ngModelChange)="onCoverageChange($event)"></ss-multiselect-dropdown>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-warning" (click)='clearSelection()'>Cancel</button>
+                        <button type="submit" class="btn btn-success" (click)='addCoverages()'>Add</button>
+                    </div>
+                </div>
+            </div>
+            <fieldset>
+                <legend class="scheduler-border">Chosen Coverages</legend>
+                <ngb-accordion [closeOthers]="true" (panelChange)="setActiveVarient($event)" activeIds={{activeVarient}} #acc="ngbAccordion">
+                    <div *ngFor="let Cover of coveragesAccordian" >
+                        <ngb-panel *ngIf="Cover.coverages.length>0 && Cover.options.length>0" [attr.name]='Cover.varient' id="{{Cover.varient}}" title="" content="my Platinum">
+                            <template ngbPanelTitle>
+                                <div>
+                                    <i class='fa' [ngClass]="{'fa-minus-circle':activeVarient==Cover.varient, 'fa-plus-circle':!(activeVarient==Cover.varient)}"></i>
+                                    <span> {{Cover.varient}}</span>
+                                    <span style="float:right;">
+                                        <i class='fa fa-trash' (click)='deleteCoverages(Cover, $event)'></i>                            
+                                        <i class='fa fa-plus-square' (click)='copyCoverages(Cover, $event)'></i>
+                                    </span>
+                                </div>
+                            </template>
+                            <template ngbPanelContent>
+                                <tag-input [(ngModel)]='Cover.coverages' [attr.name]='Cover.coverages' (onRemove)="removeTag($event, Cover)"></tag-input>                            
+                            </template>
+                        </ngb-panel>
+                    </div>
+                    <!--<ngb-panel id="1" title="Platinum" content="my Platinum">
+                        <template ngbPanelContent> 
+                            content
+                        </template>
+                    </ngb-panel>-->
+                    <!--<ngb-panel id="2">
+                        <template ngbPanelTitle>
+                            <span> Gold</span>     
+                        </template>
+                        <template ngbPanelContent>
+                            Content
+                        </template>
+                    </ngb-panel>-->
+                </ngb-accordion>
+            </fieldset>
+        </fieldset>
+        <hr/>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-warning">Cancel</button>
+            <button type="submit" class="btn btn-success">Save</button>
+            <button class="btn btn-primary"  (click)="firstClick()">Next</button>
+        </div>
+        <!--</form>-->
+    </div>
+</bs-card>

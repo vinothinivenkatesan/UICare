@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 14, 2017, 4:54:16 PM
+    Author     : 564812
+*/
+.advance-search>a{
+    color: $primary;
+    text-decoration: underline !important;
+    cursor: pointer;
+}   
+.advance-search > a:not([href]):not([tabindex]){
+    color: $primary;
+}
+
+/*.form-group label{
+    float: left;
+    margin-left: 5px;
+}*/
+
+.form-control-feedback{
+    top: -4px;
+    right: 10px;
+}
+
+.create-btn{
+    right: 35px;
+    position: absolute;
+    margin-top: -15px;
+}
+
+.create-btn>a>i.fa.fa-plus{
+    margin-right:5px;
+}
+
+.homepage div.col-md-12{
+    margin-top:40px;
+}
+.search-btn-holder{
+    margin-left: 3px;
+    margin-top: 25px;
+}

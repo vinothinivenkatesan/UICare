@@ -1,0 +1,38 @@
+<div class="row">
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Contact person name'" [formErrors]=[formtitle] [inputErrors]="contactName" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="contactName" [(ngModel)]="ctctName" #contactName='ngModel' required>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Contact person designation'" [formErrors]=[formtitle] [inputErrors]="contactDesignation" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="contactDesignation" [(ngModel)]="ctctDesignation" #contactDesignation='ngModel' required>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Email ID'" [formErrors]=[formtitle] [inputErrors]="contactEmail" [templateType]="'grid-4-8'">
+                   <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="contactEmail" [(ngModel)]="ctctEmail" #contactEmail='ngModel' required>
+    </input-wrapper>
+</div>
+
+<div class="row">
+    <input-wrapper class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]=[formtitle] [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                   <input ctype-3-5 class="form-control" name="code" placeholder="Enter Here" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="text" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4">
+        <div ctype2-3-5 class="input-group">
+            <input class="form-control" placeholder="Enter Here" name="landlineNumber" type="text" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8">
+        </div>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number'" [formErrors]=[formtitle] [inputErrors]="prvMobile" [templateType]="'grid-4-8'">
+                   <div ctype-8 class="input-group">
+            <input class="form-control" placeholder="Enter Here" name="mobileNumber" type="text" [(ngModel)]='mobileNumber' #prvMobile="ngModel" number maxlength="10">
+        </div>
+    </input-wrapper>
+
+    <input-wrapper class='col-md-6' [inputLabel]="'Ownership Type*'" [formErrors]=[formtitle] [inputErrors]="ownerType" [templateType]="'grid-4-8'">
+                   <select ctype-8 class="form-control" name="ownerType" [(ngModel)]='prvOwnerType' #ownerType='ngModel'>
+            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>      
+        </select>
+    </input-wrapper>
+    <input-wrapper class='col-md-6' [inputLabel]="'Providers Organization Type*'" [formErrors]=[formtitle] [inputErrors]="orgType" [templateType]="'grid-4-8'">
+                   <select ctype-8 class="form-control" name="orgType" [(ngModel)]='prvOrgType' #orgType='ngModel'>
+            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+        </select>
+    </input-wrapper>
+</div>

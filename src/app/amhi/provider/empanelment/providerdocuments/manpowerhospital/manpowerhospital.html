@@ -1,0 +1,13 @@
+<div #formRef=''>
+    <div>
+        <uploader [labelText]="'List of consultants [with specialty, contact number and email id]'" [(savedFile)]='prvHSPTLConsult.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <uploader [labelText]="'OPD Schedule for Consultants'" [(savedFile)]='prvHSPTLOPD.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Next</button>
+    </div>
+</div>

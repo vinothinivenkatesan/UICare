@@ -1,0 +1,41 @@
+<div #formRef=''>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Type of certificate'" [formErrors]="formRef" [inputErrors]="HSPTLCertType" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="photoType" [(ngModel)]="selectedHSPTLCertType" #HSPTLCertType='ngModel' (ngModelChange)="HSPTLCertTypeChange();">
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of HSPTLCertTypeList' [ngValue]='type.photographTypeName'>{{type.photographTypeName}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <fieldset [(disabled)]="isHSPTLCertDisable" class="no-border">
+            <uploader [(savedFile)]='currentHSPTLCertDoc' [isUploadShow]='false' [(providerCode)]='providerCode'></uploader>
+        </fieldset>
+        <div *ngFor="let obj of HSPTLCertTypeListObj">
+            <fieldset *ngIf='isFileAdded(obj.documents)'>
+                <legend class="scheduler-border">{{obj.documentTitle}}</legend>
+                <div class="boxparent row">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-8 row">
+                                <div  [ngClass]="addClass(docObj.isDeleted)" *ngFor="let docObj of obj.documents; let i=index;">
+                                    <div class="" *ngIf="docObj.isDeleted=='N'">    
+                                        <i class="fa-file-text-o fa fa-lg fileIcon"></i>
+                                        <a class="filename" (click)='openFile(docObj.documentId)'>{{docObj.documentName}}</a>
+                                        <span class="pull-right icon" (click)='removeFile(obj.documents, i)'>X</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>        
+    </div>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button">Next</button>
+    </div>
+</div>

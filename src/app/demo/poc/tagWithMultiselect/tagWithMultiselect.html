@@ -1,0 +1,110 @@
+<bs-card>
+<div>Provider Comparison</div>
+<div>
+<!--    <form>-->
+        <div>
+            <div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Equipment's category</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="equipmentList" name='multiselect' [(ngModel)]="equipmentOptions" (ngModelChange)="multiselectChange($event, 'selectedEquipment', equipmentList, '')"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row" *ngIf='selectedEquipment.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Equipment's category</legend>
+                            <tag-input [(ngModel)]='selectedEquipment' name="providerCommittee" (onRemove)='removeTag($event, equipmentOptions, equipmentList)'> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div *ngFor='let obj of selectedEquipment; let index =index;'>
+                    <div>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-4 form-control-label">{{obj}}</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]=selectList[index].values [name]=index [(ngModel)]="selectList[index].options" (ngModelChange)="multiselectChange($event, obj, selectList[index].values, index)"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf='selectList[index].tagValue.length>0'>
+                            <label for="" class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-10">
+                                <fieldset>
+                                    <legend class="scheduler-border">{{obj}}</legend>
+                                    <tag-input [(ngModel)]='selectList[index].tagValue' name="providerCommittee" (onRemove)='removeTag($event, selectList[index].options, selectList[index].values)'> </tag-input>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+
+            
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle">Bed Distribution</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Total Bed capacity available*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='totalBed' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Number of total Operational Beds*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='operationBed' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Bed categories available</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Bed categories available</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"(onRemove)='removeTag($event, selectedCommittee, myCoverageList)'> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" *ngFor='let obj of checkedList'>
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for={{obj.shortName}}>Number of {{obj.name}}*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                       
+        </div>
+    <!--</form>-->
+</div>
+</bs-card>

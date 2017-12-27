@@ -1,0 +1,30 @@
+.fileBox{
+    margin: 5px;
+    background-color: grey;
+    color: white;
+    padding: 6px;
+    min-width: 35px;
+    font-size: smaller;
+    padding-bottom: 1px;
+}
+.boxparent{
+    margin: 0px;    
+}
+.icon:hover{
+    font-size: 15px;
+    cursor: pointer;
+}
+.filename{
+    cursor: pointer;
+    color:white !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 50%;
+}
+.fileIcon{
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: 3px;
+}

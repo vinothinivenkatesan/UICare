@@ -1,0 +1,100 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Late Payment Penalty</span>
+</div>
+<hr>
+
+<form #latepaymentForm="ngForm">
+    <div class="row">  
+        <input-wrapper class='col-md-6' [inputLabel]="'Penalty applicable*'" [formErrors]="latepaymentForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'penaltyApplicable'" [(toggleoptions)]="penaltyApplicableoptions"></toggle-input>
+        </input-wrapper>        
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">Late payment penalty details</legend>
+        <div class="row">  
+            <input-wrapper class='col-md-6' [inputLabel]="'No of Days*'" [formErrors]="latepaymentForm" [inputErrors]="daysCountFrom" [inputErrorsTwo]="daysCountTo" [templateType]="'grid-4-8'">
+                <div ctype-8 class="fromtoinput">
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='daysCountFrom' #daysCountFrom="ngModel">
+                    <span>to</span>
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='daysCountTo' #daysCountTo="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-12' [inputLabel]="'Penalty Type'" [formErrors]="latepaymentForm" [inputErrors]="penaltyType" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='penaltyType1' #penaltyType='ngModel' name="penaltyType" id="penaltyType1" value="option1" >
+                            <span>%age</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='penaltyType2' #penaltyType='ngModel' name="penaltyType" id="penaltyType2" value="option1" >
+                            <span>Flat Amount</span>
+                        </label>
+                    </div>                        
+                </div>
+            </input-wrapper> 
+            <input-wrapper class='col-md-6' [inputLabel]="'Penalty %age*'" [formErrors]="latepaymentForm" [inputErrors]="penaltyPercentage" [templateType]="'grid-4-8'">
+                <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='penaltyPercentage' #penaltyPercentage="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Penalty flat amount*'" [formErrors]="latepaymentForm" [inputErrors]="penaltyAmt" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='penaltyAmt' #penaltyAmt="ngModel">
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-md-12' [inputLabel]="'Penalty ceiling'" [formErrors]="latepaymentForm" [inputErrors]="penaltyCeiling" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #penaltyCeiling='ngModel' name="penaltyCeiling" id="penaltyCeiling1" value="option1" required>
+                            <span>Higher of Both</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #penaltyCeiling='ngModel' name="penaltyCeiling" id="penaltyCeiling2" value="option2" required>
+                            <span>Lower of Both</span>
+                        </label>
+                    </div>
+                </div>
+            </input-wrapper>
+        </div>
+         <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>No of Days</th>
+                <th>Penalty Type</th>
+                <th>Penalty % age</th>
+                <th>Penalty Flat Amount</th>
+                <th>Penalty Ceiling</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

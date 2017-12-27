@@ -1,0 +1,48 @@
+<div>
+    <form>
+        <div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Door step facility</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Door step facility available*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="doorStep" [toggleName]='doorStepName' [(toggleoptions)]="doorStepOptions"></toggle-input>
+                    </input-wrapper>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Storage and record maintenance</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Medical record storage (prescription)*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="MedRecord" [toggleName]='MedRecordName' [(toggleoptions)]="MedRecordOptions"></toggle-input>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'The Storage Type*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="storageType" [toggleName]='storageTypeName' [(toggleoptions)]="storageTypeOptions"></toggle-input>
+                    </input-wrapper>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Billing pattern</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Billing pattern*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="billPattern" [toggleName]='billPatternName' [(toggleoptions)]="billPatternOptions"></toggle-input>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Name of the software used'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 class="form-control" name='billSoftwareName' [(ngModel)]="billSoftware" type="text">
+                    </input-wrapper>
+                </div>
+            </div>            
+        </div>
+    </form>
+</div>

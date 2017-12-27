@@ -1,0 +1,49 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Relationship</span>
+</div>
+<hr>
+
+<form #relationForm="ngForm" (ngSubmit)="addData(f.value)">
+    <div class="row">  
+        <input-wrapper class='col-md-6' [inputLabel]="'Relationships Allowed'" [formErrors]="relationForm" [inputErrors]="prdRelation" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="relationship" [(ngModel)]='text' #prdRelation='ngModel' >
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option>Father</option>
+                <option>Mother</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'SI allowed'" [formErrors]="relationForm" [inputErrors]="prdSIallowed" [inputErrorsTwo]="prdSItype" [templateType]="'grid-4-3-5'">
+                       <input ctype-3-5 class="form-control" name="prdSIallowed" placeholder="Enter Here"  type="text" [(ngModel)]='text' #prdSIallowed="ngModel" number maxlength="4" >
+            <select ctype2-3-5 class="form-control" name="prdSItype" [(ngModel)]='text' #prdSItype='ngModel' required>
+                <option>Flat Amount</option>
+                <option>Percentage</option>
+            </select> 
+        </input-wrapper>  
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Max SI Applicable from age</th>
+                <th>Max SI Applicable to age</th>
+                <th>Max SI Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

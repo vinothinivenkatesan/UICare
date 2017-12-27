@@ -1,0 +1,38 @@
+<form #providerServiceTariffForm="ngForm">
+    <div class="row">
+        
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <span class="or-split">Or</span>
+            <hr>
+        </div>
+    </div>
+   
+    <uploader [(savedFile)]='providerServiceTariff' ></uploader>
+
+    <div class="pull-right">
+        <button type="submit" class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+        <button type="submit" class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+    </div>
+
+    <div class="form-group row">
+        <input-wrapper class='col-sm-12' [inputLabel]="'Remarks'" [formErrors]="providerServiceTariffForm" [inputErrors]="remarks" [templateType]="'grid-2-10'">
+            <textarea class='form-control' placeholder="Enter Here" [(ngModel)]='textarea' name='remarks' #remarks='ngModel' ctype-10 ></textarea>
+        </input-wrapper>
+    </div>    
+         
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</form>

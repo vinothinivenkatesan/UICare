@@ -1,0 +1,16 @@
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #group1 [isOpen]="true">
+         <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+            <span>Grading</span>  
+        </div>  
+         <grading></grading>
+    </accordion-group>
+    <accordion-group #group2>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group2?.isOpen, 'fa-plus-circle': !group2?.isOpen}"> </i>
+            <span>Provider Comparison</span>  
+        </div>  
+         <provider-comparison></provider-comparison>
+    </accordion-group> 
+</accordion>

@@ -1,0 +1,104 @@
+<div class="widgets homepage">
+    <div class="create-btn">
+        <a href="#/amhi/provider/preferrednetwork/createnetwork" class="btn btn-primary"><i class="fa fa-plus"></i>New Preferred Network</a>
+    </div>    
+    <div class="row" *ngIf='!advSearchPanel'>
+        <div class="col-md-12">
+            <bs-card bsCardClass="with-scroll">
+                <p class="table-heading">Search</p>
+                <form class="row form-inline">
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" [ngClass]="{'has-error': (!searchInput.value), 'has-success': (searchInput.value)}" id="exampleInputName2" placeholder="Search" name="search"  #searchInput [ngClass]="{'has-error':isData}">
+                        <i class="fa fa-search form-control-feedback" aria-hidden="true"></i>
+                    </div>                     
+                    <div class="form-group">
+                        <button type="button"  [disabled]="!searchInput.value"  (click)="getSearchResults(searchInput.value)" class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="form-group advance-search">
+                        <a (click)="advSearchPanel=true">Advanced Search</a>
+                    </div>                    
+                </form>
+            </bs-card>
+        </div>
+    </div>
+    <div class="row" *ngIf='advSearchPanel'>      
+        <div class="col-md-12">
+            <bs-card bsCardClass="with-scroll">
+                <form #signupForm="ngForm">
+                    <div class="row">
+                        <div class="form-group col-xs-3">
+                            <label class="form-control-label">Network ID</label>
+                            <input type="text" class="form-control" name="id"  placeholder="Enter Here" [(ngModel)]='id'>
+                        </div>
+                        <div class="form-group col-xs-3">
+                            <label class="form-control-label">Network Name</label>
+                            <select class="form-control" name="name" [(ngModel)]='selectedName'>
+                                <option [ngValue]='emptyString' selected>Select Here</option>
+                            </select>
+                        </div>                                         
+                        <div class="form-group col-xs-3">
+                            <label class="form-control-label">Type of Network</label>
+                            <select ctype-8 class="form-control" name="networktype" [(ngModel)]='selectednetwork'>
+                                <option [ngValue]='emptyString' selected>Select Here</option>
+                            </select>
+                        </div>
+                        <div class="row pull-right search-btn-holder">  
+                            <div class="form-group col-xs-4">
+                                <button type="button" class="btn btn-primary" (click)="getAdvancedSearchResults(signupForm)">Search</button>
+                            </div>
+                            <div class="col-xs-7 form-group advance-search">
+                                <a (click)="!advSearchPanel=false">Simple Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </bs-card>
+        </div>
+    </div>
+
+    <bs-card bsCardClass="with-scroll">
+        <div class='row'>
+            <div class="col-md-6">
+                <p class="table-heading">Summary</p>
+            </div>
+            <div class="col-md-6 icons-right">
+                <div class="dropdown settings-icon">
+                    <a href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog"  tooltip="Settings"  placement="bottom"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-item form-check" *ngFor="let column of configObject.settings">
+                             <label class="form-check-inline">
+                                <input type="checkbox" name="{{column.objectKey}}" class="form-check-input" [(ngModel)]="column.visible" (change)="myTable.redraw()">
+                                {{configObject.fields| gtProperty:column.objectKey:'name'}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row count-wrapper'>
+            <div class="col-md-6">
+                <label>Records per page</label>
+                <form class="form-group generic-row-count">
+                    <select class="form-control form-control-sm" #rowLength (change)="myTable.changeRowLength(rowLength.value)">
+                        <option value=10>10</option>
+                        <option value=20>20</option>
+                        <option value=30>30</option>
+                        <option value=40>40</option>
+                        <option value=50>50</option>
+                    </select>                    
+                </form>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" #search (keyup)="applySearch(search.value)" class="form-control generic-search" placeholder="Search">
+            </div>
+        </div>
+        <generic-table [gtClasses]="'table-hover'" #myTable [gtSettings]="configObject.settings" [gtFields]="configObject.fields" [(gtData)]="configObject.data" [gtTexts]="gttext"  [gtInfo]="configObject.info" (gtEvent)="trigger($event)"  [gtOptions]="{csvDelimiter:',', highlightSearch:true,lazyLoad:true}"></generic-table>
+        <div class="text-xs-center">
+            <gt-pagination [genericTable]="myTable"></gt-pagination>
+        </div>
+    </bs-card>
+</div>

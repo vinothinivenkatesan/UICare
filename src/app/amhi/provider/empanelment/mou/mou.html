@@ -1,0 +1,58 @@
+<div class="table-responsive floater-table bottom-margin">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>MOU with version number</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Effective Date</th>
+                <th>Validity</th>
+                <th>Renewal Date</th>
+                <th>Empanelment Date</th>
+                <th>Status</th>
+                <th>Condition</th>
+                <th>Document Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #group1 [isOpen]="true">
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+            <span>MOU details</span>
+        </div>
+        <detail></detail>
+    </accordion-group>
+    <accordion-group #group2>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group2?.isOpen, 'fa-plus-circle': !group2?.isOpen}"> </i>
+            <span> MOU renewal options</span>  
+        </div>  
+        <renewal></renewal>
+    </accordion-group>
+    <accordion-group #group3>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-circle': group3?.isOpen, 'fa-plus-circle': !group3?.isOpen}"> </i>
+            <span> Bank Deposit / Guarantee</span>  
+        </div>  
+        <bank></bank>
+    </accordion-group>
+</accordion>

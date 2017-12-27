@@ -1,0 +1,72 @@
+@media screen and (min-width: 1620px) {
+    .row.shift-up {
+        > * {
+            margin-top: -573px;
+        }
+    }
+}
+
+@media screen and (max-width: 1620px) {
+    .card.feed-panel.large-card {
+        height: 824px;
+    }
+}
+
+.user-stats-card {
+    .card-title {
+        padding: 0 0 15px;
+    }
+}
+
+.blurCalendar {
+    height: 475px;
+}
+
+.dashboard-tab{
+    margin-bottom: 30px;
+}
+
+.dashboard-tab hr{
+    margin-top: 0px;
+}
+
+.dashboard-tab .nav.nav-tabs {
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+    color:#4c4d4f;
+    border-radius:0;
+}
+
+.dashboard-tab .nav.nav-tabs > li > a{
+    color:#4c4d4f;
+}
+
+.dashboard-tab .nav.nav-tabs > li > a:hover {
+    background-color: #fff;
+    color:#f26522;
+}
+
+.dashboard-tab .nav.nav-tabs > li.active > a{
+    color: #f26522;
+    border-bottom: 5px solid #f26522;
+    font-weight: bolder;
+    background: #ffffff;
+}
+
+.dashboard-tab .nav.nav-tabs > li:first-of-type a{
+    border-radius:0;
+}
+
+.dashboard-tab .card-body{
+    padding:0;
+} 
+
+.dashboard-tab bs-card>div{
+    padding:0;
+    border:0;
+}
+
+generic-table .progress{
+    margin-top:0;
+}

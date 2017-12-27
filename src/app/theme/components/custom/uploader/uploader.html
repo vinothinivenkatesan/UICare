@@ -1,0 +1,51 @@
+<custom-modal #modal2 [(notificationPurpose)]='notifyName' [(modalHeader)]='notifyHeader' [(modalBody)]='notifyBody' [(modalType)]='notifyType2' [(buttonText1)]='notifyBtn1' [(buttonText2)]='notifyBtn2' (onModalClose)="modalClosed($event)">
+</custom-modal>
+{{assingConfirmNotifyModal(modal2)}}
+<div class="row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label">
+                        <span>
+                            {{labelText}}
+                            <span class="mandatory" *ngIf='isRequired()'>* </span>
+                        </span>
+                    </label>
+                    <div class="col-sm-8 browse-wrapper textAlign" style="max-height: 35px;">
+                        <span *ngFor="let item of uploader.queue">
+                            <span style="line-height: 28px;" *ngIf="!item?.isUploaded">{{ item?.file?.name }}; </span>
+                        </span>
+                        <!--<template *ngFor="let item of uploader.queue">
+                            <strong>{{ item?.file?.name }} </strong>
+                        </template>-->
+                        <span class="btn btn-success btn-file browse-btn">
+                            Browse <input type="file" name='document' ng2FileSelect [uploader]="uploader" (change)="fileChange($event)" multiple #fileUploader (click)='fileInput(fileUploader)'>
+                        </span>
+                    </div>
+                    <div class="col-sm-2 upload-btn"><!--uploader.uploadAll()-->
+                        <button class="btn btn-default" type="button" (click)="myUpload()" [disabled]="!uploader.getNotUploadedItems().length">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf='false && isUploadShow'>
+            <p class="mini col-sm-12">File type doc, pdf, xls, jpeg, png, jpg, gif is accepted with the max of 5 documents with the size of each document restricted to 10MB</p>
+        </div>
+<fieldset *ngIf='isFileAdded(savedFile) && isUploadShow'>
+        <legend class="scheduler-border">{{docBusinessType}}</legend>
+        <div class="boxparent row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-8 row">
+                        <div  [ngClass]="addClass(obj.isDeleted)" *ngFor="let obj of savedFile; let i=index;">
+                            <div class="" *ngIf="obj.isDeleted=='N'">
+                                <i class="fa-file-text-o fa fa-lg fileIcon"></i>
+                                <a class="filename" (click)='openFile(obj.documentId)'>{{obj.documentName}}</a>
+                                <span class="pull-right icon" (click)='removeFile(savedFile, i)'>X</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>

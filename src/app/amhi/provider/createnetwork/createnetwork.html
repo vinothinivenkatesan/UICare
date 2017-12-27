@@ -1,0 +1,276 @@
+<div id="wizard" class="form_wizard wizard_horizontal">
+    <ul class="wizard_steps">
+        <li>
+            <a>
+                <span [ngClass]="{'step_no': true, 'onprogress':isOnprogressMaker,'inactive':isInactiveMaker,'completed':isCompletedMaker}">1</span>
+                <span class="step_descr">
+                    Maker
+                </span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressChecker,'inactive':isInactiveChecker,'completed':isCompletedChecker}">2</span>
+                <span class="step_descr">
+                    Checker
+                </span>
+            </a>
+        </li>        
+        <li>
+            <a>
+                <span  [ngClass]="{'step_no': true, 'onprogress':isOnprogressApprover,'inactive':isInactiveApprover,'completed':isCompletedApprover}">3</span>
+                <span class="step_descr">
+                    Approver
+                </span>
+            </a>
+        </li>        
+    </ul>
+</div> 
+<custom-modal #modal [modalHeader]='"Search Provider"' [modalType]="'customBodyContentLarge'">
+    <div  modal-lg>
+        <div class="row modal-search">      
+            <div class="col-md-12">
+                <bs-card bsCardClass="with-scroll">
+                    <form #searchForm="ngForm">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label class="form-control-label">Provider/Group</label>
+                                <toggle-input [(toggle)]="Y" [toggleName]="'type'" [(toggleoptions)]="providerOptions"></toggle-input>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="form-control-label">Provider Code</label>
+                                <input type='text' name='code' class='form-control'/>
+                            </div>                                         
+                            <div class="form-group col-md-3">
+                                <label class="form-control-label">Provider Name</label>
+                                <input type='text' name='name' class='form-control'/>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="form-control-label">Parent Corporate Group Name</label>
+                                <select name='parentgroup' class="form-control">
+                                    <option value=''>Select Here</option>
+                                </select>
+                            </div>                       
+                        </div>
+                        <div class="row">  
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary pull-right">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </bs-card>
+            </div>
+        </div>
+        <div class="table-responsive floater-table bottom-margin">
+            <table class="table table-bordered" style="margin-top:2%;">
+                <thead>
+                    <tr class="black-muted-bg">
+                        <th class="table-id">#</th>
+                        <th>Provider/Group</th>
+                        <th>Provider Code</th>
+                        <th>Provider Name</th>
+                        <th>Parent Corporate Group Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="id"/></td>
+                        <td>Provider</td>
+                        <td>AMHI1234</td>
+                        <td>Apollo Hospital</td>
+                        <td>Apollo Hospital</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</custom-modal>
+{{assignModal(modal)}}
+
+<bs-card>  
+    <form #networkForm="ngForm" >
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'Request Source*'" [formErrors]="networkForm" [inputErrors]="reqSource" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="reqSource" [(ngModel)]='selectedreqSource' #reqSource='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Network Name*'" [formErrors]="networkForm" [inputErrors]="networkName" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='networkName' #networkName="ngModel">
+            </input-wrapper>
+        </div>
+        <div class="subTitle">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Network Definition Parameters</span>
+        </div>
+        <hr>
+        <div class="row"> 
+            <input-wrapper class='col-md-6' [inputLabel]="'Purpose of Network*'" [formErrors]="networkForm" [inputErrors]="networkPurpose" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='networkPurpose' #networkPurpose="ngModel">
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Type of Network*'" [formErrors]="networkForm" [inputErrors]="networkType" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="networkType" [(ngModel)]='selectednetworkType' #networkType='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'Major Services Available*'" [formErrors]="networkForm" [inputErrors]="majorService" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="majorService" [(ngModel)]='selectedmajorService' #majorService='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Major Services Available</legend>
+        </fieldset>
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'IP services*'" [formErrors]="networkForm" [inputErrors]="ipService" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="ipService" [(ngModel)]='selectedipService' #ipService='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'OP services*'" [formErrors]="networkForm" [inputErrors]="opService" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="opService" [(ngModel)]='selectedopService' #opService='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">IP Services</legend>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">OP Services</legend>
+        </fieldset>
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'Daycare services*'" [formErrors]="networkForm" [inputErrors]="dcService" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="dcService" [(ngModel)]='selecteddcService' #dcService='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Health check services*'" [formErrors]="networkForm" [inputErrors]="hcService" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="hcService" [(ngModel)]='selectedhcService' #hcService='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Daycare Services</legend>
+        </fieldset>
+        <fieldset>
+            <legend class="scheduler-border">Health check Services</legend>
+        </fieldset>
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'Entity Type(s)*'" [formErrors]="networkForm" [inputErrors]="entityType" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="entityType" [(ngModel)]='selectedentityType' #entityType='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Entity Type(s)</legend>
+        </fieldset>
+        <div class="row"> 
+            <input-wrapper class='col-md-12' [inputLabel]="'Cashless / Reimbursement /Both*'" [formErrors]="networkForm" [inputErrors]="cashless" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #cashless='ngModel' name="cashless" id="cashless" value="cashless" required>
+                            <span>Cashless</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #cashless='ngModel' name="cashless" id="reimbursement" value="reimbursement" required>
+                            <span>Reimbursement</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #cashless='ngModel' name="cashless" id="both" value="both" required>
+                            <span>Both</span>
+                        </label>
+                    </div>
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'City*'" [formErrors]="networkForm" [inputErrors]="city" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="city" [(ngModel)]='selectedcity' #city='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Grade*'" [formErrors]="networkForm" [inputErrors]="grade" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="grade" [(ngModel)]='selectedgrade' #grade='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Accreditation*'" [formErrors]="networkForm" [inputErrors]="accreditation" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="accreditation" [(ngModel)]='selectedaccreditation' #accreditation='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Effective Date*'" [formErrors]="networkForm" [inputErrors]="effectiveDate" [templateType]="'grid-4-8'">
+                           <my-date-picker ctype-8 name="effectiveDate" [options]="myDatePickerOptions" [(ngModel)]="effectiveDateModel" #effectiveDate='ngModel'  required date></my-date-picker> 
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Accreditation</legend>
+        </fieldset>
+        <div class="row"> 
+            <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken*'" [formErrors]="networkForm" [inputErrors]="actionTaken" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="actionTaken" [(ngModel)]='selectedactionTaken' #actionTaken='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>            
+            <input-wrapper class='col-sm-12' [inputLabel]="'Comments*'" [formErrors]="networkForm" [inputErrors]="comments" [templateType]="'grid-2-10'">
+                <textarea ctype-10 class="form-control" name="comments" [(ngModel)]="text" #comments='ngModel'></textarea>
+            </input-wrapper>
+        </div>
+
+        <div class="subTitle">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle">Providers/Groups part of the network</span>
+        </div>
+        <hr>
+        <div class="table-responsive floater-table bottom-margin">
+            <table class="table table-bordered" style="margin-top:2%;">
+                <thead>
+                    <tr class="black-muted-bg">
+                        <th class="table-id">#</th>
+                        <th>Provider/Group</th>
+                        <th>Provider Code</th>
+                        <th>Provider Name</th>
+                        <th>Parent Corporate Group Name</th>
+                        <th>Entity Type</th>
+                        <th>Rate List Name</th>
+                        <th>Rate List Version</th>
+                        <th>Cashless/ Reimbursement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>Please add providers</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row"> 
+            <div class="col-md-12" >
+                <button class="btn btn-primary pull-right" type="button" (click)="modal.open()">Search & Add Provider</button>
+            </div>
+        </div>
+        <hr>
+        <div class="pull-right" >
+            <button class="btn btn-default" type="button">Cancel</button>
+            <button class="btn btn-default" type="button">Save</button>
+            <button class="btn btn-primary" type="button">Submit</button>
+        </div>
+    </form>
+</bs-card>

@@ -1,0 +1,1 @@
+export * from './providerid.component.ts'

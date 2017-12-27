@@ -1,0 +1,106 @@
+<form #pharmaDrugForm="ngForm" novalidate>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Drugs covered?*'" [formErrors]="pharmaDrugForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="pharmaDrugObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+        </input-wrapper>
+    </div>
+    <form #pharmaDrugDetForm="ngForm" novalidate>
+        <fieldset>
+            <legend class="scheduler-border">Pharmacy and Drug Details</legend>
+           
+            <div class="row">
+                <input-wrapper class='col-sm-6' [inputLabel]="'Drugs covered'" [formErrors]="pharmaDrugDetForm" [inputErrors]="proDepCategory" #medicalManageWrap [templateType]="'grid-4-8'">
+                    <select ctype-8 class="form-control" name="proDepCategory" [(ngModel)]='pharmaDrugObj.proDepCategory' #proDepCategory='ngModel'>
+                        <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                        <option *ngFor='let option of proDepCategoryList' [ngValue]='option.id'>{{option.name}}</option>
+                    </select>
+                </input-wrapper>
+                <input-wrapper class='col-sm-6' [inputLabel]="'Maximum permissible value*'" [formErrors]="pharmaDrugDetForm" [inputErrors]="amhiPackRate" [templateType]="'grid-4-8'">
+                    <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='pharmaDrugObj.amhiPackRate' name='amhiPackRate' #amhiPackRate='ngModel' ctype-8 required>
+                </input-wrapper>
+            </div>
+            <div class="row">                    
+                <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                <span class="alingIconTitle">Discounts</span>
+            </div>
+            <hr> 
+            <span class="pull-right">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                    <input type="checkbox" value="">
+                    <span>Discount Applicable for all</span>
+                </label>
+            </span>
+            <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicable*'" [formErrors]="pharmaDrugDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                    <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="pharmaDrugDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                </input-wrapper>
+            </div>
+            <div class="row">
+                <input-wrapper class='col-sm-6' [inputLabel]="'Discount Percentage*'" [formErrors]="pharmaDrugDetForm" [inputErrors]="discountPerc" [templateType]="'grid-4-8'">
+                    <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='pharmaDrugDetailObj.discountPerc' name='discountPerc' #discountPerc='ngModel' ctype-8 required>
+                </input-wrapper>
+                
+                <input-wrapper class='col-sm-6' [inputLabel]="'Discount Amount*'" [formErrors]="pharmaDrugDetForm" [inputErrors]="discountAmt" [templateType]="'grid-4-8'">
+                    <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='pharmaDrugDetailObj.discountAmt' name='discountAmt' #discountAmt='ngModel' ctype-8 required>
+                </input-wrapper>
+                <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicability*'" [formErrors]="pharmaDrugDetForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                    <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="pharmaDrugDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                </input-wrapper>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <span>
+                            <button class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+<table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Drugs Covered</th>
+                <th>Maximum permissible value</th>               
+                <th>Discount Percentage</th>
+                <th>Discount Amount</th>
+                <th>Discount Applicability</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>               
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>                
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+     <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Reset</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+.shortText{
+    color:grey;
+    font-size:smaller;
+}
+
+.input-group{
+    margin-bottom: 0px;
+}
+.input-group-btn.btn{
+    margin-bottom: 0px;
+    border: 0px;
+    line-height: 1.50;
+}
+label.col-sm-12.form-control-label {
+    justify-content: flex-start;
+}
+.form-control-label{
+    margin-bottom: 0px;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;  
+    align-items: center;
+    justify-content: flex-end;
+}
+.betweenText{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    align-items: center;
+}
+/*label.col-sm-12.form-control-label {
+    @include horizontal-align("flex-start");
+}
+.form-control-label{
+    margin-bottom: 0px;
+    @include vertical-align("center");
+    @include horizontal-align("flex-end");
+}
+.betweenText{
+     @include vertical-align("center");
+}*/
+.mandatory{
+    color: red;
+    font-weight:bold;
+}

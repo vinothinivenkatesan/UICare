@@ -1,0 +1,70 @@
+.dropdown-item {
+    line-height: 1;
+}
+
+.dropdown-menu {
+    font-size: inherit;
+}
+
+.dropdown-menu>li{
+    padding:5px;
+}
+.dropdown-menu>li:hover{
+    background:#eee;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: 2.2rem;
+}
+
+ss-multiselect-dropdown .dropdown button.btn.btn-default.dropdown-toggle {
+    width: 100%;
+    text-align: left;
+    overflow-x: hidden;
+}
+
+ss-multiselect-dropdown .dropdown-toggle::after {  
+    float: right;
+    margin-top: 5px;
+}
+
+
+ss-multiselect-dropdown .dropdown button.btn.btn-default.dropdown-toggle:focus {
+    color: #666666;
+    box-shadow: none;
+    border-color: #66afe9;
+    background: #ffffff;
+}
+ss-multiselect-dropdown .dropdown button.btn.btn-default.dropdown-toggle:focus+ul {
+    color: #666666;
+    box-shadow: none;
+    border-color: #66afe9;
+    background: #ffffff;
+}
+
+ss-multiselect-dropdown .dropdown button.btn.btn-default.dropdown-toggle:hover {
+    transform: none;
+}
+
+ss-multiselect-dropdown .dropdown-item {
+    width:100%;
+}
+ss-multiselect-dropdown .dropdown-menu {
+    width:100% !important;
+    border-radius: 0px;
+}
+
+ss-multiselect-dropdown .dropdown-divider{
+    display:none;
+}
+
+ss-multiselect-dropdown .dropdown ul>li>a{
+    color:$default-text;
+}
+
+ss-multiselect-dropdown button.btn.btn-default{
+    border-color:$input-border;
+}
+
+
+

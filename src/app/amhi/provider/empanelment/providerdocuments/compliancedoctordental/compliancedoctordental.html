@@ -1,0 +1,31 @@
+
+<div #formRef=''>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Registration certificate for doctor</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="regCertDoctorEffectivedate" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="regCertDoctorEffective" [options]="myDatePickerOptions" [(ngModel)]="prvRegCertDoctorDateOfIssue" #regCertDoctorEffectivedate='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'dateOfIssue')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="regCertDoctorExpirydate" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="regCertDoctorEnd" [options]="myDatePickerOptions" [(ngModel)]="prvRegCertDoctorDataOfExpiry" #regCertDoctorExpirydate='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="regCertDoctorIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="regCertDoctorIssuer" [(ngModel)]="prvRegCertificateDoctor.issuingAuthority" #regCertDoctorIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvRegCertificateDoctor.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Others</span>
+        </div>
+        <hr>
+        <uploader [(savedFile)]='prvOtherDoctorDoc.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+</div>

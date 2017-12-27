@@ -1,0 +1,37 @@
+<form  #generalInfoForm="ngForm">
+    <fieldset class='no-border' disabled='true'>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Request Source*'" [formErrors]=[formtitle] [inputErrors]="reqSource" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="request" [(ngModel)]='providerObj.requestSourceId' #reqSource='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of requestSourceList' [ngValue]='type.referenceDataId'>{{type.referenceTypeValue}}</option>
+                </select>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'AMHI Administrative Office Name'" [formErrors]="generalInfoForm" [inputErrors]="prvEntity" #prvEntityWrap [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="adminOffice" [(ngModel)]='providerObj.additionalDetails.adminOfficeId' #prvEntity='ngModel' (ngModelChange)='getAddress();' required >
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let adminOfficeObj of adminOfficeList' [ngValue]='adminOfficeObj.administrativeOfficeId'>{{adminOfficeObj.administrativeOfficeName}}</option>
+                </select>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'AMHI Administrative Office Address'" [formErrors]="generalInfoForm" [inputErrors]="Input2" [templateType]="'grid-4-8'">
+                           <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='adminAddress' name="officeAddress" id="officeAddress" type="text" #Input2='ngModel'>
+            </input-wrapper>
+        </div>
+    </fieldset>
+    <provider-details [formtitle]='generalInfoForm' [parentObj]='providerObj'>
+    </provider-details>
+    <corporate-group-details [formtitle]='generalInfoForm' [parentObj]='providerObj'>
+    </corporate-group-details>
+    <contact-details [formtitle]='generalInfoForm' [parentObj]='providerObj'>
+    </contact-details>
+    <administrative-unit-details [formtitle]='generalInfoForm' [parentObj]='providerObj'>
+    </administrative-unit-details>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button" (click)='resetBtn()'>Reset</button>
+        <button class="btn btn-primary" type="submit" >Next</button>
+    </div>
+    <pre>{{providerObj|json}}</pre>
+</form>

@@ -1,0 +1,99 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Down billing contact</span>
+</div>
+<hr>
+
+<form #downbillingForm="ngForm">
+    <div class="row">  
+        <input-wrapper class='col-md-6' [inputLabel]="'Down billing contract available'" [formErrors]="downbillingForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'downbillingAvailable'" [(toggleoptions)]="downBillingoptions"></toggle-input>
+        </input-wrapper>        
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">Down billing room details</legend>
+        <div class="row">  
+            <input-wrapper class='col-sm-6' [inputLabel]="'Original room category*'" [formErrors]="downbillingForm" [inputErrors]="originalRoom" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="originalRoom" [(ngModel)]='selectedoriginalRoom' #originalRoom='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Down billing room category*'" [formErrors]="downbillingForm" [inputErrors]="downbillingRoom" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="downbillingRoom" [(ngModel)]='selecteddownbillingRoom' #downbillingRoom='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of claims contract*'" [formErrors]="downbillingForm" [inputErrors]="claimsNumber" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='claimsNumber' #claimsNumber="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Down billing contract cycle period*'" [formErrors]="downbillingForm" [inputErrors]="cyclePeriod" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='cyclePeriod' #cyclePeriod="ngModel">
+                </div>
+            </input-wrapper>
+
+        </div>
+        <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Original room category</th>
+                <th>Down billing room category</th>
+                <th>Number of claims contract</th>
+                <th>Down billing contract cycle period</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Down billing claims accumulation</span>
+</div>
+<hr>
+
+<div class="table-responsive floater-table">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Original room category</th>
+                <th>Down billing room category</th>
+                <th>Total no. of claims adjusted in current period for the downgrade room category contract</th>
+                <th>Remaining number of claims for the downgrade room category contract</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>               
+            </tr>
+        </tbody>
+    </table>
+</div>

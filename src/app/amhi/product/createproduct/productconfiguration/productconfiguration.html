@@ -1,0 +1,112 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Plan Variant Details</span>
+</div>
+<hr>
+<form class="form-horizontal" #productconfigForm="ngForm" novalidate>    
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Plan Variant'" [formErrors]="productconfigForm" [inputErrors]="planVariant" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="planVariant" [(ngModel)]='selectedVariant' #planVariant='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option>Platinum</option>
+                <option>Gold</option>
+                <option>Silver</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Coverage Details'" [formErrors]="productconfigForm" [inputErrors]="coverageDetails" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="coverageDetails" [(ngModel)]='selectedCoverage' #coverageDetails='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option>Sample Coverage</option>
+                <option>Accident Coverage</option>
+                <option>Child Birth</option>
+            </select>
+        </input-wrapper>
+    </div>    
+</form>
+<fieldset>
+    <legend class="scheduler-border">Policy Wordings Details</legend>
+    <form class="form-horizontal" #policyForm="ngForm" novalidate>    
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Policy Wording Section'" [formErrors]="policyForm" [inputErrors]="policySection" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="policySection" [(ngModel)]='selectedPolicy' #policySection='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option>Platinum</option>
+                    <option>Gold</option>
+                    <option>Silver</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <uploader  [(endPoint)]='myEndPoint' [(providerCode)]='providerCode' [(savedFile)]='documents'></uploader>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-bordered" style="margin-top:2%;">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">#</th>
+                    <th>Policy wording section</th>
+                    <th>Document Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>No data available</td>
+                    <td></td>
+                    <td class="icon-column">
+                        <a> <i class="fa fa-edit"></i> </a>                        
+                        <a> <i class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</div>
+
+<fieldset>
+    <legend class="scheduler-border">Chosen Coverages</legend>
+    <accordion [closeOthers]="oneAtATime">
+        <accordion-group #group1 [isOpen]="true">
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+                <span>Platinum</span>
+            </div>
+            content
+        </accordion-group>
+        <accordion-group #group2>
+            <div accordion-heading>           
+                <i class="fa" [ngClass]="{'fa-minus-circle': group2?.isOpen, 'fa-plus-circle': !group2?.isOpen}"> </i>
+                <span>  Gold</span>  
+            </div>  
+            Content
+        </accordion-group>   
+    </accordion>
+</fieldset>
+
+<fieldset>
+    <legend class="scheduler-border">Configure Attribute Values</legend>
+
+</fieldset>
+<hr/>
+<div class="pull-right">
+    <button type="submit" class="btn btn-default">Cancel</button>
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn btn-primary"  (click)="firstClick()">Next</button>
+</div>

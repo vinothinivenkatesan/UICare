@@ -1,0 +1,72 @@
+.bottom-margin{
+    margin-bottom:20px;
+}
+.card>.card-header{
+    background: #999;
+    border-bottom: 0;
+    margin-bottom: 10px;    
+}
+.card>.card-header>a{
+    color:#fff;
+}
+
+.card-header:first-child{
+    border-radius:0;
+}
+
+div.widget.form-group{
+    width: 46% !important;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;  
+}
+
+/*div.widget.form-group>.radio>label{
+    float: left;
+    width: 100px;
+    margin: 4px 0px 0px 0px;
+    background-color: #EFEFEF;
+    border-radius: 4px;
+    border: 1px solid #D0D0D0;
+    overflow: auto;
+    text-align: center;
+    font-size: 15px;
+    padding: 8px 0px;
+    display: block;
+}
+
+div.widget.form-group>.radio>label:hover{
+    cursor:pointer;
+    background: #209e91;
+    border-color: #209e91;
+    color:#fff;
+}
+div.widget.form-group>.radio>label>input{
+    position:absolute;
+    left:-999px;
+}
+
+div.widget.form-group>.radio>label>input:checked {
+    background: yellow !important;
+    left:-999px;
+}*/
+
+form-element>div>button{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    padding: 0.344rem 1rem;
+    font-size: 0.9rem;
+    background: #209e91;
+    border-color: #209e91;
+}
+
+

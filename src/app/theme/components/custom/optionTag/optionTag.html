@@ -1,0 +1,103 @@
+<div class="input-demo radio-demo row boxparent" *ngIf="templateDetail.type==1">
+    <div class="col-sm-2 tagBox divSize" *ngFor='let obj of tagList let i=index'>
+      <label class="radio-inline custom-radio nowrap textParent">
+        <input id="inlineRadio1" [name]='templateDetail.name' type="radio" [value]="obj" [(ngModel)]="preferedTag.value" (ngModelChange)='onCheck(obj)'>
+        <span class="tagText" [title]='obj'>{{obj}}</span>
+      </label>
+      <span class='closeIcon' (click)="removeTagItem(i)" *ngIf='!readonly'> x </span>
+    </div>
+</div>
+
+<div class="input-demo radio-demo row boxparent" *ngIf="templateDetail.type==2">
+    <div class="col-sm-2 tagBox divSize" *ngFor='let obj of tagList let i=index'>
+      <label class="radio-inline nowrap">
+        <!--<input id="inlineRadio1" name="radioTag" type="radio" [value]="obj.value" [(ngModel)]="preferedTag.value">-->
+        <i class="fa-check-circle fa fa-lg fileIcon" *ngIf="preferedTag.value==i"></i>
+        <span class="tagText" [title]='obj'>{{obj}}</span>
+      </label>
+      <span class='closeIcon' (click)="removeTagItem(i)" *ngIf='!readonly'> x </span>
+    </div>
+</div>
+
+<div class="input-demo radio-demo row boxparent" *ngIf="templateDetail.type==3">
+    <div class="col-sm-12 row" *ngFor='let obj of tagList let i=index'>
+        <div class="col-sm-2 tagBox divSize">
+            <label class="custom-radio nowrap textParent">
+                <input id="inlineRadio1" [name]='templateDetail.name' type="radio"  [value]="obj" [(ngModel)]="preferedTag.value" (ngModelChange)='onCheck(obj)'>
+                <span class="tagText" [title]='obj'>{{obj}}</span>
+            </label>
+            <span class="closeIcon" (click)="removeTagItem(i)" *ngIf='!readonly'> x </span>
+        </div>
+        <div class="col-sm-10 row" *ngIf='preferedTag.verified && preferedTag.value == obj'>
+            <div class="col-sm-2 divSize verifiedBox">
+                <i class="fa-check-circle fa fa-lg fileIcon"></i>
+                verified
+            </div>
+        </div>
+        <div class="col-sm-10 row" *ngIf='!preferedTag.verified && preferedTag.value == obj'>
+            <div class="col-sm-2 divSize">
+                <input type="text" class="form-control" [name]='"OTP"+templateDetail.name' [(ngModel)]="preferedTag.OTP" placeholder="Enter OTP">
+            </div>
+            <div class="col-sm-5">
+            </div>
+            <div class="col-sm-4 divSize">
+                <button class="btn btn-secondary" (click)="sendOTP(preferedTag)">Resend OTP</button>
+                <button style="margin-left: 5px;" class="btn btn-primary" (click)="checkOTP(preferedTag)">Verify</button>
+            </div>  
+        </div>
+    </div>
+</div>
+<div class="input-demo radio-demo row boxparent" *ngIf="templateDetail.type==4">
+    <div class="col-sm-2 tagBox divSize" *ngFor='let obj of tagList let i=index'>
+      <label class="radio-inline nowrap">
+        <span class="tagText" [title]='obj'>{{obj}}</span>
+      </label>
+      <span class='closeIcon' (click)="removeTagItem(i)" *ngIf='!readonly'> x </span>
+    </div>
+</div>
+
+<!--<div>
+    preferedTag ==> {{preferedTag | json}}
+</div>
+
+<div>
+    tagList ==> {{tagList | json}}
+</div>
+<div>
+    templateType ==> {{templateType}}
+</div>-->
+
+
+    <!--<fieldset>
+        <legend class="scheduler-border">Uploaded Files</legend>-->
+
+        <!--<div class="boxparent row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-8 row">                        -->
+
+                        <!--<div class="col-sm-3 fileBox"><i class="fa-file-text fa fa-lg fileIcon"></i><a class="filename">File Name Tag name1</a><span class="pull-right icon">X</span></div>
+                        <div class="col-sm-3 fileBox"><i class="fa-file-text fa fa-lg fileIcon"></i><a class="filename">File Name Tag name2</a><span class="pull-right icon">X</span></div>
+                        <div class="col-sm-3 fileBox"><i class="fa-file-text fa fa-lg fileIcon"></i><a class="filename">File Name Tag name3</a><span class="pull-right icon">X</span></div>
+                        <div class="col-sm-3 fileBox"><i class="fa-file-text fa fa-lg fileIcon"></i><a class="filename">File Name Tag name4</a><span class="pull-right icon">X</span></div>-->
+
+                    <!--</div>
+                </div>
+            </div>
+        </div>-->
+
+
+        <!--<tag-input [(ngModel)]='uploader.queue' #input name="fileList">
+            <template let-item="uploader.queue">
+                <div *ngIf='item.isUploaded'>
+                    <span>
+                        {{item.file.name | json}}
+                    </span>
+                    <span (click)="input.removeItem(item)" class="ng2-tag__remove-button">
+                        x
+                    </span>
+                </div>
+            </template>
+        </tag-input>-->
+    <!--</fieldset>-->

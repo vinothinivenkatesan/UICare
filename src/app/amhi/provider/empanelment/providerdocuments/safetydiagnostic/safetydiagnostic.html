@@ -1,0 +1,19 @@
+<div #formRef=''>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Type of certificate'" [formErrors]="formRef" [inputErrors]="DIAGCertType" [templateType]="'grid-4-8'">
+                <div ctype-8>
+                    <ss-multiselect-dropdown [options]="DIAGCertTypeList" name='2' [(ngModel)]="selectedDIAGCertTypeId" (ngModelChange)="multiselectChange($event, 'DIAGCertType')" #DIAGCertType='ngModel' ></ss-multiselect-dropdown>
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'If others, name the Certificate'" [formErrors]="formRef" [inputErrors]="DIAGOthersCert" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='DIAGOtherCert' name='DIAGCertOthers' #DIAGOthersCert='ngModel' ctype-8>
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedDIAGCertType.length>0">
+            <legend class="scheduler-border">Known Clinical Specialty</legend>
+            <tag-input (onRemove)="removeTag($event, 'DIAGCertType')" [(ngModel)]='selectedDIAGCertType' name="clinical"> </tag-input>
+        </fieldset>
+        <uploader [(savedFile)]='prvDIAGISO.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+</div>

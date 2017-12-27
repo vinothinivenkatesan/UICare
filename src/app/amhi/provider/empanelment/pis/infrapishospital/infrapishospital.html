@@ -1,0 +1,577 @@
+<div>
+    <form>
+        <div>
+            <div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Equipment\'s category*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="equipmentList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="multiselectChange($event, 'selectedEquipment', equipmentList)" required></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Equipment's category</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="equipmentList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="multiselectChange($event, 'selectedEquipment', equipmentList)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Equipment's category</legend>
+                            <tag-input [(ngModel)]='selectedEquipment' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div *ngFor='let object of selectedMajorServiceObj; let index=index;'>
+                    <div *ngFor='let obj of object; let i=index;'>
+                        <div class="row">
+                            <input-wrapper class='col-md-6' [inputLabel]="obj.set0.name" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                                <ss-multiselect-dropdown ctype-8 [options]="obj.set0.List" name='dynamic0' [(ngModel)]="obj.set0.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set0')"></ss-multiselect-dropdown>
+                            </input-wrapper>
+                            <input-wrapper *ngIf='obj.set1' class='col-md-6' [inputLabel]="obj.set1.name" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                                <ss-multiselect-dropdown ctype-8 [options]="obj.set1.List" name='dynamic1' [(ngModel)]="obj.set1.selectedId" (ngModelChange)="multiselectChangeObject($event, 'majorService', index, 'set1')"></ss-multiselect-dropdown>
+                            </input-wrapper>
+                        </div>
+                        <fieldset *ngIf="obj.set0.selected.length>0">
+                            <legend class="scheduler-border">{{obj.set0.name}}</legend>
+                            <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set0')" [(ngModel)]='obj.set0.selected' name="3"> </tag-input>
+                        </fieldset>
+                        <div *ngIf='obj.set1'> 
+                            <fieldset *ngIf="obj.set1.selected.length>0">
+                                <legend class="scheduler-border">{{obj.set1.name}}</legend>
+                                <tag-input (onRemove)="removeTagObject($event, 'majorService', index, 'set1')" [(ngModel)]='obj.set1.selected' name="4"> </tag-input>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <!--<div *ngFor='let obj of selectedEquipment; let last = last; let even=even; let i=index;'>
+                    <div *ngIf='last && !even'>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-4 form-control-label">{{selectedEquipment[i-1]}}</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-4 form-control-label">{{selectedEquipment[i]}}</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf='val.length>0'>
+                            <label for="" class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-10">
+                                <fieldset>
+                                    <legend class="scheduler-border">{{selectedEquipment[i-1]}}</legend>
+                                    <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf='val.length>0'>
+                            <label for="" class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-10">
+                                <fieldset>
+                                    <legend class="scheduler-border">{{selectedEquipment[i]}}</legend>
+                                    <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf='last && even'>                            
+                        <div class="row col-sm-12">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-4 form-control-label">{{selectedEquipment[i]}}</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" *ngIf='val.length>0'>
+                            <label for="" class="col-sm-2 form-control-label"></label>
+                            <div class="col-sm-10">
+                                <fieldset>
+                                    <legend class="scheduler-border">{{selectedEquipment[i]}}</legend>
+                                    <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Laboratory facility</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Laboratory services'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Laboratory services</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Laboratory services</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Imaging service</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Imaging services'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Imaging service</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Imaging service</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Bed Distribution</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Total Bed capacity available*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='totalBed' name="inputfield" id="" type="number" number maxlength='5' required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of total Operational Beds*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='operationBed' name="inputfield" id="" type="number" number maxlength='5' required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Bed categories available'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Total Bed capacity available*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='totalBed' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Number of total Operational Beds*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='operationBed' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Bed categories available</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Bed categories available</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of '+obj.name+'*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'" *ngFor='let obj of checkedList'>
+                        <input ctype-8 class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="number" number maxlength='5'>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6" *ngFor='let obj of checkedList'>
+                         <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for={{obj.shortName}}>Number of {{obj.name}}*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="text">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Performance Parameter</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Performance Parameter'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Performance Parameter</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Performance Parameter</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="obj.name+'*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'" *ngFor='let obj of checkedList'>
+                        <input ctype-8 class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="number" number maxlength="5" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Hospital Technology'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Computer used'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Disease Coding'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'If others, specify'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6" *ngFor='let obj of checkedList'>
+                         <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for={{obj.shortName}}>{{obj.name}}*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="text">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Facilities</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Facilities*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)" required></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Facilities*</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Facilities</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                     <input-wrapper class='col-md-6' [inputLabel]="'Number of '+obj.name+'*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'" *ngFor='let obj of checkedList'>
+                        <input ctype-8 class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="number" number maxlength="5" required>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6" *ngFor='let obj of checkedList'>
+                         <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for={{obj.shortName}}>Number of {{obj.name}}*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="text">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Facilities available in Operation theater/Area</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Facilities in OT/Area*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)" required></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Facilities in OT/Area*</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Facilities in OT/Area</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Ambulance facility</span>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Ambulance facility available*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="ambulanceFacility" [toggleName]='ambulanceFacilityName' [(toggleoptions)]="ambulanceFacilityoptions"></toggle-input>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Ambulance ownership*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="ambulanceOwner" [toggleName]='ambulanceOwnerName' [(toggleoptions)]="ambulanceOwneroptions"></toggle-input>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of ambulance available*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='totalAmbulance' name="inputfield" id="" type="number" number maxlength="3" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of Owned ambulance*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='ownedAmbulance' name="inputfield" id="" type="number" number maxlength="3" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of Outsourced ambulance*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='outsourcedAmbulance' name="inputfield" id="" type="number" number maxlength="3" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of General ambulance*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='generalAmbulance' name="inputfield" id="" type="number" number maxlength="3" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of Cardiac ambulance*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='cardiacAmbulance' name="inputfield" id="" type="number" number maxlength="4" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Total parking area (Sqft)*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='parkingArea' name="inputfield" id="" type="number" number maxlength="4" required>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Ambulance toll free number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='contactNumberAbulance' name="inputfield" id="" type="number" number maxlength="15" required>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label">Ambulance facility available*</label>
+                            <div class="col-sm-8">
+                                <toggle-input [(toggle)]="ambulanceFacility" [toggleName]='ambulanceFacilityName' [(toggleoptions)]="ambulanceFacilityoptions"></toggle-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label">Ambulance ownership*</label>
+                            <div class="col-sm-8">
+                                <toggle-input [(toggle)]="ambulanceOwner" [toggleName]='ambulanceOwnerName' [(toggleoptions)]="ambulanceOwneroptions"></toggle-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Number of ambulance available*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='totalAmbulance' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">General ambulance number**</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='generalAmbulance' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Cardiac ambulance number*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='cardiacAmbulance' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">parking area (Sqft)*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='parkingArea' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for="">Ambulance toll free number*</label>
+                            <div class="col-sm-8">
+                                <input placeholder="Enter Here" class="form-control" [(ngModel)]='contactNumberAbulance' name="inputfield" id="" type="text">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Inhouse service'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <input-wrapper class='col-md-6' [inputLabel]="'Out sourced service'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Inhouse service</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Out sourced service</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Power back-up facility</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Back up availability*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="backupFacility" [toggleName]='backupFacilityName' [(toggleoptions)]="backupFacilityoptions"></toggle-input>
+                    </input-wrapper>
+                     <input-wrapper class='col-md-6' [inputLabel]="'Type of power back up available*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <toggle-input ctype-8 [(toggle)]="backupType" [toggleName]='backupTypeName' [(toggleoptions)]="backupTypeoptions"></toggle-input>
+                     </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label">Back up availability*</label>
+                            <div class="col-sm-8">
+                                <toggle-input [(toggle)]="backupFacility" [toggleName]='backupFacilityName' [(toggleoptions)]="backupFacilityoptions"></toggle-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label">Type of power back up available*</label>
+                            <div class="col-sm-8">
+                                <toggle-input [(toggle)]="backupType" [toggleName]='backupTypeName' [(toggleoptions)]="backupTypeoptions"></toggle-input>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+
+            </div>
+            <div>
+                <div class="row">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle bolderTitel">Hospital areas with back-up facility</span>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Hospital areas with back-up facility*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Hospital areas with back-up facility*</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group row" *ngIf='val.length>0'>
+                    <label for="" class="col-sm-2 form-control-label"></label>
+                    <div class="col-sm-10">
+                        <fieldset>
+                            <legend class="scheduler-border">Hospital areas with back-up facility</legend>
+                            <tag-input [(ngModel)]='val' name="providerCommittee"> </tag-input>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Total backup time (Hours) '+obj.name+'*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'" *ngFor='let obj of checkedList'>
+                        <input ctype-8 class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="number" number maxlength="3" required>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6" *ngFor='let obj of checkedList'>
+                         <div class="form-group row">
+                            <label class="col-sm-4 form-control-label" for={{obj.shortName}}>Total backup time (Hours) {{obj.name}}*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" name={{obj.shortName}} [(ngModel)]=obj.value id={{obj.shortName}} type="text">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Infrastructure Grading parameter'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        <ss-multiselect-dropdown ctype-8 [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                    </input-wrapper>
+                    <!--<div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="" class="col-sm-4 form-control-label">Infrastructure Grading parameter</label>
+                            <div class="col-sm-8">
+                                <ss-multiselect-dropdown [options]="myCoverageList" name='multiselect' [(ngModel)]="selectedCommittee" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <hr>
+            <div class="pull-right" >
+                <button class="btn btn-default" type="button">Reset</button>
+                <button class="btn btn-primary" type="button">Save</button>        
+            </div>            
+        </div>
+    </form>
+</div>

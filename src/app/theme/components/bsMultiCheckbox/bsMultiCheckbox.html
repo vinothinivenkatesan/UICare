@@ -1,0 +1,10 @@
+<div class="{{bsMultiCheckboxClass}}">
+  <bs-checkbox *ngFor="let item of state"
+               [(ngModel)]="item[propertiesMapping.model]"
+               [bsCheckboxClass]="getProp(item, 'bsCheckboxClass')"
+               [label]="getProp(item, 'label')"
+               [disabled]="getProp(item, 'disabled')"
+               [value]="getProp(item, 'value')"
+               id="{{getProp(item, 'id')}}">
+  </bs-checkbox>
+</div>

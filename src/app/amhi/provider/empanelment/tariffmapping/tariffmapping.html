@@ -1,0 +1,72 @@
+<!-- maker 4 -->
+  <div class="form-group">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Rate List Name</th>
+                <th>Version</th>
+                <th>Status</th>
+                <th>Network Specific Rate List</th>
+                <th>Network Name</th>
+                <th>Network ID</th>
+                <th>Effective Start Date</th>
+                <th>Effective End Date</th>
+                <th>Default Rate List</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td colspan="11">No data available</td>
+               
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+  </div> 
+
+    <accordion [closeOthers]="oneAtATime">
+        <accordion-group #prlAcc>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': prlAcc?.isOpen, 'fa-plus-circle': !prlAcc?.isOpen}"> </i>
+                <span>Provider Rate List</span>
+            </div>
+            <provider-rate-list></provider-rate-list>
+        </accordion-group>
+    </accordion>
+
+<!-- maker 4 -->
+
+<!-- maker 3 -->
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #rrAcc>
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': rrAcc?.isOpen, 'fa-plus-circle': !rrAcc?.isOpen}"> </i>
+            <span>Room Rent</span>
+        </div>
+        <room-rent></room-rent>
+    </accordion-group>
+    <accordion-group #psdAcc>
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': psdAcc?.isOpen, 'fa-plus-circle': !psdAcc?.isOpen}"> </i>
+            <span>Provider Service Details</span>
+        </div>
+        <provider-service-details></provider-service-details>
+    </accordion-group>
+    <accordion-group #pstmAcc>
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-circle': pstmAcc?.isOpen, 'fa-plus-circle': !pstmAcc?.isOpen}"> </i>
+            <span>Provider Service Tariff Map</span>
+        </div>
+        <provider-service-tariffmap></provider-service-tariffmap>
+    </accordion-group>
+</accordion>
+<!-- maker 3 -->

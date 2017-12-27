@@ -1,0 +1,104 @@
+<div>
+    <form>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Provider code*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='PrvCode' name="PrvCodeName" #prvCodeModel='ngModel' type="text" maxlength="10" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Old provider code'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='OldPrvCode' name="OldPrvCodeName" #OldPrvCodeModel='ngModel' type="text" maxlength="10">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'IRDA ID*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='IRDAID' name="IRDAIDName" #IRDAIDModel="ngModel" type="text" maxlength="50" required>
+            </input-wrapper>
+        </div>
+        <div class="horizontal-scroll">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="black-muted-bg">
+                        <th class="table-id">#</th>
+                        <th>TPA Name</th>
+                        <th>TPA ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf='savedObj.length<1'>
+                        <td></td>
+                        <td>No data available</td>
+                        <td></td>
+                    </tr>
+                    <tr *ngFor='let obj of savedObj; let i=index;'>
+                        <td>{{i+1}}</td>
+                        <td>{{obj.name}}</td>
+                        <td>{{obj.id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf='true'>
+            <fieldset>
+                <legend class="scheduler-border">Associated Hospital Details</legend>
+                <div>
+                    <div class="row">
+                        <input-wrapper class='col-md-6' [inputLabel]="'Hospital Name'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <div class="input-group" ctype-8>
+                                <input class="form-control" placeholder="Enter Here" type="text" name="HSPLNamename" [(ngModel)]='HSPLName' #HSPLNameModel="ngModel" maxlength="180">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"> <i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'Hospital ID'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <div class="input-group" ctype-8>
+                                <input class="form-control" placeholder="Enter Here" type="text" name="HSPLIdname" [(ngModel)]='HSPLId' #HSPLIdModel="ngModel" maxlength="15">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"> <i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </input-wrapper>
+                        <!--<input-wrapper class='col-md-6' [inputLabel]="''" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                        </input-wrapper>-->
+                    </div>
+                    <div class="form-group pull-right">
+                        <button type="button" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="horizontal-scroll">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Hospital Name</th>
+                            <th>Hospital ID</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf='savedObj.length<1'>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor='let obj of savedObj; let i=index;'>
+                            <td>{{i+1}}</td>
+                            <td>{{obj.name}}</td>
+                            <td>{{obj.id}}</td>
+                            <td class="icon-column">
+                                <a (click)='editDetail(i, savedObj, activeObj)'> <i class="fa fa-edit"></i> </a>                        
+                                <a (click)='deleteDetail(i, savedObj, activeObj)'> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="pull-right" >
+            <button class="btn btn-default" type="button">Cancel</button>
+            <button class="btn btn-default" type="button">Save</button>        
+            <button class="btn btn-primary" type="button">Next</button>        
+        </div>   
+    </form>
+</div>

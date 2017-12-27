@@ -1,0 +1,90 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Tax Details</span>
+</div>
+<hr>
+
+<form #taxdetailsForm="ngForm">
+    <div class="row">  
+        <input-wrapper class='col-md-12' [inputLabel]="'TDS Rate(as applicable)*'" [formErrors]="taxdetailsForm" [inputErrors]="tdsDetails" [templateType]="'grid-2-10'">
+                       <div class='row' ctype-10>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='radioGroup' #tdsDetails='ngModel' name="tdsDetails" id="tdsDetails1" value="option1" required>
+                        <span>Standard</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='radioGroup' #tdsDetails='ngModel' name="tdsDetails" id="tdsDetails2" value="option2" required>
+                        <span>Non Standard</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='radioGroup' #tdsDetails='ngModel' name="tdsDetails" id="tdsDetails3" value="option2" required>
+                        <span>Double Standard</span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" [(ngModel)]='radioGroup' #tdsDetails='ngModel' name="tdsDetails" id="tdsDetails4" value="option2" required>
+                        <span>NIL</span>
+                    </label>
+                </div>
+            </div>
+        </input-wrapper>       
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">Double Standard Rate</legend>
+        <div class="row">  
+            <input-wrapper class='col-md-6' [inputLabel]="'Claim Value'" [formErrors]="taxdetailsForm" [inputErrors]="claimvalueFrom" [inputErrorsTwo]="claimvalueTo" [templateType]="'grid-4-8'">
+                           <div ctype-8 class="fromtoinput">
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='claimvalueFrom' #claimvalueFrom="ngModel">
+                    <span>to</span>
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='claimvalueTo' #claimvalueTo="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Rate %age*'" [formErrors]="taxdetailsForm" [inputErrors]="ratePercentage" [templateType]="'grid-4-8'">
+                <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='ratePercentage' #ratePercentage="ngModel">
+                </div>
+            </input-wrapper>  
+        </div>
+        <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" style="margin-top:2%;">
+                <thead>
+                    <tr class="black-muted-bg">
+                        <th class="table-id">#</th>
+                        <th>Claim Value From - To</th>
+                        <th>Rate %</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>No data available</td>
+                        <td></td>
+                        <td class="icon-column">
+                            <a> <i class="fa fa-edit"></i> </a>                        
+                            <a> <i class="fa fa-trash"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'TDS Certificate Received'" [formErrors]="taxdetailsForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'tdsRecieved'" [(toggleoptions)]="tdsRecievedoptions"></toggle-input>
+        </input-wrapper>   
+        <input-wrapper class='col-md-6' [inputLabel]="'Certificate No.*'" [formErrors]="taxdetailsForm" [inputErrors]="certificateNo" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='certificateNo' #certificateNo="ngModel">
+        </input-wrapper>  
+    </div>
+</form>

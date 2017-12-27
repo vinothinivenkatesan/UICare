@@ -1,0 +1,152 @@
+<form class="form-horizontal" #costsharingdetailsForm="ngForm" novalidate>  
+    <div class='costsharing-tab'>
+        <tabset>
+            <tab heading="1">
+                <input-wrapper class='col-md-12' [inputLabel]="'Type'" [formErrors]="costsharingdetailsForm" [inputErrors]="checkGrp" [templateType]="'grid-2-10'">
+                    <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='checkValue1' #checkGrp='ngModel' name="costsharingOptions" id="inlineCheck1" value="option1" >
+                                <span>Copay</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='checkValue2' #checkGrp='ngModel' name="costsharingOptions" id="inlineCheck2" value="option1" >
+                                <span>Deductible</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='checkValue3' #checkGrp='ngModel' name="costsharingOptions" id="inlineCheck3" value="option1" >
+                                <span>Franchisee</span>
+                            </label>
+                        </div>
+                    </div>
+                </input-wrapper>
+                <div class="subTitle">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle">Copay Type</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Cost Sharing Level'" [formErrors]="costsharingdetailsForm" [inputErrors]="sharingLevel" [templateType]="'grid-4-8'">
+                                   <select ctype-8 class="form-control" name="sharingLevel" [(ngModel)]='selectedSharing' #sharingLevel='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option>Product</option>
+                        </select>
+                    </input-wrapper>        
+                </div> 
+                <input-wrapper class='col-md-12' [inputLabel]="'Copay Type'" [formErrors]="costsharingdetailsForm" [inputErrors]="copayType" [templateType]="'grid-2-10'">
+                               <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType1' #copayType='ngModel' name="costsharingOptions" id="copayType1" value="option1" >
+                                <span>Copay as per age</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType2' #copayType='ngModel' name="costsharingOptions" id="copayType2" value="option1" >
+                                <span>Copay as per relation</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType3' #copayType='ngModel' name="costsharingOptions" id="copayType3" value="option1" >
+                                <span>Copay as per geography</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType4' #copayType='ngModel' name="costsharingOptions" id="copayType4" value="option1" >
+                                <span>Copay as incidence</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType5' #copayType='ngModel' name="costsharingOptions" id="copayType5" value="option1" >
+                                <span>Copay as per years</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType6' #copayType='ngModel' name="costsharingOptions" id="copayType6" value="option1" >
+                                <span>Copay as per room type</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType7' #copayType='ngModel' name="costsharingOptions" id="copayType7" value="option1" >
+                                <span>Copay as per Designation</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType8' #copayType='ngModel' name="costsharingOptions" id="copayType8" value="option1" >
+                                <span>Copay as SI</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType9' #copayType='ngModel' name="costsharingOptions" id="copayType9" value="option1" >
+                                <span>Copay as per deductible criteria</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='copayType10' #copayType='ngModel' name="costsharingOptions" id="copayType10" value="option1" >
+                                <span>Copay as per threshold limit</span>
+                            </label>
+                        </div>
+                    </div>
+                </input-wrapper>
+                
+                 <div class="subTitle">
+                    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                    <span class="alingIconTitle">Deductible Type</span>
+                </div>
+                <hr>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Cost Sharing Level'" [formErrors]="costsharingdetailsForm" [inputErrors]="deductiblesharingLevel" [templateType]="'grid-4-8'">
+                        <select ctype-8 class="form-control" name="deductiblesharingLevel" [(ngModel)]='selectedDeductibleSharing' #deductiblesharingLevel='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                            <option>Product</option>
+                        </select>
+                    </input-wrapper>        
+                </div> 
+                <input-wrapper class='col-md-12' [inputLabel]="'Deductible Criteria'" [formErrors]="costsharingdetailsForm" [inputErrors]="deductCriteria" [templateType]="'grid-2-10'">
+                    <div class='row' ctype-10>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='deductCriteria1' #deductCriteria='ngModel' name="deductibleOptions" id="deductCriteria1" value="option1" >
+                                <span>Aggregate Basis</span>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline nowrap">
+                                <input type="checkbox" [(ngModel)]='deductCriteria2' #deductCriteria='ngModel' name="deductibleOptions" id="deductCriteria1" value="option1" >
+                                <span>Catastrophic Basis</span>
+                            </label>
+                        </div>                        
+                    </div>
+                </input-wrapper>
+            </tab>
+            <tab heading="2">
+                <h5> Product Coming Soon </h5>
+            </tab>
+            <tab heading="3">
+                <h5> Claims Coming Soon </h5>
+            </tab>
+            <tab heading="4">
+                <h5> Claims Coming Soon </h5>
+            </tab>
+        </tabset>
+    </div>
+    <hr/>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-default">Save</button>
+        <button class="btn btn-primary">Next</button>
+    </div>
+</form>

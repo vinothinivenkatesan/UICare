@@ -1,0 +1,85 @@
+<accordion [closeOthers]="oneAtATime">
+    <accordion-group #group1 [isOpen]="true">
+        <div accordion-heading>             
+            <i class="fa" [ngClass]="{'fa-minus-square-o': group1?.isOpen, 'fa-plus-square-o': !group1?.isOpen}"> </i>
+            <span>Panel 1</span>
+        </div>  
+        <div class="container">
+            <div class="row bottom-margin" >
+                <div class="col-md-6">
+                    <div class="row">
+                        <label class="col-md-2 form-control-label">Name</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <label class="col-md-2 form-control-label">Email</label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+            <div class="row bottom-margin">
+                <div class="col-md-6">
+                    <div class="row">
+                        <label class="col-md-2 form-control-label">Mobile</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Mobile">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <label class="col-md-2 form-control-label">Address</label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="Address">
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend class="scheduler-border">Personalia:</legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="col-md-2 form-control-label">Address</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control" placeholder="Address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="col-md-2 form-control-label">Address</label>
+                                    <div class="col-md-10">
+                                        <input type="email" class="form-control" placeholder="Address">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group #group2>
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-square-o': group2?.isOpen, 'fa-plus-square-o': !group2?.isOpen}"> </i>
+            <span>Panel 2</span>  
+        </div>  
+        Content 2
+    </accordion-group>
+    <accordion-group #group3 [isDisabled]="true">
+        <div accordion-heading>           
+            <i class="fa" [ngClass]="{'fa-minus-square-o': group3?.isOpen, 'fa-plus-square-o': !group3?.isOpen}"> </i>
+            <span>Panel 3(disabed)</span>  
+        </div>  
+        Content 2
+    </accordion-group>
+</accordion>

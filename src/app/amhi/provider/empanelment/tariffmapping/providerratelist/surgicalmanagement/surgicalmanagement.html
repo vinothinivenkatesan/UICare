@@ -1,0 +1,422 @@
+<form #surgicalManageForm="ngForm" novalidate> 
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Surgical Package Mapping</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Department Category'" [formErrors]="surgicalManageForm" [inputErrors]="proDepCategory" #medicalManageWrap [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="proDepCategory" [(ngModel)]='surgicalManageObj.proDepCategory' #proDepCategory='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proDepCategoryList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Department Category*'" [formErrors]="surgicalManageForm" [inputErrors]="amhiDepCategory" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiDepCategory" [(ngModel)]='surgicalManageObj.amhiDepCategory' #amhiDepCategory='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiDepCategoryList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Department Sub-Category'" [formErrors]="surgicalManageForm" [inputErrors]="proDepSubCategory" #medicalManageWrap [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="proDepSubCategory" [(ngModel)]='surgicalManageObj.proDepSubCategory' #proDepSubCategory='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proDepSubCategoryList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Department Sub-Category*'" [formErrors]="surgicalManageForm" [inputErrors]="amhiDepSubCategory" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiDepSubCategory" [(ngModel)]='surgicalManageObj.amhiDepSubCategory' #amhiDepSubCategory='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiDepSubCategoryList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Package Name*'" [formErrors]="surgicalManageForm" [inputErrors]="proPackName" #medicalManageWrap [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="proPackName" [(ngModel)]='surgicalManageObj.proPackName' #proPackName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proPackNameList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Package Name*'" [formErrors]="surgicalManageForm" [inputErrors]="amhiPackName" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiPackName" [(ngModel)]='surgicalManageObj.amhiPackName' #amhiPackName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiPackNameList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+         <input-wrapper class='col-md-6' [inputLabel]="'Provider Package Code'" [formErrors]="surgicalManageForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <select ctype-8 disabled class="form-control" name="proPackCode" [(ngModel)]='surgicalManageObj.proPackCode' #proPackCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proPackCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Package Code*'" [formErrors]="surgicalManageForm" [inputErrors]="amhiPackCode" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiPackCode" [(ngModel)]='surgicalManageObj.amhiPackCode' #amhiPackCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiPackCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+
+        <input-wrapper  class='col-md-6' [inputLabel]="'Applicable ICD Code'" [formErrors]="surgicalManageForm" [inputErrors]="icdCode" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='surgicalManageObj.icdCode' name='icdCode' #icdCode='ngModel' ctype-8 >
+            <button class="btn form-control-feedback lookup-btn" (click)="showICDCode()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>
+        <input-wrapper  class='col-md-6' [inputLabel]="'Applicable CPT/PCS Code'" [formErrors]="surgicalManageForm" [inputErrors]="cptpcsCode" [templateType]="'grid-4-8'">
+            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='surgicalManageObj.cptpcsCode' name='cptpcsCode' #cptpcsCode='ngModel' ctype-8 >
+            <button class="btn form-control-feedback lookup-btn" (click)="showCPT_PCS_Code()"><i class="fa fa-eye"></i></button>
+        </input-wrapper>  
+       
+    </div>
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Package</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" value="inc_excApplicable">
+                <span>Inclusive and Exclusive Applicable for all</span>
+            </label>
+        </div>
+        <div class="col-md-6">
+            <label class="checkbox-inline custom-checkbox nowrap">
+                <input type="checkbox" value="discountApplicable">
+                <span>Discount Applicable for all</span>
+            </label>
+        </div>
+    </div>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                
+                <th>AMHI Category</th>
+                <th>AMHI Sub-Category</th>
+                <th>Provider Package Name</th>
+                <th>AMHI Package Name</th>
+                <th>AMHI Package Code</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td colspan="8">No data available</td>
+                
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+
+    <hr>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <span>
+                    <button class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form #surgicalManageDetForm="ngForm" novalidate>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">Surgical Management Package Details</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Package Name*'" [formErrors]="surgicalManageDetForm" [inputErrors]="proPackDetName" #medicalManageWrap [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="proPackDetName" [(ngModel)]='surgicalManageObj.proPackDetName' #proPackDetName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proPackDetNameList' [ngValue]='option.id'>{{option.name}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Package Name*'" [formErrors]="surgicalManageDetForm" [inputErrors]="amhiPackDetName" [templateType]="'grid-4-8'">
+            <select ctype-8 class="form-control" name="amhiPackDetName" [(ngModel)]='surgicalManageObj.amhiPackDetName' #amhiPackDetName='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiPackDetNameList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Provider Package Code'" [formErrors]="surgicalManageDetForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <select ctype-8 disabled class="form-control" name="proPackDetCode" [(ngModel)]='surgicalManageObj.proPackDetCode' #proPackDetCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of proPackDetCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'AMHI Package Code'" [formErrors]="surgicalManageDetForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+            <select ctype-8 disabled class="form-control" name="amhiPackDetCode" [(ngModel)]='surgicalManageObj.amhiPackDetCode' #amhiPackDetCode='ngModel' required>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let option of amhiPackDetCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+            </select>
+        </input-wrapper>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form #packageDetailForm="ngForm">
+                <fieldset>
+                    <legend class="scheduler-border">Packages Details</legend>
+                    <div class="row">                    
+                        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                        <span class="alingIconTitle">Package rate</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <input-wrapper class='col-sm-6' [inputLabel]="'Provider Room Type*'" [formErrors]="packageDetailForm" [inputErrors]="proRoomType" #medicalManageWrap [templateType]="'grid-4-8'">
+                            <select ctype-8 class="form-control" name="proRoomType" [(ngModel)]='packageDetailObj.proRoomType' #proRoomType='ngModel' required>
+                                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                                <option *ngFor='let option of proRoomTypeList' [ngValue]='option.id'>{{option.name}}</option>
+                            </select>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'AHMI Room Type*'" [formErrors]="packageDetailForm" [inputErrors]="amhiRoomType" [templateType]="'grid-4-8'">
+                            <select ctype-8 class="form-control" name="amhiRoomType" [(ngModel)]='packageDetailObj.amhiRoomType' #amhiRoomType='ngModel' required>
+                                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                                <option *ngFor='let option of amhiRoomTypeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+                            </select>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'Provider Package Rate'" [formErrors]="packageDetailForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+                            <select ctype-8 disabled class="form-control" name="proPackDetCode" [(ngModel)]='packageDetailObj.proPackDetCode' #proPackDetCode='ngModel' required>
+                                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                                <option *ngFor='let option of proPackDetCodeList' [ngValue]='option.entityTypeId'>{{option.entityTypeName}}</option>
+                            </select>
+                        </input-wrapper>
+                        
+                        <input-wrapper class='col-sm-6' [inputLabel]="'AMHI Package Rate*'" [formErrors]="packageDetailForm" [inputErrors]="amhiPackRate" [templateType]="'grid-4-8'">
+                            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='packageDetailObj.amhiPackRate' name='amhiPackRate' #amhiPackRate='ngModel' ctype-8 required>
+                        </input-wrapper>
+
+                    </div> 
+                    <span class="pull-right">
+                        <label class="checkbox-inline custom-checkbox nowrap">
+                            <input type="checkbox" value="">
+                            <span>Applicable for all Room Type</span>
+                        </label>
+                    </span>
+                    <div class="row">                    
+                        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                        <span class="alingIconTitle">LOS applicable</span>
+                    </div>
+                    <hr> 
+                    
+                    <div class="row">
+                         <input-wrapper class='col-md-6' [inputLabel]="'Length of Stay Applicable*'" [formErrors]="packageDetailForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="packageDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                        </input-wrapper>
+                        <input-wrapper class='col-sm-6' [inputLabel]="'Length of Stay*'" [formErrors]="packageDetailForm" [inputErrors]="lenStay" [templateType]="'grid-4-8'">
+                            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='packageDetailObj.lenStay' name='lenStay' #lenStay='ngModel' ctype-8 required>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'Rate Basis Beyond LOS*'" [formErrors]="packageDetailForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="packageDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                        </input-wrapper>
+                        <input-wrapper class='col-sm-6' [inputLabel]="'Rate Beyond LOS*'" [formErrors]="packageDetailForm" [inputErrors]="rateByondLOS" [templateType]="'grid-4-8'">
+                            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='packageDetailObj.rateByondLOS' name='rateByondLOS' #rateByondLOS='ngModel' ctype-8 required>
+                        </input-wrapper>
+                    </div>
+                    <span class="pull-right">
+                        <label class="checkbox-inline custom-checkbox nowrap">
+                            <input type="checkbox" value="">
+                            <span>Applicable for all Room Type</span>
+                        </label>
+                    </span>
+                    <div class="row">                    
+                        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                        <span class="alingIconTitle">Discounts</span>
+                    </div>
+                    <hr> 
+                    
+                    <div class="row">
+                         <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicable*'" [formErrors]="packageDetailForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="packageDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                        </input-wrapper>
+                    </div>
+                    <div class="row">
+                        <input-wrapper class='col-sm-6' [inputLabel]="'Discount Percentage*'" [formErrors]="packageDetailForm" [inputErrors]="discountPerc" [templateType]="'grid-4-8'">
+                            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='packageDetailObj.discountPerc' name='discountPerc' #discountPerc='ngModel' ctype-8 required>
+                        </input-wrapper>
+                        
+                        <input-wrapper class='col-sm-6' [inputLabel]="'Discount Amount*'" [formErrors]="packageDetailForm" [inputErrors]="discountAmt" [templateType]="'grid-4-8'">
+                            <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='packageDetailObj.discountAmt' name='discountAmt' #discountAmt='ngModel' ctype-8 required>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'Discount Applicability*'" [formErrors]="packageDetailForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                            <toggle-input ctype-8 [toggleDisabled]="false" [(toggle)]="packageDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                        </input-wrapper>
+                    </div>
+                    <span class="pull-right">
+                        <label class="checkbox-inline custom-checkbox nowrap">
+                            <input type="checkbox" value="">
+                            <span>Applicable for all Room Type</span>
+                        </label>
+                    </span>
+                    <div class="row">
+                        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                        <span class="alingIconTitle">Inclusive Item</span>
+                    </div>
+                    <hr>
+                    
+                    <div class="row">
+                        <input-wrapper class='col-md-6' [inputLabel]="'Limit Applicable*'" [formErrors]="packageDetailForm" [inputErrors]="{valid:true}" [templateType]="'grid-4-8'">
+                            <toggle-input ctype-8 [toggleDisabled]="false" [toggle]="packageDetailObj.toggleValue" [toggleName]="'toggleValue'" [toggleoptions]="[{id:'1',name:'Yes'},{id:0,name:'No'}]" (onToggle)="onToggle($event)"></toggle-input>            
+                        </input-wrapper>
+                    </div>
+                    <div class="row">
+                        <input-wrapper class='col-md-6' [inputLabel]="'Inclusive Items'" [formErrors]="packageDetailForm" [inputErrors]="packincItem" [templateType]="'grid-4-8'">
+                            <select ctype-8 class="form-control" name="packincItem" [(ngModel)]='packageDetailObj.packincItem' #packincItem='ngModel'>
+                                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                                <option *ngFor='let option of packincItemList' [ngValue]='option.id'>{{option.name}}</option>
+                            </select>
+                        </input-wrapper>
+                        <input-wrapper class='col-md-6' [inputLabel]="'Limit Up to'" [formErrors]="packageDetailForm" [inputErrors]="packlimitUpto" [templateType]="'grid-4-8'">
+                            <div class="input-group" ctype-8>
+                                <input required class="form-control"  type="text" name="packlimitUpto" (keyup.enter)='addLimit(packlimitModel); packlimitModel="";' [(ngModel)]='packlimitModel' #packlimitUpto="ngModel">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" (click)='addLimit(packlimitModel); packlimitModel="";'> <i class="fa fa-plus"></i></button>
+                                </span>
+                            </div>
+                        </input-wrapper>
+                    </div>
+                    <span class="pull-right">
+                        <label class="checkbox-inline custom-checkbox nowrap">
+                            <input type="checkbox" value="">
+                            <span>Applicable for all Room Type</span>
+                        </label>
+                    </span>
+                    <div class="row">
+                        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+                        <span class="alingIconTitle">Exclusive Item</span>
+                    </div>
+                    <hr>
+                    
+                    <div class="row">
+                        <input-wrapper class='col-md-6' [inputLabel]="'Exclusive Items'" [formErrors]="packageDetailForm" [inputErrors]="packexcItem" [templateType]="'grid-4-8'">
+                            <select ctype-8 class="form-control" name="packexcItem" [(ngModel)]='packageDetailObj.packexcItem' #packexcItem='ngModel'>
+                                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                                <option *ngFor='let option of packexcItemList' [ngValue]='option.id'>{{option.name}}</option>
+                            </select>
+                        </input-wrapper>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <span>
+                                    <button class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Add Room Type</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Provider Room Type</th>
+                <th>AMHI Room Type</th>
+                <th>Provider Package Rate</th>
+                <th>AMHI Package Rate</th>
+                <th>Discount Percentage</th>
+                <th>Discount Amount</th>
+                <th>Discount Applicability</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>                
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+    <hr>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add Package Details</button>
+        </span>
+    </div>
+</form>
+
+<div class="form-group row">
+        <div class="col-sm-12 text-center">
+            <span class="or-split">Or</span>
+            <hr>
+        </div>
+    </div>
+
+    <uploader [(savedFile)]='uploadDetails' ></uploader>
+
+<table class="table table-bordered">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>AMHI Category</th>
+                <th>AMHI Sub Category</th>
+                <th>Provider Package Name</th>
+                <th>AMHI Package Name</th>
+                <th>AMHI Package Code</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>                             
+            </tr>
+            <!--<tr>
+                <td class="table-id">1</td>
+                <td>Grade [V1.0]</td>
+                <td>07/12/2016</td>
+                <td>New Remark </td>
+                <td>Current</td>                    
+            </tr>-->
+        </tbody>
+    </table>
+    <hr>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Next</button>
+        </span>
+    </div>

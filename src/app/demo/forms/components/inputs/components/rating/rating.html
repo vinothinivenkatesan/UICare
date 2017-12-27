@@ -1,0 +1,11 @@
+<ul class="custom-rating btn-list clearfix">    
+    <li *ngFor='let rate1 of rates'>
+        <input  autocomplete="off" type="radio" value="{{rate1}}"> 
+        <label (click)="ratingoptions=rate1" class="btn btn-default btn-icon"> 
+            {{rate1}}
+        </label>
+    </li>    
+</ul>
+
+<pre>Rate: <b>{{ratingoptions}}</b></pre>
+

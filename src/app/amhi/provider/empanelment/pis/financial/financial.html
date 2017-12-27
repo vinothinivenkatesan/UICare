@@ -1,0 +1,178 @@
+<div>Provider Comparison</div>
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Payment mode</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Payment mode*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <toggle-input ctype-8 [(toggle)]="paymentMode" [toggleName]='paymentModeName' [(toggleoptions)]="paymentModeoptions"></toggle-input>
+        </input-wrapper>
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">{{paymentMode}}</legend>
+
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Bank Name*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='bankName' name="bankNameName" #bankNameModel='ngModel' type="text" maxlength="70" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Beneficiary A/c type*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='bnfcryACType' name="bnfcryACTypeName" #bnfcryACTypeModel='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Beneficiary bank account number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='bnfcryACNo' name="bnfcryACNoName" #bnfcryACNoModel='ngModel' type="number" number maxlength="16" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Cheque drawn in favor of*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='chequeInFavor' name="chequeInFavorName" #chequeInFavorModel='ngModel' type="text" maxlength="80" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'State*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='financialState' name="financialStateName" #financialStateModel='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'City*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='financialCity' name="financialCityName" #financialCityModel='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Pin Code*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='financialPinCode' name="financialPinCodeName" #financialCityModel='ngModel' type="number" number maxlength="6" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'District'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" [(ngModel)]='financialDistrict' name="financialDistrictName" #financialDistrictModel='ngModel'>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let acTypeObj of acTypeList' [ngValue]='acTypeObj.value'>{{acTypeObj.display}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Address/Locality*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='financialLocality' name="financialLocalityName" #financialLocalityModel='ngModel' type="text" maxlength="80" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Landmark'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='financialLandmark' name="financialLandmarkName" #financialLandmarkModel='ngModel' type="text" maxlength="80" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-12' [inputLabel]="'Street Name*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-2-10'">
+                <input ctype-10 placeholder="Enter Here" class="form-control" [(ngModel)]='financialStreet' name="financialStreetName" #financialStreetModel='ngModel' type="text" maxlength="80" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Plot Number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='financialPlotNo' name="financialPlotNoName" #financialPlotNoModel='ngModel' type="text" maxlength="80" required>
+            </input-wrapper>
+            <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'Cheque dispatch address'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [(toggle)]="chequeAddress" [toggleName]='chequeAddressName' [(toggleoptions)]="chequeAddressoptions"></toggle-input>
+            </input-wrapper>
+        </div>
+        <div class="row">
+            <input-wrapper *ngIf="true" class='col-md-6' [inputLabel]="'9 digit MICR code number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='MICRCode' name="MICRCodeName" #MICRCodeModel='ngModel' type="number" number maxlength="9" required>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'IFSC code'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='IFSCCode' name="IFSCCodeName" #IFSCCodeModel='ngModel' type="text" maxlength="20" required>
+            </input-wrapper>
+        </div>
+        <div class="">
+            <div class="pull-right">
+                <span>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </span>
+            </div>
+        </div>
+
+
+    </fieldset>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'PAN Number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='PANNo' name="PANNoName" #PANNoModel='ngModel' type="text" maxlength="10" required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Service tax number*'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='serviceTaxNo' name="serviceTaxNoName" #serviceTaxNoModel='ngModel' type="text" maxlength="20" required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Email Address'" [formErrors]="''" [inputErrors]="''" [templateType]="'grid-4-8'">
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='financialEmail' name="financialEmailName" #financialEmailModel='ngModel' type="text" maxlength="180" required>
+        </input-wrapper>
+    </div>
+    <div class="horizontal-scroll">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">Default</th>
+                    <th>Cheque drawn in favor of</th>
+                    <th>Account number</th>
+                    <th>Account Type</th>
+                    <th>Bank Name</th>
+                    <th>Branch Address</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <input type="radio" value='1' name='default'></td>
+                    <td>Name 1</td>
+                    <td>0001234567890</td>
+                    <td>Current</td>
+                    <td>Bank of India</td>
+                    <td>Anna Nagar, Chennai</td>
+                    <td><a> <i class="fa fa-edit"></i> </a>                        
+                        <a> <i class="fa fa-trash"></i> </a></td>
+                </tr>
+                <tr>
+                    <td> <input type="radio" value='2' name='default'></td>
+                    <td>Name 2</td>
+                    <td>0001234567891</td>
+                    <td>Current</td>
+                    <td>Bank of India</td>
+                    <td>Anna Nagar, Chennai</td>
+                    <td><a> <i class="fa fa-edit"></i> </a>                        
+                        <a> <i class="fa fa-trash"></i> </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="horizontal-scroll">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="black-muted-bg">
+                    <th class="table-id">Default</th>
+                    <th>Beneficiary name</th>
+                    <th>Account number</th>
+                    <th>Account Type</th>
+                    <th>Bank Name</th>
+                    <th>Branch Address</th>
+                    <th>IFSC code</th>
+                    <th>MICR code</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <input type="radio" value='1' name='default'></td>
+                    <td>Name 1</td>
+                    <td>0001234567890</td>
+                    <td>Current</td>
+                    <td>Bank of India</td>
+                    <td>Anna Nagar, Chennai</td>
+                    <td>BOI12345</td>
+                    <td>1234567890</td>
+                    <td><a> <i class="fa fa-edit"></i> </a>                        
+                        <a> <i class="fa fa-trash"></i> </a></td>
+                </tr>
+                <tr>
+                    <td> <input type="radio" value='2' name='default'></td>
+                    <td>Name 1</td>
+                    <td>0001234567891</td>
+                    <td>Current</td>
+                    <td>Bank of India</td>
+                    <td>Anna Nagar, Chennai</td>
+                    <td>BOI12345</td>
+                    <td>1234567892</td>
+                    <td><a> <i class="fa fa-edit"></i> </a>                        
+                        <a> <i class="fa fa-trash"></i> </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

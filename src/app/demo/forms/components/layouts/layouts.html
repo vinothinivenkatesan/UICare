@@ -1,0 +1,57 @@
+<div class="widgets">
+
+    <div class="row">
+        <div class="col-md-12">
+            <bs-card title="Inline Form" bsCardClass="with-scroll">
+                <inline-form></inline-form>
+            </bs-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <bs-card title="basic Form" bsCardClass="with-scroll">
+                    <basic-form></basic-form>
+                </bs-card>
+            </div>
+
+            <div>
+                <bs-card title="Horizontal Form" bsCardClass="with-scroll">
+                    <horizontal-form></horizontal-form>
+                </bs-card>
+            </div>
+            <!--            <div>
+                            <bs-card title="Reactive Form" bsCardClass="with-scroll">
+                                <reactive-form> </reactive-form>
+                            </bs-card>
+                        </div>-->
+
+            <div>
+                <bs-card title="Picture Uploader" bsCardClass="with-scroll">
+                    <bs-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></bs-picture-uploader>
+                </bs-card>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <bs-card title="Form Without Labels" bsCardClass="with-scroll">
+                    <without-labels-form></without-labels-form>
+                </bs-card>
+            </div>
+            <div>
+                <bs-card title="Block Form" bsCardClass="with-scroll">
+                    <block-form></block-form>
+                </bs-card>
+            </div>
+
+
+            <div>
+                <bs-card title="Validation Form" bsCardClass="with-scroll">
+                    <validation-form> </validation-form>
+                </bs-card>
+            </div>
+
+        </div>
+    </div>
+</div>

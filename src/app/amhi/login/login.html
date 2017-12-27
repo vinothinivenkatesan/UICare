@@ -1,0 +1,27 @@
+ 
+<!--<a routerLink="/demo/accordion" class="demolink">Click here for DEMO..</a>-->
+<div class="auth-main">  
+    <div class="auth-block">
+        <img src="assets/img/amhi-logo.png" alt="logo"/>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+            <div class="input-group" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+                 <span class="input-group-addon addon-left" id="basic-addon1"><i class="fa fa-user"></i></span>
+                <input [formControl]="email" type="text" class="form-control" id="inputEmail3" placeholder="Enter Username">
+            </div>
+            <div class="input-group"[ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
+                 <span class="input-group-addon addon-left" id="basic-addon1"><i class="fa fa-key"></i></span>
+                <input [formControl]="password" type="password" class="form-control" id="inputPassword3" placeholder="Enter Password">
+            </div>  
+            <div class="input-group">
+                <bs-checkbox [(ngModel)]="isChecked" [label]="'Remember me'" [ngModelOptions]="{standalone: true}"></bs-checkbox>
+                <a routerLink="/login" class="forgot-pass">Forgot password?</a>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-2 col-md-12">
+                    <button type='submit'  [disabled]="!form.valid" id="login" class='btn btn-primary col-md-12'> Sign In </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

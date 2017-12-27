@@ -1,0 +1,136 @@
+<bs-card>
+    <!--<form class="form-horizontal" #demoForm="ngForm" novalidate name="coverageForm">-->
+    <div style="min-height:600px">
+<!--        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-4 form-control-label">Plan Variant</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" [(ngModel)]="selectedVarient"  (ngModelChange)="onVarientChange($event)" name="varient" id="channel">
+                            <option>Platinum</option>
+                            <option>Gold</option>
+                            <option>Silver</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 form-control-label">Coverage Details</label>
+                    <div class="col-sm-8">
+                        <ss-multiselect-dropdown [options]="myCoverageList" disabled name='multiselect' [(ngModel)]="selectedOptions" (ngModelChange)="onCoverageChange($event)"></ss-multiselect-dropdown>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-warning" (click)='clearSelection()'>Cancel</button>
+                    <button type="submit" class="btn btn-success" (click)='addCoverages()'>Add</button>
+                </div>
+            </div>
+        </div>
+
+        <ngb-accordion [closeOthers]="true" (panelChange)="setActiveVarient($event)" activeIds={{activeVarient}} #acc="ngbAccordion">
+            <div *ngFor="let Cover of coveragesAccordian" >
+                <ngb-panel *ngIf="Cover.coverages.length>0 && Cover.options.length>0" [attr.name]='Cover.varient' id="{{Cover.varient}}" title="" content="my Platinum">
+                    <template ngbPanelTitle>
+                        <div>
+                            <i class='fa' [ngClass]="{'fa-minus-circle':activeVarient==Cover.varient, 'fa-plus-circle':!(activeVarient==Cover.varient)}"></i>
+                            <span> {{Cover.varient}}</span>
+                            <span style="float:right;">
+                                <i class='fa fa-trash' (click)='deleteCoverages(Cover, $event)'></i>                            
+                                <i class='fa fa-plus-square' (click)='copyCoverages(Cover, $event)'></i>
+                            </span>
+                        </div>
+                    </template>
+                    <template ngbPanelContent>
+                        <tag-input [(ngModel)]='Cover.coverages' [attr.name]='Cover.coverages' (onRemove)="removeTag($event, Cover)"></tag-input>                            
+                    </template>
+                </ngb-panel>
+            </div>              
+        </ngb-accordion>-->
+
+
+
+        <div class="row">            
+            <div class="col-sm-9">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 form-control-label" style="line-height: 2;">Diagnosis</label>
+                    <div class="col-sm-7">
+                        <ss-multiselect-dropdown [options]="diagnosisList" name='multiselect' [settings]="mySettings"  [(ngModel)]="selectedDiagnosis" (ngModelChange)="onSelectDiagnosis($event)"></ss-multiselect-dropdown>                        
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-success" (click)='addDiagnosis()'>Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <ngb-accordion [closeOthers]="true" (panelChange)="setActiveVarient($event)" activeIds={{activeVarient}} #acc="ngbAccordion">
+            <div *ngFor="let Cover of diagnosisPanels" >
+                <ngb-panel [attr.name]='Cover' id="{{Cover}}" title="{{Cover}}" content="my Platinum">
+                    <template ngbPanelTitle>
+                        <div>
+                            <i class='fa fa-plus-circle'></i>
+                        </div>
+                    </template>
+                    <template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Diagnosis Code</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Diagnosis Name</label>
+                                    <div class="col-sm-8">
+                                         <input type="text"  class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Signs</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="signs" [(ngModel)]="selectedsigns" [settings]="mySettings" (ngModelChange)="onChange(selectedsigns)"></ss-multiselect-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Symptoms</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="symptoms" [(ngModel)]="selectedsymptoms" [settings]="mySettings" (ngModelChange)="onChange(selectedsymptoms)"></ss-multiselect-dropdown> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 form-control-label">Investigations</label>
+                                    <div class="col-sm-8">
+                                        <ss-multiselect-dropdown [options]="investigations" [(ngModel)]="selectedinvestigations" [settings]="mySettings" (ngModelChange)="onChange(selectedinvestigations)"></ss-multiselect-dropdown> 
+                                        <!--<ss-multiselect-dropdown [options]="signMust" [(ngModel)]="selectedsignMust" (ngModelChange)="onChange(selectedsignMust)"></ss-multiselect-dropdown>-->
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                    </template>
+                </ngb-panel>
+            </div>
+        </ngb-accordion>
+
+
+        <hr/>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-warning">Cancel</button>
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </div>
+
+</bs-card>

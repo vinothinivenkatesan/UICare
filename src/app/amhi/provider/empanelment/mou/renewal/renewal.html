@@ -1,0 +1,47 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">MOU Upload</span>
+</div>
+<hr>
+<form class="form-horizontal" #mouUploadForm="ngForm" >
+    <div class="row">
+        <input-wrapper class='col-md-12' [inputLabel]="'MOU conditions'" [formErrors]="mouUploadForm" [inputErrors]="mouConditions" [templateType]="'grid-2-10'">
+                       <input ctype-10 class="form-control" placeholder="Enter Here" type="text" name='mouConditions' [(ngModel)]='text' #mouConditions="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'MOU Recieved Date'" [formErrors]="mouUploadForm" [inputErrors]="mouRecievedate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="mouRecievedate" [options]="myDatePickerOptions" [(ngModel)]="mouRecievedateModel" #mouRecievedate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <input-wrapper class='col-sm-6' [inputLabel]="'Cashless Effective Start Date'" [formErrors]="mouUploadForm" [inputErrors]="cashlessStartdate" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="cashlessStartdate" [options]="myDatePickerOptions" [(ngModel)]="cashlessStartdateModel" #cashlessStartdate='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+        <div class="col-md-12">
+            <uploader [(savedFile)]='savedFiles'></uploader>
+        </div>        
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">File Attached</legend>
+    </fieldset>
+    <div class="subTitle">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle">MOU Renewal Option</span>
+    </div>
+    <hr>
+    <div class="row">
+        <input-wrapper class='col-md-12' [inputLabel]="'Auto Renewal'" [formErrors]="mouUploadForm" [inputErrors]="''" [templateType]="'grid-2-10'">
+                       <toggle-input ctype-10 [(toggle)]="Y" [toggleName]="'autoRenewal'" [(toggleoptions)]="autoRenewaloptions"></toggle-input>
+        </input-wrapper>
+    </div>
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Post renewal Validity*'" [formErrors]="mouUploadForm" [inputErrors]="postRenewal" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name='postRenewal' [(ngModel)]='text' #postRenewal="ngModel" required>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Grace Validity'" [formErrors]="mouUploadForm" [inputErrors]="graceValidity" [templateType]="'grid-4-8'">
+                       <my-date-picker ctype-8 name="graceValidity" [options]="myDatePickerOptions" [(ngModel)]="graceValidityModel" #graceValidity='ngModel'  required date></my-date-picker> 
+        </input-wrapper>
+    </div>
+    <hr>
+    <div class="pull-right">
+        <button type="button" class="btn btn-default">Reset</button>
+        <button type="button" class="btn btn-primary">Next</button>
+    </div>
+</form>

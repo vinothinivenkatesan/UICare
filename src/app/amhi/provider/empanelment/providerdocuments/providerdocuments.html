@@ -1,0 +1,188 @@
+<div>
+    <div class="row">
+        <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+        <span class="alingIconTitle bolderTitel">Automatic Document Scanning</span>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 push-sm-2">
+            <button type="submit" class="btn btn-warning">Start the Scanning Process</button>
+        </div>
+    </div>
+    <accordion [closeOthers]="oneAtATime">
+        <accordion-group #group1 [isOpen]="true">
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group1?.isOpen, 'fa-plus-circle': !group1?.isOpen}"> </i>
+                <span>Basic detail</span>
+            </div>  
+             <basic-detail></basic-detail>
+        </accordion-group>
+        <accordion-group #group2>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group2?.isOpen, 'fa-plus-circle': !group2?.isOpen}"> </i>
+                <span>Financial documents</span>
+            </div>  
+            <financial-documents></financial-documents>
+        </accordion-group>
+        <accordion-group #group3>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group3?.isOpen, 'fa-plus-circle': !group3?.isOpen}"> </i>
+                <span>Manpower/staffing detail for hospitals</span>
+            </div>  
+            <manpower-hospital></manpower-hospital>
+        </accordion-group>
+        <accordion-group #group4>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group4?.isOpen, 'fa-plus-circle': !group4?.isOpen}"> </i>
+                <span>Patient safety measure detail for hospitals</span>
+            </div>  
+            <safety-hospital></safety-hospital>
+        </accordion-group>
+        <accordion-group #group5>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group5?.isOpen, 'fa-plus-circle': !group5?.isOpen}"> </i>
+                <span>Infrastructure details for Hospitals</span>
+            </div>  
+           <infra-hospital></infra-hospital>
+        </accordion-group>
+        <accordion-group #group6>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group6?.isOpen, 'fa-plus-circle': !group6?.isOpen}"> </i>
+                <span>Safety measure detail for ambulance provider</span>
+            </div>  
+            <safety-ambulance></safety-ambulance>
+        </accordion-group>
+        <accordion-group #group7>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group7?.isOpen, 'fa-plus-circle': !group7?.isOpen}"> </i>
+                <span>Infrastructure detail for ambulance provider</span>
+            </div>  
+           <infra-ambulance></infra-ambulance>
+        </accordion-group>
+        <accordion-group #group8>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group8?.isOpen, 'fa-plus-circle': !group8?.isOpen}"> </i>
+                <span>Safety measure detail for diagnostic center</span>
+            </div>  
+           <safety-diagnostic></safety-diagnostic>
+        </accordion-group>
+        <accordion-group #group9>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group9?.isOpen, 'fa-plus-circle': !group9?.isOpen}"> </i>
+                <span>Infrastructure details for diagnostic center</span>
+            </div>  
+           <infra-diagnostic></infra-diagnostic>
+        </accordion-group>
+        <accordion-group #group10>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group10?.isOpen, 'fa-plus-circle': !group10?.isOpen}"> </i>
+                <span>Safety measure detail for doctor/dental care</span>
+            </div>  
+            <safety-doctor-dental></safety-doctor-dental>
+        </accordion-group>
+        <accordion-group #group11>
+            <div accordion-heading>             
+                <i class="fa" [ngClass]="{'fa-minus-circle': group11?.isOpen, 'fa-plus-circle': !group11?.isOpen}"> </i>
+                <span>Compliance detail for doctor/dental care</span>
+            </div>  
+           <compliance-doctor-dental></compliance-doctor-dental>
+        </accordion-group>
+        
+    </accordion>
+    <div class="checkerForm">
+        <fieldset class="no-border" #prvDocForm=''>
+            <div class="row">
+                <input-wrapper class='col-sm-6' [inputLabel]="'Action Taken*'" [formErrors]="prvDocForm" [inputErrors]="chkPrvDocAction" [templateType]="'grid-4-8'">
+                    <select ctype-8 class="form-control" name="prvDocActionTaken" id="prvDocActionTaken" [(ngModel)]='checkerAction.actionTakenId' #chkPrvDocAction="ngModel" required> 
+                        <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                        <option *ngFor=' let item of prvDocActionList' [ngValue]='item.actionTakenId'>{{item.actionTakenName}}</option>
+                    </select>                               
+                </input-wrapper>
+                <div class="col-sm-6" *ngIf='remarksList.length>0'>
+                    <div class="pull-right">
+                        <button class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                        <button class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                    </div>
+                </div>
+                <input-wrapper class='col-sm-12' [inputLabel]="'Remarks*'" [formErrors]="prvDocForm" [inputErrors]="prvRemark" [templateType]="'grid-2-10'">
+                    <textarea ctype-10 class="form-control" name="chkremarks" id="chkremarks" [(ngModel)]="checkerAction.remarks" #prvRemark='ngModel' required></textarea>
+                </input-wrapper>
+
+            </div>
+        </fieldset>
+        <div class="remarks-wrapper" *ngIf='remark'>
+            <label class="form-control-lable col-sm-2">
+            </label>
+            <ul class="remarks-list" *ngIf='reasonList!=[]'>                            
+                <li *ngFor='let obj of remarksList' >
+                    <div class="text-block text-message">
+                        <div class="message-header">
+                            <span class="author"> Created By : [{{obj.createdBy}}]</span>
+                        </div>
+                        <div class="message-time">
+                            Created On : {{obj.createdOn}}
+                        </div>
+                        <div class="message-content">
+                            {{obj.remarks}}
+                        </div>      
+                    </div>
+                </li>
+            </ul> 
+        </div>
+    <!--<div class="checkerForm">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 form-control-label">Action Taken*</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="city">
+                                    <option>Approved</option>
+                                    <option>Sent Back</option>
+                                    <option>Send for Exception Approval</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-default" (click)="this.remark=true" *ngIf='!remark'>Show Remarks</button>
+                    <button type="submit" class="btn btn-default" (click)="this.remark=false" *ngIf='remark'>Hide Remarks</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">Remarks</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf='remark'>
+                    <label class="form-control-lable col-sm-2">
+                    </label>
+                    <div class="col-sm-8 remarksBox">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                Created By : Maker 1 [123456]
+                            </div>
+                            <div class="col-sm-4 col-sm-5">
+                                Created On : MM/DD/YY TT:MM AM/PM
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-1">
+                                Product enplanement requested
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            <hr/>
+            <div class="pull-right">
+                <span>
+                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-default">Save</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </span>
+            </div>
+    </div>

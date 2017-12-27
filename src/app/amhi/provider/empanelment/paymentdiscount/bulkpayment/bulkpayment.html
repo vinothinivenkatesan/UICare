@@ -1,0 +1,166 @@
+<div class="subTitle">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Bulk/Volume Payment Discount</span>
+</div>
+<hr>
+
+<form #bulkpaymentForm="ngForm">
+    <div class="row">  
+        <input-wrapper class='col-md-6' [inputLabel]="'Discount applicable'" [formErrors]="bulkpaymentForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="Y" [toggleName]="'discountApplicable'" [(toggleoptions)]="bulkApplicableoptions"></toggle-input>
+        </input-wrapper>        
+    </div>
+    <fieldset>
+        <legend class="scheduler-border">Early payment discount details</legend>
+        <div class="row">  
+            <input-wrapper class='col-md-6' [inputLabel]="'Amount Range[In Lacs]'" [formErrors]="bulkpaymentForm" [inputErrors]="rangeFrom" [inputErrorsTwo]="rangeTo" [templateType]="'grid-4-8'">
+                           <div ctype-8 class="fromtoinput">
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='rangeFrom' #rangeFrom="ngModel">
+                    <span>to</span>
+                    <input class="form-control col-md-5" placeholder="Enter Here" type="text" [(ngModel)]='text' name='rangeTo' #rangeTo="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-12' [inputLabel]="'Discount Type*'" [formErrors]="bulkpaymentForm" [inputErrors]="discountType" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType1' #discountType='ngModel' name="discountType" id="discountType1" value="option1" >
+                            <span>%age</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType2' #discountType='ngModel' name="discountType" id="discountType2" value="option1" >
+                            <span>Flat Amount</span>
+                        </label>
+                    </div>                        
+                    <div class="col-md-4">
+                        <label class="checkbox-inline nowrap">
+                            <input type="checkbox" [(ngModel)]='discountType3' #discountType='ngModel' name="discountType" id="discountType3" value="option1" >
+                            <span>Free Services</span>
+                        </label>
+                    </div>                        
+                </div>
+            </input-wrapper> 
+            <input-wrapper class='col-md-6' [inputLabel]="'Discount %age*'" [formErrors]="bulkpaymentForm" [inputErrors]="discountPercentage" [templateType]="'grid-4-8'">
+                <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountPercentage' #discountPercentage="ngModel">
+                </div>
+            </input-wrapper>  
+            <input-wrapper class='col-md-6' [inputLabel]="'Discount flat amount*'" [formErrors]="bulkpaymentForm" [inputErrors]="discountAmt" [templateType]="'grid-4-8'">
+                           <div ctype-8 >
+                    <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountAmt' #discountAmt="ngModel">
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-md-12' [inputLabel]="'Discount ceiling'" [formErrors]="bulkpaymentForm" [inputErrors]="discountCeiling" [templateType]="'grid-2-10'">
+                           <div class='row' ctype-10>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #discountCeiling='ngModel' name="discountCeiling" id="discountCeiling1" value="option1" required>
+                            <span>Higher of Both</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #discountCeiling='ngModel' name="discountCeiling" id="discountCeiling2" value="option2" required>
+                            <span>Lower of Both</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="radio-inline custom-radio nowrap">
+                            <input type="radio" [(ngModel)]='radioGroup' #discountCeiling='ngModel' name="discountCeiling" id="discountCeiling3" value="option3" required>
+                            <span>Ceiling by value</span>
+                        </label>
+                    </div>
+                </div>
+            </input-wrapper>
+        </div>
+        <fieldset>
+            <legend class="scheduler-border">Free Services details</legend>
+            <form #freeserviceForm="ngForm">
+                <div class="row">
+                    <input-wrapper class='col-sm-6' [inputLabel]="'Free Services*'" [formErrors]="freeserviceForm" [inputErrors]="freeServiceList" [templateType]="'grid-4-8'">
+                                   <select ctype-8 class="form-control" name="freeServiceList" [(ngModel)]='selectedFreeservice' #freeServiceList='ngModel' required>
+                            <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                        </select>
+                    </input-wrapper>
+                </div>
+                <div class="row">
+                    <input-wrapper class='col-md-6' [inputLabel]="'Number of free services*'" [formErrors]="freeserviceForm" [inputErrors]="freeService" [templateType]="'grid-4-8'">
+                                   <div ctype-8 >
+                            <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='freeService' #freeService="ngModel">
+                        </div>
+                    </input-wrapper>  
+                    <input-wrapper class='col-md-6' [inputLabel]="'Discount services eligible period*'" [formErrors]="freeserviceForm" [inputErrors]="discountService" [templateType]="'grid-4-8'">
+                                   <div ctype-8 >
+                            <input class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='text' name='discountService' #discountService="ngModel">
+                        </div>
+                    </input-wrapper>
+                </div>
+                <div class="pull-right"> 
+                    <button type="button" class="btn btn-default">Cancel</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-bordered" style="margin-top:2%;">
+                    <thead>
+                        <tr class="black-muted-bg">
+                            <th class="table-id">#</th>
+                            <th>Free service</th>
+                            <th>No of free services</th>
+                            <th>Discount service eligible period</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>No data available</td>
+                            <td></td>
+                            <td></td>
+                            <td class="icon-column">
+                                <a> <i class="fa fa-edit"></i> </a>                        
+                                <a> <i class="fa fa-trash"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <div class="pull-right"> 
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-primary">Add</button>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered" style="margin-top:2%;">
+        <thead>
+            <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Number of Days</th>
+                <th>Discount Type</th>
+                <th>Discount % age</th>
+                <th>Discount Flat Amount</th>
+                <th>Discount Ceiling</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>No data available</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="icon-column">
+                    <a> <i class="fa fa-eye"></i> </a>                        
+                    <a> <i class="fa fa-edit"></i> </a>                        
+                    <a> <i class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,75 @@
+<div>
+    <div #HSPTLManpowerForm=''>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Doctors/Other staffs</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of qualified doctor*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.noOfQualifiedDoctors.strengthCount' name="doctor" id="doctor" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of visiting consultant*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.noOfVisitingConsultant.strengthCount' name="consult" id="consult" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of qualified registered nurse*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.noOfQualifiedRegisteredNurse.strengthCount' name="nurse" id="nurse" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of qualified Un-registered nurse*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.noOfQualifiedUnregisteredNurse.strengthCount' name="unregNurse" id="unregNurse" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Subordinate '" [shortLabel]="'(Ward boy, Ayahs, sweepers)*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.subordinate.strengthCount' name="others" id="others" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of qualified technician*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.doctorOtherStaff.noOfQualifiedTechnician.strengthCount' name="doctor" id="doctor" type="number" required number maxlength="4">
+            </input-wrapper>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Ratios</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Nurses to Beds '" [betweenText]="':'" [shortLabel]="'(Ward)*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [inputErrorsTwo]="''" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.wardBedNurseAntecedentNumber' name="wardNurse" id="nurseRatio" type="number" required number maxlength="4">
+                <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.wardBedNurseConsequentNumber' name="wardBed" id="bedRatio" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Nurses to Beds '" [betweenText]="':'" [shortLabel]="'(ICU)*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [inputErrorsTwo]="''" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.icuBedNurseAntecedentNumber' name="icuNurse" id="icuNurse" type="number" required number maxlength="4">
+                <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.icuBedNurseConsequentNumber' name="icuBed" id="icuBed" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Doctor to Beds*'" [betweenText]="':'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [inputErrorsTwo]="''" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedDoctorAntecedentNumber' name="doctorRatio" id="doctorRatio" type="number" required number maxlength="4">
+                <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedDoctorConsequentNumber' name="bedRatio" id="bedRatio" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Administrative staff to Beds*'" [betweenText]="':'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [inputErrorsTwo]="''" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedAdminStaffAntecedentNumber' name="adminStaff" id="adminStaff" type="number" required number maxlength="4">
+                <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedAdminStaffConsequentNumber' name="adminBed" id="adminBed" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Provider Area to Beds'" [betweenText]="':'" [shortLabel]="'(Ward)*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [inputErrorsTwo]="''" [templateType]="'grid-4-3-3'">
+                <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedProviderAreaAntecedentNumber' name="proArea" id="proArea" type="number" required number maxlength="4">
+                <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='manpower.hospital.bedProviderAreaConsequentNumber' name="proBed" id="proBed" type="number" required number maxlength="4">
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Area unit*'" [formErrors]="HSPTLManpowerForm" [inputErrors]="''" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="request" [(ngModel)]='requestSourceId' #reqSource='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of requestSourceList' [ngValue]='type.areaUnitId'>{{type.areaUnitName}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+        <manpower-details *ngFor="let item of titles" [(savedObj)]='item.myObj' [heading]='item.title' [requestObj]='item.reqObj' [serviceUrl]='item.url' [(activeObj)]='item.inputs'></manpower-details>        
+    </div>
+    <div>
+        <div class="row">
+            {{manpower | json}}
+        </div>
+    </div>
+    <hr>
+    <div class="pull-right" >
+        <button class="btn btn-default" type="button">Reset</button>
+        <button class="btn btn-primary" type="button" (click)="saveManpower()">Save</button>        
+    </div>
+</div>

@@ -1,0 +1,76 @@
+.card{
+    border:0; 
+    text-align: left;
+}
+.card>.card-header{
+    background: #999;
+    border-bottom: 0;
+    margin-bottom: 10px;    
+}
+.card>.card-header>a{
+    color:#fff;
+}
+
+.card-header:first-child{
+    border-radius:0;
+}
+
+.form-group label {
+    margin-left:0;
+}
+
+//added to increace the height
+.setHeight {
+    height: 250px;
+}
+
+.mini{
+    font-size: 11px;
+    text-align: center;
+    line-height: 10px;
+}
+
+.iconalign{
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.remarksBox{
+    background-color: darkgray;
+    line-height: 25px;
+    padding-bottom: 20px;
+}
+.checkerForm{
+    /*height: 320px;*/
+    margin-bottom: 80px;
+}
+
+.marginBot{
+    margin-bottom: 15px;
+}
+.marginLft{
+    margin-bottom: 15px;
+}
+.accTitle
+{
+    text-align: left;
+}
+.mutedText{
+    font-size: 12px;
+    color:gray;
+}
+.icon-column{
+    text-align: center;
+}
+.mandatory{
+    color: red;
+    font-weight:bold;
+}
+.bolderTitel{
+    font-weight:bolder;
+}
+
+.tab-content{
+    margin-bottom: 30px;   
+}
+

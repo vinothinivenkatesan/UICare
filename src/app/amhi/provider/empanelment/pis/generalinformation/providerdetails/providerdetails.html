@@ -1,0 +1,242 @@
+<div class="row">
+    <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+    <span class="alingIconTitle">Provider Details</span>
+</div>
+<hr>
+<div *ngIf="parentObj">
+<fieldset class="no-border" > 
+    <fieldset class="no-border" disabled="true">
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Request Source*'" [formErrors]=[formtitle] [inputErrors]="prvReqSrc" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="request" [(ngModel)]='parentObj.requestSourceId' #prvReqSrc='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of requestSourceList' [ngValue]='type.referenceDataId'>{{type.referenceTypeValue}}</option>
+                </select>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Provider Name*'" [formErrors]=[formtitle] [inputErrors]="prvPrvName" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" name="providername" [(ngModel)]="parentObj.providerName" placeholder="Enter Here" type="text" #prvPrvName="ngModel" required>
+            </input-wrapper>
+        </div>
+
+        <div class="row">            
+            <input-wrapper class='col-md-6' [inputLabel]="'Also Known As'" [formErrors]=[formtitle] [inputErrors]="prvAlsoknown" [templateType]="'grid-4-8'">
+                           <div class="input-group" ctype-8>
+                    <input ctype-8 class="form-control"  type="text" name="alsoKnown" (keyup.enter)='addAlternateName(alsoKnown); alsoKnown="";' [(ngModel)]='alsoKnown' #prvAlsoknown="ngModel">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)='addAlternateName(alsoKnown); alsoKnown="";'> <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+            <fieldset class="no-border col-md-6 row">
+                <input-wrapper class='col-md-12' [inputLabel]="'Entity Type'" [formErrors]=[formtitle] [inputErrors]="prvEntity" [templateType]="'grid-4-8'">                
+                               <select ctype-8 class="form-control" name="entitytype" [(ngModel)]='parentObj.entityTypeId' #prvEntity='ngModel'>
+                        <option [ngValue]='defaultSelect' selected>Select Here</option>
+                        <option *ngFor='let type of entityTypeList' [ngValue]='type.entityTypeId'>{{type.entityTypeName}}</option>
+                    </select>
+                </input-wrapper>
+            </fieldset>
+
+        </div>     
+    </fieldset>
+    <fieldset *ngIf='alternateNames.length>0'>
+        <legend class="scheduler-border">Also Known as</legend>
+        <tag-input (onRemove)="updateItem($event,'alternateNames','alternateName')" [(ngModel)]='alternateNames' name="alternateName"> </tag-input>
+    </fieldset>
+
+    <fieldset class="no-border" disabled="true">
+        <div class="row">
+
+            <input-wrapper class='col-md-6' [inputLabel]="'State*'" [formErrors]=[formtitle] [inputErrors]="prvState" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="state" [(ngModel)]='parentObj.stateId' #prvState='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let stateObj of stateList'  [ngValue]='stateObj.stateId'>{{stateObj.stateName}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'City*'" [formErrors]=[formtitle] [inputErrors]="prvCity" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="city" [(ngModel)]='parentObj.cityId' #prvCity='ngModel' required>
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor=' let cityObj of cityList' [ngValue]='cityObj.cityId'>{{cityObj.cityName}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Pin Code*'" [formErrors]=[formtitle] [inputErrors]="prvPincode" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="pincode" [(ngModel)]="parentObj.pincode" (blur)="validatePincode()" #prvPincode='ngModel' number maxlength="6" required>{{"Pincode :"+parentObj.pincode}}
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'District'" [formErrors]=[formtitle] [inputErrors]="prvDistrict" [templateType]="'grid-4-8'">
+                <select ctype-8 class="form-control" name="district" [(ngModel)]='parentObj.districtId' #prvDistrict='ngModel'>
+                    <option [ngValue]='defaultSelect' selected>Select Here</option>
+                    <option *ngFor=' let districtObj of districtList'  [ngValue]='districtObj.districtId'>{{districtObj.districtName}}</option>
+                </select>
+            </input-wrapper>
+            <input-wrapper class='col-md-6' [inputLabel]="'Address/Locality *'" [formErrors]=[formtitle] [inputErrors]="prvLocality" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" name="locality" [(ngModel)]="parentObj.localityName" placeholder="Enter Here" type="text" #prvLocality='ngModel' required>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Landmark'" [formErrors]=[formtitle] [inputErrors]="prvLandmark" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" name="landmark" [(ngModel)]="parentObj.landmarkName" placeholder="Enter Here" type="text" #prvLandmark="ngModel">
+            </input-wrapper>
+
+            <input-wrapper class='col-md-12' [inputLabel]="'Street Name*'" [formErrors]=[formtitle] [inputErrors]="prvStreet" [templateType]="'grid-2-10'">
+                           <input ctype-10 class="form-control" name="streetname" [(ngModel)]="parentObj.streetName" placeholder="Enter Here" type="text" #prvStreet="ngModel" required>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Plot Number*'" [formErrors]=[formtitle] [inputErrors]="prvPlot" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" name="plotnumber" [(ngModel)]="parentObj.plotNumber" placeholder="Enter Here" type="text" #prvPlot="ngModel" required>
+            </input-wrapper>
+        </div>
+    </fieldset>
+
+
+
+    <fieldset class="no-border">
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Longitude'" [formErrors]=[formtitle] [inputErrors]="prvLongitude" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="longitude" [(ngModel)]='parentObj.additionalDetails.longitude' #prvLongitude="ngModel">
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Latitude'" [formErrors]=[formtitle] [inputErrors]="prvLatitude" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="number" name="latitude" [(ngModel)]='parentObj.additionalDetails.latitude' #prvLatitude="ngModel">
+            </input-wrapper>
+        </div>
+    </fieldset>
+    <fieldset class="no-border" disabled="true">
+        <div class="row">
+            <input-wrapper *ngIf='!(landlineNumbers.length>0)' class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]=[formtitle] [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                <input ctype-3-5 class="form-control" name="code" placeholder="Enter Here" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="text" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4" required>
+                <div ctype2-3-5 class="input-group">
+                    <input class="form-control" placeholder="Enter Here" name="landlineNumber" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="text" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)='addLandline(landlineCode,landlineNumber);'> <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+            <input-wrapper *ngIf='landlineNumbers.length>0' class='col-md-6' [inputLabel]="'Landline Number*'" [formErrors]=[formtitle] [inputErrors]="prvSTDCode" [inputErrorsTwo]="prvLandlineNumber" [templateType]="'grid-4-3-5'">
+                <input ctype-3-5 class="form-control" name="code" placeholder="Enter Here" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="text" [(ngModel)]='landlineCode' #prvSTDCode="ngModel" number maxlength="4">
+                <div ctype2-3-5 class="input-group">
+                    <input class="form-control" placeholder="Enter Here" name="landlineNumber" (keyup.enter)='addLandline(landlineCode,landlineNumber);' type="text" [(ngModel)]='landlineNumber' #prvLandlineNumber="ngModel" number maxlength="8">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)='addLandline(landlineCode,landlineNumber);'> <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Mobile Number'" [formErrors]=[formtitle] [inputErrors]="prvMobile" [templateType]="'grid-4-8'">
+                           <div ctype-8 class="input-group">
+                    <input class="form-control" placeholder="Enter Here" name="mobileNumber" (keyup.enter)='addContactDetails(mobileNumber,"mobileNumbers");' type="text" [(ngModel)]='mobileNumber' #prvMobile="ngModel" number maxlength="10">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)='addContactDetails(mobileNumber,"mobileNumbers");'> <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+        </div>
+    </fieldset>
+
+
+    <fieldset *ngIf='landlineNumbers.length>0'>
+        <legend class="scheduler-border">Landline Number</legend>
+        <tag-input (onRemove)="updateItem($event,'landlineNumbers','contactNumber')" [(ngModel)]='landlineNumbers' name="landlineNumbers"> </tag-input>
+    </fieldset>  
+    <fieldset  *ngIf='mobileNumbers.length>0'>
+        <legend class="scheduler-border">Mobile Number</legend>
+        <tag-input (onRemove)="updateItem($event,'mobileNumbers','contactNumber')" [(ngModel)]='mobileNumbers' name="mobileNumbers"> </tag-input>
+    </fieldset>
+    <fieldset class="no-border" disabled="true">
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'E-mail Address '" [formErrors]=[formtitle] [inputErrors]="prvEmail" [templateType]="'grid-4-8'">
+                           <div ctype-8 class="input-group">
+                    <input class="form-control" name="emailaddress" type="text" (keyup.enter)='addContactDetails(emailAddress,"emailAddresses");' [(ngModel)]='emailAddress' #prvEmail='ngModel'>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" (click)='addContactDetails(emailAddress,"emailAddresses");'> <i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Website'" [formErrors]=[formtitle] [inputErrors]="prvWebsite" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" name="website" [(ngModel)]="parentObj.additionalDetails.website" placeholder="Enter Here" type="text" #prvWebsite="ngModel">
+            </input-wrapper>
+        </div>
+    </fieldset>
+    <fieldset  *ngIf='emailAddresses.length>0'>
+        <legend class="scheduler-border">Email Address</legend>
+        <tag-input (onRemove)="updateItem($event,'emailAddresses','emailAddress')" [(ngModel)]='emailAddresses' name="emailAddress"> </tag-input>
+    </fieldset>
+    <fieldset class="no-border">
+        <div class="row">
+            <input-wrapper class='col-md-6' [inputLabel]="'Number of Beds'" [formErrors]=[formtitle] [inputErrors]="prvBeds" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" placeholder="Enter Here" type="number" [(ngModel)]='parentObj.bedCount.strengthCount' name='beds' #prvBeds="ngModel">
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Rohini ID'" [formErrors]=[formtitle] [inputErrors]="prvRohinId" [templateType]="'grid-4-8'">
+                           <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='rohiniId' #prvRohinId="ngModel">
+            </input-wrapper>
+
+            <input-wrapper class='col-md-6' [inputLabel]="'Specialty'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                <toggle-input ctype-8 [(toggle)]="parentObj.additionalDetails.specialtyTypeId" [toggleName]='"specialty"' [(toggleoptions)]="specialtyOptions" (onToggle)='setSpecialty($event)'></toggle-input>
+            </input-wrapper>
+
+            <input-wrapper *ngIf="specalityTypeCheck(specialtyOptions[0].id)" class='col-md-6' [inputLabel]="'Multi Specialty'" [formErrors]=[formtitle] [inputErrors]="prvMultiSpec" [templateType]="'grid-4-8'">
+                           <ss-multiselect-dropdown [options]="multiSpecialtyList" name='1' [(ngModel)]="selectedMultiSpecialtyId" (ngModelChange)="multiselectChange($event, 'multiSpecialty')" #prvMultiSpec='ngModel' ctype-8></ss-multiselect-dropdown>
+            </input-wrapper>
+
+            <input-wrapper *ngIf="specalityTypeCheck(specialtyOptions[1].id)" class='col-md-6' [inputLabel]="'Single Specialty'" [formErrors]=[formtitle] [inputErrors]="prvSingleSpec" [templateType]="'grid-4-8'">
+                           <select ctype-8 class="form-control" name="singleSpec" [(ngModel)]='singelSpecVal' #prvSingleSpec='ngModel' (ngModelChange)="singelSpecialtyChange(event)">
+                    <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                    <option *ngFor='let type of multiSpecialtyList' [ngValue]='type.id'>{{type.name}}</option>
+                </select>
+            </input-wrapper>
+        </div>
+    </fieldset>    
+
+    <div class="row">
+        <input-wrapper class='col-md-6' [inputLabel]="'Fax Number'" [formErrors]=[formtitle] [inputErrors]="faxNo" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='faxNo' #faxNo="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Alternate Fax'" [formErrors]=[formtitle] [inputErrors]="altFax" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='altFax' #altFax="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Distance from Airport'" [formErrors]=[formtitle] [inputErrors]="airportDistance" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='airportDistance' #airportDistance="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Distance from Station'" [formErrors]=[formtitle] [inputErrors]="stationDistance" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='stationDistance' #stationDistance="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Ownership Type*'" [formErrors]=[formtitle] [inputErrors]="ownerType" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="ownerType" [(ngModel)]='parentObj.ownershipTypeId' #ownerType='ngModel'>
+                <option [ngValue]='defaultSelect' disabled selected>Select Here</option>      
+                <option *ngFor='let ownershipObj of ownershipList' [ngValue]='ownershipObj.ownershipTypeId'>{{ownershipObj.ownershipTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Providers Organization Type*'" [formErrors]=[formtitle] [inputErrors]="orgType" [templateType]="'grid-4-8'">
+                       <select ctype-8 class="form-control" name="orgType" [(ngModel)]='parentObj.organizationTypeId' #orgType='ngModel'>
+                           <option [ngValue]='defaultSelect' disabled selected>Select Here</option>
+                <option *ngFor='let organizationObj of organizationList' [ngValue]='organizationObj.organizationTypeId'>{{organizationObj.organizationTypeName}}</option>
+            </select>
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Trust Name'" [formErrors]=[formtitle] [inputErrors]="trustName" [templateType]="'grid-4-8'">
+                       <input ctype-8 class="form-control" placeholder="Enter Here" type="text" [(ngModel)]='parentObj.additionalDetails.rohiniId' name='trustName' #trustName="ngModel">
+        </input-wrapper>
+        <input-wrapper class='col-md-6' [inputLabel]="'Trust Type'" [formErrors]=[formtitle] [inputErrors]="''" [templateType]="'grid-4-8'">
+                       <toggle-input ctype-8 [(toggle)]="parentObj.trustType" [toggleName]="'trustTypeName'" [(toggleoptions)]="trustTypeoptions"></toggle-input>
+        </input-wrapper>
+    </div>
+</fieldset>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group row">
+            <label class="col-md-4 form-control-label" for="timefrom">Timing from</label>
+            <div class="col-md-8">
+                <input class="form-control" name="timefrom" id="timefrom" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group row">
+            <label class="col-md-4 form-control-label" for="timeto">Timing to</label>
+            <div class="col-md-8">
+                <input class="form-control" name="timeto" id="timeto" type="text">
+            </div>
+        </div>
+    </div>
+</div>
+

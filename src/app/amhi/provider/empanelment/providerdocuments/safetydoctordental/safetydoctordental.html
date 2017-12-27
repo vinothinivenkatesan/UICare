@@ -1,0 +1,36 @@
+<div>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Accreditation'" [formErrors]="typeForm" [inputErrors]="DOCTINDAccredType" [templateType]="'grid-4-8'">
+                <div ctype-8>
+                    <ss-multiselect-dropdown [options]="DOCTINDAccredTypeList" name='2' [(ngModel)]="selectedDOCTINDAccredTypeId" (ngModelChange)="multiselectChange($event, 'DOCTINDAccredType')" #DOCTINDAccredType='ngModel' ></ss-multiselect-dropdown>
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'If others, name the Certificate'" [formErrors]="typeForm" [inputErrors]="DOCTINDAccredrsCert" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='DOCTINDAccredrCert' name='DOCTINDAccredOthers' #DOCTINDAccredrsCert='ngModel' ctype-8 >
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedDOCTINDAccredType.length>0">
+            <legend class="scheduler-border">Accreditation</legend>
+            <tag-input (onRemove)="removeTag($event, 'DOCTINDAccredType')" [(ngModel)]='selectedDOCTINDAccredType' name="clinical"> </tag-input>
+        </fieldset>
+        <uploader [(savedFile)]='prvDOCTINDAccred.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Accreditation '" [shortLabel]="'(for Non-Indian medical graduates)'" [formErrors]="typeForm" [inputErrors]="DOCTNONINDAccredType" [templateType]="'grid-4-8'">
+                <div ctype-8>
+                    <ss-multiselect-dropdown [options]="DOCTNONINDAccredTypeList" name='2' [(ngModel)]="selectedDOCTNONINDAccredTypeId" (ngModelChange)="multiselectChange($event, 'DOCTNONINDAccredType')" #DOCTNONINDAccredType='ngModel'></ss-multiselect-dropdown>
+                </div>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'If others, name the Certificate'" [formErrors]="typeForm" [inputErrors]="DOCTNONINDAccredrsCert" [templateType]="'grid-4-8'">
+                <input type="text" class='form-control' placeholder="Enter Here" [(ngModel)]='DOCTNONINDAccredrCert' name='DOCTNONINDAccredOthers' #DOCTNONINDAccredrsCert='ngModel' ctype-8>
+            </input-wrapper>
+        </div>
+        <fieldset *ngIf="selectedDOCTNONINDAccredType.length>0">
+            <legend class="scheduler-border">Accreditation (for Non-Indian medical graduates)</legend>
+            <tag-input (onRemove)="removeTag($event, 'DOCTNONINDAccredType')" [(ngModel)]='selectedDOCTNONINDAccredType' name="clinical"> </tag-input>
+        </fieldset>
+        <uploader [(savedFile)]='prvDOCTNONINDAccred.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+</div>

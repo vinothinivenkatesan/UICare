@@ -1,0 +1,87 @@
+<div class="widgets">
+
+    <div class="row">
+        <div class="col-md-6">
+            <bs-card title="Standard Fields" bsCardClass="with-scroll">
+                <standard-inputs></standard-inputs>
+            </bs-card>
+
+            <bs-card title="Input Groups" bsCardClass="with-scroll">
+                <group-inputs></group-inputs>
+            </bs-card>
+
+            <bs-card title="Selects" bsCardClass="with-scroll">
+                <label> Multiple select</label>
+                <multiselect-inputs></multiselect-inputs>
+                <select-inputs></select-inputs>                
+            </bs-card>
+
+            <bs-card title="Dual List Box">
+                <dual-listbox></dual-listbox>
+            </bs-card>
+
+            <bs-card title="Step Wizard">
+                <step-wizard></step-wizard>
+            </bs-card>
+            
+              <bs-card title="Type Ahead">
+                <type-ahead></type-ahead>
+            </bs-card>   
+
+        </div>
+
+        <div class="col-md-6">
+            <bs-card title="Validation States" bsCardClass="with-scroll">
+                <validation-inputs></validation-inputs>
+            </bs-card>
+
+            <bs-card title="Checkboxes & Radios" bsCardClass="with-scroll">
+                <checkbox-inputs></checkbox-inputs>
+            </bs-card>
+
+            <bs-card title="Date Picker">
+                <div style="height:300px;">
+                <date-picker></date-picker>
+                </div>
+            </bs-card>
+
+            <bs-card title="Tag Inputs">
+                <tag-inputs></tag-inputs>
+            </bs-card>
+
+            <bs-card title="Toggle Inputs">
+                <toggle-input [(toggle)]="toggle" [toggleName]='toggleName' [(toggleoptions)]="toggleoptions"></toggle-input>
+            </bs-card>              
+            <bs-card title="Rating">
+                <rating></rating>
+            </bs-card>              
+
+            <bs-card title="Switch Inputs">
+                <ui-switch checked></ui-switch>
+                <ui-switch [checked]="false"></ui-switch>
+                <ui-switch disabled></ui-switch>
+                <ui-switch checked [disabled]="true"></ui-switch>
+                <!--<ui-switch (change)="onChange($event)"></ui-switch>-->
+                <ui-switch size="small"></ui-switch>
+                <ui-switch size="large"></ui-switch>
+                <ui-switch reverse></ui-switch>
+                <ui-switch color="red"></ui-switch>
+                <ui-switch switchColor="#666666"></ui-switch>              
+            </bs-card>                 
+            <bs-card title="Paginations">
+                <paginations></paginations>                  
+            </bs-card>          
+            <bs-card title="Switch Input">
+                <switch-input></switch-input>                  
+            </bs-card>          
+        </div>
+
+        <div class="col-md-12">
+            <bs-card title="Upload">
+                <upload-inputs></upload-inputs>
+            </bs-card>   
+        </div>
+
+    </div>
+
+</div>

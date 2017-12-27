@@ -1,0 +1,70 @@
+<form class="form-horizontal" #templateForm="ngForm" novalidate>
+    <div class="row">
+
+        <!-- Full size type col 12 -> 2:10 (label:content)-->
+        <input-wrapper class='col-md-12' [inputLabel]="'Full size ( templateType = \'grid-2-10\' )'" [formErrors]="{submitted:false}" [inputErrors]="{valid:true,pristine:false}" [templateType]="'grid-2-10'">
+
+            <input ctype-10 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal1' name="name1" id="nurseRatio" type="text" #Input1='ngModel'>
+
+        </input-wrapper>
+
+        <!-- Half size type col 6 -> 4:8 (label:content:content)-->
+        <input-wrapper class='col-md-6' [inputLabel]="'Half size ( templateType = \'grid-4-8\' )'" [formErrors]="templateForm" [inputErrors]="Input2" [templateType]="'grid-4-8'">
+
+            <input ctype-8 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal2' name="name2" id="nurseRatio" type="text" #Input2='ngModel'>
+
+        </input-wrapper>
+
+        <!-- Half size type col 6 -> 4:3:5 (label:content:content)-->
+        <input-wrapper class='col-md-6' [inputLabel]="'Half size ( templateType = \'grid-4-3-5\' )'" [formErrors]="templateForm" [inputErrors]="Input3" [inputErrorsTwo]="Input4" [templateType]="'grid-4-3-5'">
+
+            <input ctype-3-5 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal3' name="name3" id="nurseRatio" type="text" #Input3='ngModel'>
+            <input ctype2-3-5 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal4' name="name4" id="bedRatio" type="text" #Input4='ngModel'>
+
+        </input-wrapper>
+
+        <!-- Half size type col 6 -> 4:3:3 (label:content:content)-->
+        <input-wrapper class='col-md-6' [inputLabel]="'Half size ( templateType = \'grid-4-3-3\' )'" [formErrors]="templateForm" [inputErrors]="Input5" [inputErrorsTwo]="Input6" [templateType]="'grid-4-3-3'">
+
+            <input ctype-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal5' name="name5" id="nurseRatio" type="text" #Input5='ngModel'>
+            <input ctype2-3-3 placeholder="Enter Here" class="form-control" [(ngModel)]='sampleVal6' name="name6" id="bedRatio" type="text" #Input6='ngModel'>
+
+        </input-wrapper>
+
+        <!-- Half size type col 6/12 -> 3:9 (label:content:content)-->
+        <!-- radio group validation -->
+        <input-wrapper class='col-md-12' [inputLabel]="'Full size ( templateType = \'grid-3-9\' )'" [formErrors]="templateForm" [inputErrors]="radioGrp" #prvBlacklistWrap [templateType]="'grid-3-9'">
+        <div class='row' ctype-9>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
+                    <span>Option 1</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+                    <span>Option 2</span>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" [(ngModel)]='radioGroup' #radioGrp='ngModel' name="inlineRadioOptions" id="inlineRadio3" value="option3" required>
+                    <span>Option3</span>
+                </label>
+            </div>
+        </div>
+        </input-wrapper>
+
+
+        
+
+    </div>
+    <div class="pull-right">
+        <span>
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </span>
+    </div>
+
+</form>

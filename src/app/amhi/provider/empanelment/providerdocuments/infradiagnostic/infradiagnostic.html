@@ -1,0 +1,106 @@
+<div #formRef=''>
+    <div>
+        <uploader [labelText]="'Biomedical waste management certificate*'" [(savedFile)]='prvDIAGBioWstMngCert.documents' [(providerCode)]='providerCode'></uploader>
+        <uploader [labelText]="'Make and year for all the equipment'" [(savedFile)]='prvDIAGEquipYr.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Building permit</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="DIAGBldPermitFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="DIAGBldPermitEffective" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGBldPermitFrom" #DIAGBldPermitFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="DIAGBldPermitToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="DIAGBldPermitEnd" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGBldPermitTo" #DIAGBldPermitToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="DIAGBldPermitIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="DIAGBldPermitIssue" [(ngModel)]="prvDIAGBldPermit.issuingAuthority" #DIAGBldPermitIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvDIAGBldPermit.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Fire safety license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="DIAGFireSafeFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="DIAGFireSafeEffective" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGFireSafeFrom" #DIAGFireSafeFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="DIAGFireSafeToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="DIAGFireSafeEnd" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGFireSafeTo" #DIAGFireSafeToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="DIAGFireSafeIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="DIAGFireSafeIssue" [(ngModel)]="prvDIAGFireSafe.issuingAuthority" #DIAGFireSafeIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvDIAGFireSafe.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">PNDT license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue*'" [formErrors]="formRef" [inputErrors]="DIAGPNDTFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="DIAGPNDTEffective" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGPNDTFrom" #DIAGPNDTFromDt='ngModel' required></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry*'" [formErrors]="formRef" [inputErrors]="DIAGPNDTToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="DIAGPNDTEnd" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGPNDTTo" #DIAGPNDTToDt='ngModel' required></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority*'" [formErrors]="formRef" [inputErrors]="DIAGPNDTIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="DIAGPNDTIssue" [(ngModel)]="prvDIAGPNDT.issuingAuthority" #DIAGPNDTIssuer='ngModel' required maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvDIAGPNDT.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Radiation protection certificate</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="DIAGRadiatProCertFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="DIAGRadiatProCertEffective" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGRadiatProCertFrom" #DIAGRadiatProCertFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="DIAGRadiatProCertToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="DIAGRadiatProCertEnd" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGRadiatProCertTo" #DIAGRadiatProCertToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="DIAGRadiatProCertIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="DIAGRadiatProCertIssue" [(ngModel)]="prvDIAGRadiatProCert.issuingAuthority" #DIAGRadiatProCertIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvDIAGRadiatProCert.documents' [(providerCode)]='providerCode'></uploader>
+    </div>
+    <div>
+        <div class="row">
+            <a><i class="fa fa-file-text-o fa-lg iconalign"></i></a>
+            <span class="alingIconTitle bolderTitel">Narcotics and psychotropic license</span>
+        </div>
+        <hr>
+        <div class="row">
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of issue'" [formErrors]="formRef" [inputErrors]="DIAGNarcoticsFromDt" [templateType]="'grid-4-8'">
+                <my-date-picker ctype-8 name="DIAGNarcoticsEffective" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGNarcoticsFrom" #DIAGNarcoticsFromDt='ngModel'></my-date-picker>
+                <!--(dateChanged)="onDateChanged($event, 'prvDoctorRegCertificate', 'From')" -->
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Date of expiry'" [formErrors]="formRef" [inputErrors]="DIAGNarcoticsToDt" [templateType]="'grid-4-8'" [errorDefs]="errorDefs">            
+                <my-date-picker ctype-8 name="DIAGNarcoticsEnd" [options]="myDatePickerOptions" [(ngModel)]="prvDIAGNarcoticsTo" #DIAGNarcoticsToDt='ngModel'></my-date-picker>
+            </input-wrapper>
+            <input-wrapper class='col-sm-6' [inputLabel]="'Issuing authority'" [formErrors]="formRef" [inputErrors]="DIAGNarcoticsIssuer" [templateType]="'grid-4-8'">
+                <input ctype-8 class="form-control" placeholder="Enter Here" type="text" name="DIAGNarcoticsIssue" [(ngModel)]="prvDIAGNarcotics.issuingAuthority" #DIAGNarcoticsIssuer='ngModel' maxlength="50">
+            </input-wrapper>
+        </div>
+        <uploader [(savedFile)]='prvDIAGNarcotics.documents' [(providerCode)]='providerCode'></uploader>
+    </div>    
+</div>

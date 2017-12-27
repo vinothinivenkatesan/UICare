@@ -1,0 +1,115 @@
+<ngb-accordion [closeOthers]="true"  activeIds="3">
+    <ngb-panel id="1" title="Simple">
+        <template ngbPanelContent> 
+            <div class="container">
+                <div class="row bottom-margin" >
+                    <div class="col-xs">
+                        <div class="row">
+                            <label class="col-xs form-control-label">Name</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs">
+                        <div class="row">
+                            <label class="col-xs form-control-label">Email</label>
+                            <div class="col-xs-10">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row bottom-margin">
+                    <div class="col-xs">
+                        <div class="row">
+                            <label class="col-xs form-control-label">Mobile</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" placeholder="Mobile">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs">
+                        <div class="row">
+                            <label class="col-xs form-control-label">Address</label>
+                            <div class="col-xs-10">
+                                <input type="email" class="form-control" placeholder="Address">
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="row">
+                    <div class="col-xs">
+                        <fieldset>
+                            <legend class="scheduler-border">Personalia:</legend>
+                            <div class="row">
+                                <div class="col-xs">
+                                    <div class="row">
+                                        <label class="col-xs form-control-label">Address</label>
+                                        <div class="col-xs-10">
+                                            <input type="email" class="form-control" placeholder="Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs">
+                                    <div class="row">
+                                        <label class="col-xs form-control-label">Address</label>
+                                        <div class="col-xs-10">
+                                            <input type="email" class="form-control" placeholder="Address">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </ngb-panel>
+    <ngb-panel id="2" >
+        <template ngbPanelTitle>
+            <i class="fa fa-plus"></i><span>Dynamic Form</span>     
+        </template>
+        <template ngbPanelContent>
+            <schema-form [schema]="demoSchema" [model]="model" [actions]="actions">
+            </schema-form>
+        </template>
+    </ngb-panel>
+    <ngb-panel id="3" title="Disabled">
+        <template ngbPanelContent>
+            <h3>Reference table : {{tableschema.name }}</h3>
+            <schema-form [schema]="mySchema" (onChange)="value=$event.value" [actions]="myActions" [model]="myModel"></schema-form>
+            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th *ngFor="let col of tableschema.schema">{{col.name}}</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>                   
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let yol of tableschema.references; let i = index;">
+                        <td *ngFor="let col of generateArray(yol)">{{col}}</td>
+                        <td (click)="showid(yol)"><a><i class="fa fa-edit"></i></a></td>
+                        <td (click)="deleteid(yol)"><a><i class="fa fa-trash"></i></a></td>
+                    </tr>                   
+                </tbody>
+            </table>
+            <p>No Of Records : {{tableschema.totalNumberOfRecords }}</p>
+            <ul class="pagination">
+                <li *ngIf="!firstpage" (click)="pagination(0)" class="disabled"><i class="material-icons">chevron_left</i></li>
+                <li (click)="pagination(1)" class="waves-effect">1</li>
+                <li (click)="pagination(2)" class="waves-effect">2</li>
+                <li (click)="pagination(3)" class="waves-effect">3</li>
+                <li (click)="pagination(4)" class="waves-effect">4</li>
+                <li (click)="pagination(5)" class="waves-effect">5</li>
+                <li *ngIf="!lastpage" (click)="pagination(9999)" class="waves-effect"><i class="material-icons">chevron_right</i></li>
+            </ul>
+
+
+        </template>
+    </ngb-panel>
+</ngb-accordion>
+
