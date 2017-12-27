@@ -11,7 +11,6 @@ Install tools
 If you don’t have any of these tools installed already, you will need to:
 •   Download and install git
 •   Download and install nodejs https://nodejs.org
-•   Request for admin access in 1C portal
 
 Note: Make sure you have Node version >= 4.0 and NPM >= 3
 
@@ -38,7 +37,7 @@ If you get any self-signed certificate error please issue the following commands
 •    npm cache clean
 •    SET npm_config_strict-ssl=false
 
-This will setup a working copy of care-admin on your local machine.
+This will setup a working copy on your local machine.
 
 Running local copy
 ******************
